@@ -23,24 +23,10 @@ function stampDutyCalculator() {
     // Perform Stamp Duty calculation for each state
     switch (state) {
         case "ACT":
-            stampDuty = propertyPrice + 1
+            stampDuty = stampDutyCalculatorACT(propertyPrice);
             break;
         case "NSW":
-            if (propertyPrice <= 15000) {
-                stampDuty = 1.25 * (propertyPrice / 100)
-            } else if (propertyPrice <= 32000) {
-                stampDuty = 187 + (1.50 * ((propertyPrice - 15000) / 100))
-            } else if (propertyPrice <= 87000) {
-                stampDuty = 442 + (1.75 * ((propertyPrice - 32000) / 100))
-            } else if (propertyPrice <= 327000) {
-                stampDuty = 1405 + (3.5 * ((propertyPrice - 87000) / 100))
-            } else if (propertyPrice <= 1089000) {
-                stampDuty = 9805 + (4.5 * ((propertyPrice - 327000) / 100))
-            } else if (propertyPrice <= 3268000) {
-                stampDuty = 44095 + (5.5 * ((propertyPrice - 1089000) / 100))
-            } else {
-                stampDuty = 163940 + (7.0 * ((propertyPrice - 3268000) / 100));
-            }
+            stampDuty = stampDutyCalculatorNSW(propertyPrice);
             break;
         case "NT":
             stampDuty = propertyPrice + 3
@@ -55,19 +41,7 @@ function stampDutyCalculator() {
             stampDuty = propertyPrice + 6
             break;
         case "VIC":
-            if (propertyPrice <= 25000) {
-                stampDuty = 0.014 * propertyPrice
-            } else if (propertyPrice <= 130000) {
-                stampDuty = 350 + 0.024 * (propertyPrice - 25000)
-            } else if (propertyPrice <= 440000) {
-                stampDuty = 2870 + 0.05 * (propertyPrice - 130000)
-            } else if (propertyPrice <= 550000) {
-                stampDuty = 18370 + 0.06 * (propertyPrice - 440000)
-            } else if (propertyPrice <= 960000) {
-                stampDuty = 28070 + 0.06 * (propertyPrice - 550000)
-            } else {
-                stampDuty = 0.055 * propertyPrice;
-            }
+            stampDuty = stampDutyCalculatorVIC(propertyPrice);
             break;
         case "WA":
             stampDuty = propertyPrice + 8
@@ -84,6 +58,108 @@ function stampDutyCalculator() {
     const stampDutyResultElement = document.getElementById("stampDutyResult");
     stampDutyResultElement.innerHTML = `$${stampDuty.toFixed(2)}`;
 }
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in ACT
+
+function stampDutyCalculatorACT(propertyPrice) {
+    if (propertyPrice <= 260000) {
+        stampDuty = 0.6 * (propertyPrice / 100)
+    } else if (propertyPrice <= 300000) {
+        stampDuty = 1560 + (2.2 * ((propertyPrice - 260000) / 100))
+    } else if (propertyPrice <= 500000) {
+        stampDuty = 2440 + (3.4 * ((propertyPrice - 300000) / 100))
+    } else if (propertyPrice <= 750000) {
+        stampDuty = 9240 + (4.32 * ((propertyPrice - 500000) / 100))
+    } else if (propertyPrice <= 1000000) {
+        stampDuty = 20040 + (5.9 * ((propertyPrice - 750000) / 100))
+    } else if (propertyPrice <= 1455000) {
+        stampDuty = 34790 + (5.5 * ((propertyPrice - 1000000) / 100))
+    } else {
+        stampDuty = 4.54 * ((propertyPrice - 3268000) / 100);
+    }
+    return stampDuty
+}
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in NSW
+
+function stampDutyCalculatorNSW(propertyPrice) {
+    if (propertyPrice <= 15000) {
+        stampDuty = 1.25 * (propertyPrice / 100)
+    } else if (propertyPrice <= 32000) {
+        stampDuty = 187 + (1.50 * ((propertyPrice - 15000) / 100))
+    } else if (propertyPrice <= 87000) {
+        stampDuty = 442 + (1.75 * ((propertyPrice - 32000) / 100))
+    } else if (propertyPrice <= 327000) {
+        stampDuty = 1405 + (3.5 * ((propertyPrice - 87000) / 100))
+    } else if (propertyPrice <= 1089000) {
+        stampDuty = 9805 + (4.5 * ((propertyPrice - 327000) / 100))
+    } else if (propertyPrice <= 3268000) {
+        stampDuty = 44095 + (5.5 * ((propertyPrice - 1089000) / 100))
+    } else {
+        stampDuty = 163940 + (7.0 * ((propertyPrice - 3268000) / 100));
+    }
+    return stampDuty
+}
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in NT
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in QLD
+
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in SA
+
+
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in TAS
+
+
+
+
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in VIC
+
+
+function stampDutyCalculatorVIC(propertyPrice) {
+    if (propertyPrice <= 25000) {
+        stampDuty = 0.014 * propertyPrice
+    } else if (propertyPrice <= 130000) {
+        stampDuty = 350 + 0.024 * (propertyPrice - 25000)
+    } else if (propertyPrice <= 440000) {
+        stampDuty = 2870 + 0.05 * (propertyPrice - 130000)
+    } else if (propertyPrice <= 550000) {
+        stampDuty = 18370 + 0.06 * (propertyPrice - 440000)
+    } else if (propertyPrice <= 960000) {
+        stampDuty = 28070 + 0.06 * (propertyPrice - 550000)
+    } else {
+        stampDuty = 0.055 * propertyPrice;
+    }
+}
+
+
+// ****************
+
+//  This function calculates the stamp duty for an owner occupied property in WA
+
 
 
 
