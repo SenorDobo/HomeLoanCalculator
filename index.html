@@ -88,7 +88,16 @@
                 <span class="tooltiptext">This is the state the property is located</span>
         </td>
         <td style="background-color:rgb(255, 255, 180);">
-            <div id="stateDropdown" onChange="stampDutyCalculator()"></div>
+            <select id="stateDropdown" name="stateDropdown" onInput="stampDutyCalculator()">
+                <option value=""></option>
+                <option value="ACT">Australian Capital Territory</option>
+                <option value="NSW">New South Wales</option>
+                <option value="NT">Northern Territory</option>
+                <option value="QLD">Queensland</option>
+                <option value="SA">South Australia</option>
+                <option value="TAS">Tasmania</option>
+                <option value="VIC">Victoria</option>
+                <option value="WA">Western Australia</option>
             </select>
         </td>
     </tr>
@@ -96,7 +105,7 @@
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
             <input type="number" id="propertyPrice" onInput="stampDutyCalculator()" for="propertyPrice"
-                placeholder="$500,000" step="1000" min="100000" max="99999999">
+                placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
     <tr>
@@ -118,34 +127,12 @@
         <th>Expense</th>
         <th>Amount ($)</th>
     </tr>
-
-
-
-
-
-
-
-
     <tr>
         <td>Stamp Duty Amount</td>
         <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
             <div class="purchase-costs-field" onChange="sumPropertyFees()"></div>
         </td>
     </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <tr>
         <td>Transfer Fee (Title Transfer)</td>
         <td style="background-color:rgb(193, 212, 255);">

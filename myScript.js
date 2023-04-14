@@ -8,23 +8,17 @@ console.log("Hello World")
 
 //  This function calculates the stamp duty based on the state and property value
 function stampDutyCalculator() {
-    console.log('called stampDutyCalculator function')
 
     // Get the State of the property
     const stateDropdown = document.getElementById("stateDropdown");
-    console.log(stateDropdown);
     const state = stateDropdown.value;
-    console.log(state);
 
     // Get the Property Price amount
     const propertyPriceElement = document.getElementById("propertyPrice");
     const propertyPrice = Number(propertyPriceElement.value);
-    console.log(propertyPrice);
 
     //  Start with Stamp Duty at 0
     let stampDuty = 0;
-    let stampDutyCharge = 0
-    let stampDutyRate = 0;
 
     // Perform Stamp Duty calculation for each state
     switch (state) {
@@ -32,7 +26,21 @@ function stampDutyCalculator() {
             stampDuty = propertyPrice + 1
             break;
         case "NSW":
-            stampDuty = propertyPrice + 2
+            if (propertyPrice <= 15000) {
+                stampDuty = 1.25 * (propertyPrice / 100)
+            } else if (propertyPrice <= 32000) {
+                stampDuty = 187 + (1.50 * ((propertyPrice - 15000) / 100))
+            } else if (propertyPrice <= 87000) {
+                stampDuty = 442 + (1.75 * ((propertyPrice - 32000) / 100))
+            } else if (propertyPrice <= 327000) {
+                stampDuty = 1405 + (3.5 * ((propertyPrice - 87000) / 100))
+            } else if (propertyPrice <= 1089000) {
+                stampDuty = 9805 + (4.5 * ((propertyPrice - 327000) / 100))
+            } else if (propertyPrice <= 3268000) {
+                stampDuty = 44095 + (5.5 * ((propertyPrice - 1089000) / 100))
+            } else {
+                stampDuty = 163940 + (7.0 * ((propertyPrice - 3268000) / 100));
+            }
             break;
         case "NT":
             stampDuty = propertyPrice + 3
@@ -48,7 +56,7 @@ function stampDutyCalculator() {
             break;
         case "VIC":
             if (propertyPrice <= 25000) {
-                stampDuty = propertyPrice * 0.014
+                stampDuty = 0.014 * propertyPrice
             } else if (propertyPrice <= 130000) {
                 stampDuty = 350 + 0.024 * (propertyPrice - 25000)
             } else if (propertyPrice <= 440000) {
