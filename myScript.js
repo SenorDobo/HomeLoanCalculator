@@ -62,8 +62,10 @@ function stampDutyCalculator() {
 // ****************
 
 //  This function calculates the stamp duty for an owner occupied property in ACT
+//  Function is called from stampDutyCalculator() and is passed the propertyPrice variable when called
 
 function stampDutyCalculatorACT(propertyPrice) {
+    //  if propertyPrice is less than or equal to $260,000 then stamp duty calculation is 0.6 x (propertyPrice / 100)
     if (propertyPrice <= 260000) {
         stampDuty = 0.6 * (propertyPrice / 100)
     } else if (propertyPrice <= 300000) {
@@ -79,6 +81,7 @@ function stampDutyCalculatorACT(propertyPrice) {
     } else {
         stampDuty = 4.54 * ((propertyPrice - 3268000) / 100);
     }
+    //  Returns the stampDuty value to the function that initiated this function
     return stampDuty
 }
 
