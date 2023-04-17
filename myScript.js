@@ -9,20 +9,23 @@ console.log("Hello World")
 //  This function calculates the stamp duty based on the state and property value
 function stampDutyCalculator() {
 
-    // Get the State of the property
+    // Get the State of the property from the dropdown. Getting the dropdown first, then the value of the dropdown
     const stateDropdown = document.getElementById("stateDropdown");
     const state = stateDropdown.value;
 
-    // Get the Property Price amount
+    // Get the Property Price amount. Getting the field first, then getting the value of the field as a Number.
     const propertyPriceElement = document.getElementById("propertyPrice");
     const propertyPrice = Number(propertyPriceElement.value);
 
     //  Start with Stamp Duty at 0
     let stampDuty = 0;
 
-    // Perform Stamp Duty calculation for each state
+    // Perform Stamp Duty calculation for each state. This switch allows for different calculations for each case.
+    // The value following 'case' is the value of the dropdown, which triggers the following function.
     switch (state) {
         case "ACT":
+            //  This sets the stampDuty value from 0 to the result of the stampDutyCalculatorACT function
+            //  The propertyPrice is brackets allows for the propertyPrice from this function to be passed to the next function
             stampDuty = stampDutyCalculatorACT(propertyPrice);
             break;
         case "NSW":
@@ -51,7 +54,7 @@ function stampDutyCalculator() {
             break;
     }
 
-    // Output the Stamp Duty result in the HTML
+    // Output the Stamp Duty result in the HTML and to 2 decimal places with a '$' symbol in front
     const stampDutyResultElement = document.getElementById("stampDutyResult");
     stampDutyResultElement.innerHTML = `$${stampDuty.toFixed(2)}`;
 }
@@ -144,8 +147,29 @@ function stampDutyCalculatorQLD(propertyPrice) {
 
 //  This function calculates the stamp duty for an owner occupied property in SA
 
-function stampDutyCalculatorSA(propertyPrice) {
+//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
 
+function stampDutyCalculatorSA(propertyPrice) {
+    if (propertyPrice <= 12000) {
+        stampDuty = propertyPrice / 100
+    } else if (propertyPrice <= 30000) {
+        stampDuty = 120 + (2.0 * ((propertyPrice - 12000) / 100))
+    } else if (propertyPrice <= 50000) {
+        stampDuty = 480 + (3.0 * ((propertyPrice - 30000) / 100))
+    } else if (propertyPrice <= 100000) {
+        stampDuty = 1080 + (3.5 * ((propertyPrice - 50000) / 100))
+    } else if (propertyPrice <= 200000) {
+        stampDuty = 2830 + (4.0 * ((propertyPrice - 100000) / 100))
+    } else if (propertyPrice <= 250000) {
+        stampDuty = 6830 + (4.25 * ((propertyPrice - 200000) / 100))
+    } else if (propertyPrice <= 300000) {
+        stampDuty = 8955 + (4.75 * ((propertyPrice - 250000) / 100))
+    } else if (propertyPrice <= 500000) {
+        stampDuty = 11330 + (5.0 * ((propertyPrice - 300000) / 100))
+    } else {
+        stampDuty = 21330 + (5.5 * ((propertyPrice - 500000) / 100));
+    }
+    return stampDuty
 }
 
 // ****************
@@ -153,7 +177,22 @@ function stampDutyCalculatorSA(propertyPrice) {
 //  This function calculates the stamp duty for an owner occupied property in TAS
 
 function stampDutyCalculatorTAS(propertyPrice) {
-
+    if (propertyPrice <= 3000) {
+        stampDuty = 50
+    } else if (propertyPrice <= 25000) {
+        stampDuty = 50 + (1.75 * ((propertyPrice - 3000) / 100))
+    } else if (propertyPrice <= 75000) {
+        stampDuty = 435 + (2.25 * ((propertyPrice - 25000) / 100))
+    } else if (propertyPrice <= 200000) {
+        stampDuty = 1560 + (3.5 * ((propertyPrice - 75000) / 100))
+    } else if (propertyPrice <= 375000) {
+        stampDuty = 5935 + (4.0 * ((propertyPrice - 200000) / 100))
+    } else if (propertyPrice <= 725000) {
+        stampDuty = 12935 + (4.25 * ((propertyPrice - 375000) / 100))
+    } else {
+        stampDuty = 27810 + (4.5 * ((propertyPrice - 500000) / 100));
+    }
+    return stampDuty
 }
 
 // ****************
@@ -183,6 +222,18 @@ function stampDutyCalculatorVIC(propertyPrice) {
 
 function stampDutyCalculatorWA(propertyPrice) {
 
+    if (propertyPrice <= 80000) {
+        stampDuty = 1.9 * (propertyPrice / 100)
+    } else if (propertyPrice <= 100000) {
+        stampDuty = 1520 + (2.85 * ((propertyPrice - 80000) / 100))
+    } else if (propertyPrice <= 250000) {
+        stampDuty = 2090 + (3.8 * ((propertyPrice - 100000) / 100))
+    } else if (propertyPrice <= 500000) {
+        stampDuty = 7790 + (4.75 * ((propertyPrice - 250000) / 100))
+    } else {
+        stampDuty = 19665 + (5.15 * ((propertyPrice - 500000) / 100));
+    }
+    return stampDuty
 }
 
 // ****************
