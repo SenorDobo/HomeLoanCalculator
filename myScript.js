@@ -439,6 +439,51 @@ function landTransferFeeWA(propertyPrice) {
 
 // ****************************************************************************************************************
 
+//  This function calculates the mortgage registration fee depending on the property state
+
+function mortgageRegistrationFeeCalculator() {
+
+    const stateDropdown = document.getElementById("stateDropdown");
+    const state = stateDropdown.value;
+
+    let mortgageRegistrationFee = 0;
+
+    switch (state) {
+        case "ACT":
+            mortgageRegistrationFee = 160.00;
+            break;
+        case "NSW":
+            mortgageRegistrationFee = 154.20;
+            break;
+        case "NT":
+            mortgageRegistrationFee = 156.00;
+            break;
+        case "QLD":
+            mortgageRegistrationFee = 208.83;
+            break;
+        case "SA":
+            mortgageRegistrationFee = 179.00;
+            break;
+        case "TAS":
+            mortgageRegistrationFee = 145.35;
+            break;
+        case "VIC":
+            mortgageRegistrationFee = 123.50;
+            break;
+        case "WA":
+            mortgageRegistrationFee = 187.60;
+            break;
+        default:
+            landTransferFee = 0;
+            break;
+    }
+
+    const mortgageRegistrationFeeResultElement = document.getElementById("mortgageRegistrationFeeResult");
+    mortgageRegistrationFeeResultElement.innerHTML = `$${mortgageRegistrationFee.toFixed(2)}`;
+}
+
+// ****************************************************************************************************************
+
 //  This function sums all of the fields with the id of 'purchase-costs-field'
 //  This only works on input fields, need to figure out how to add calculated fields to the sum
 
@@ -482,10 +527,6 @@ function sumBankFees() {
     const sumBankFees = document.querySelector('#sum-bank-fees');
     sumBankFees.textContent = formattedSum;
 }
-
-
-
-
 
 // ****************************************************************************************************************
 
