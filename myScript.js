@@ -7,6 +7,8 @@ console.log("Hello World")
 // ****************************************************************************************************************
 
 //  This function calculates the stamp duty based on the state and property value
+//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
+
 function stampDutyCalculator() {
 
     // Get the State of the property from the dropdown. Getting the dropdown first, then the value of the dropdown
@@ -112,8 +114,6 @@ function stampDutyCalculatorNSW(propertyPrice) {
 
 //  This function calculates the stamp duty for an owner occupied property in NT
 
-//  Source: https://www.homeloanexperts.com.au/mortgage-calculators/stamp-duty-calculator-nt/
-
 function stampDutyCalculatorNT(propertyPrice) {
     if (propertyPrice <= 525000) {
         stampDuty = (0.06571441 * Math.pow((propertyPrice / 1000), 2)) + (15 * (propertyPrice / 1000))
@@ -131,8 +131,6 @@ function stampDutyCalculatorNT(propertyPrice) {
 
 //  This function calculates the stamp duty for an owner occupied property in QLD
 
-//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
-
 function stampDutyCalculatorQLD(propertyPrice) {
     if (propertyPrice <= 350000) {
         stampDuty = 1.0 * (propertyPrice / 100)
@@ -149,8 +147,6 @@ function stampDutyCalculatorQLD(propertyPrice) {
 // ****************************************************************************************************************
 
 //  This function calculates the stamp duty for an owner occupied property in SA
-
-//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
 
 function stampDutyCalculatorSA(propertyPrice) {
     if (propertyPrice <= 12000) {
@@ -242,6 +238,8 @@ function stampDutyCalculatorWA(propertyPrice) {
 // ****************************************************************************************************************
 
 //  This function calculates the land transfer fee based on the state and property value
+//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
+
 function landTransferFeeCalculator() {
 
     // Get the State of the property from the dropdown. Getting the dropdown first, then the value of the dropdown
@@ -296,89 +294,97 @@ function landTransferFeeCalculator() {
 
 // ****************************************************************************************************************
 
-//  This function calculates the stamp duty for an owner occupied property in ACT
-//  Function is called from stampDutyCalculator() and is passed the propertyPrice variable when called
+//  This function calculates the land transfer fee for an owner occupied property in ACT
+//  Function is called from landTransferFeeCalculator() and is passed the propertyPrice variable when called
 
 function landTransferFeeACT(propertyPrice) {
-    //  if propertyPrice is less than or equal to $260,000 then stamp duty calculation is 0.6 x (propertyPrice / 100)
-    // if (propertyPrice <= 260000) {
-    //     stampDuty = 0.6 * (propertyPrice / 100)
-    // } else if (propertyPrice <= 300000) {
-    //     stampDuty = 1560 + (2.2 * ((propertyPrice - 260000) / 100))
-    // } else if (propertyPrice <= 500000) {
-    //     stampDuty = 2440 + (3.4 * ((propertyPrice - 300000) / 100))
-    // } else if (propertyPrice <= 750000) {
-    //     stampDuty = 9240 + (4.32 * ((propertyPrice - 500000) / 100))
-    // } else if (propertyPrice <= 1000000) {
-    //     stampDuty = 20040 + (5.9 * ((propertyPrice - 750000) / 100))
-    // } else if (propertyPrice <= 1455000) {
-    //     stampDuty = 34790 + (5.5 * ((propertyPrice - 1000000) / 100))
-    // } else {
-    //     stampDuty = 4.54 * ((propertyPrice - 3268000) / 100);
-    // }
-    // //  Returns the stampDuty value to the function that initiated this function
-    // return stampDuty
+    landTransferFee = 429
+
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in NSW
+//  This function calculates the land transfer fee for an owner occupied property in NSW
 
 function landTransferFeeNSW(propertyPrice) {
+    landTransferFee = 154.20
 
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in NT
-
-//  Source: https://www.homeloanexperts.com.au/mortgage-calculators/stamp-duty-calculator-nt/
+//  This function calculates the land transfer fee for an owner occupied property in NT
 
 function landTransferFeeNT(propertyPrice) {
+    landTransferFee = 156.00
 
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in QLD
-
-//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
+//  This function calculates the land transfer fee for an owner occupied property in QLD
 
 function landTransferFeeQLD(propertyPrice) {
 
+    if (propertyPrice <= 180000) {
+        landTransferFee = 208.83
+    } else {
+        landTransferFee = 208.83 + (20 * ((propertyPrice - 180000) / 100));
+    }
+    //  Returns the landTransferFee value to the function that initiated this function
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in SA
-
-//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
+//  This function calculates the land transfer fee for an owner occupied property in SA
 
 function landTransferFeeSA(propertyPrice) {
-
+    if (propertyPrice <= 5000) {
+        landTransferFee = 179.00
+    } else if (propertyPrice <= 20000) {
+        landTransferFee = 200.00
+    } else if (propertyPrice <= 40000) {
+        landTransferFee = 220.00
+    } else if (propertyPrice <= 50000) {
+        landTransferFee = 309.00
+    } else {
+        landTransferFee = 309.00 + (91.50 * ((propertyPrice - 50000) / 10000));
+    }
+    //  Returns the landTransferFee value to the function that initiated this function
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in TAS
+//  This function calculates the land transfer fee for an owner occupied property in TAS
 
 function landTransferFeeTAS(propertyPrice) {
+    landTransferFee = 222.70
 
+    return landTransferFee
 }
 
 // ****************
 
-//  This function calculates the stamp duty for an owner occupied property in VIC
+//  This function calculates the land transfer fee for an owner occupied property in VIC
 
 function landTransferFeeVIC(propertyPrice) {
+    let landTransferFee = 92.40 + (2.34 * (propertyPrice / 1000))
 
+    if (landTransferFee > 3603) {
+        return 3603
+    }
+    
+    return landTransferFee
 }
 
 // ****************
 
 //  This function calculates the land transfer fee for an owner occupied property in WA
-//  Source: https://conveyancing.com.au/tools/stamp-duty-calculator-vic
-
 
 function landTransferFeeWA(propertyPrice) {
     if (propertyPrice <= 85000) {
