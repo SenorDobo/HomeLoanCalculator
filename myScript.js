@@ -381,8 +381,6 @@ function landTransferFeeVIC(propertyPrice) {
 
 
 function landTransferFeeWA(propertyPrice) {
-
-
     if (propertyPrice <= 85000) {
         landTransferFee = 187.60
     } else if (propertyPrice <= 120000) {
@@ -432,8 +430,6 @@ function landTransferFeeWA(propertyPrice) {
     //  Returns the landTransferFee value to the function that initiated this function
     return landTransferFee
 }
-
-
 
 // ****************
 

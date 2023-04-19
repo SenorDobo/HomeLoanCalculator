@@ -141,7 +141,7 @@
                 <span class="tooltiptext">This is the state the property is located</span>
         </td>
         <td style="background-color:rgb(255, 255, 180);">
-            <select id="stateDropdown" name="stateDropdown" onInput="stampDutyCalculator()">
+            <select id="stateDropdown" name="stateDropdown" onInput="stampDutyCalculator(); landTransferFeeCalculator()">
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
                 <option value="NSW">New South Wales</option>
@@ -157,7 +157,7 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice" onInput="stampDutyCalculator()" for="propertyPrice"
+            <input type="number" id="propertyPrice" onInput="stampDutyCalculator(); landTransferFeeCalculator()" for="propertyPrice"
                 placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
