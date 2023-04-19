@@ -303,7 +303,7 @@ function landTransferFeeACT(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in NSW
 
@@ -313,7 +313,7 @@ function landTransferFeeNSW(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in NT
 
@@ -323,7 +323,7 @@ function landTransferFeeNT(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in QLD
 
@@ -338,7 +338,7 @@ function landTransferFeeQLD(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in SA
 
@@ -358,7 +358,7 @@ function landTransferFeeSA(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in TAS
 
@@ -368,7 +368,7 @@ function landTransferFeeTAS(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in VIC
 
@@ -382,7 +382,7 @@ function landTransferFeeVIC(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function calculates the land transfer fee for an owner occupied property in WA
 
@@ -437,39 +437,25 @@ function landTransferFeeWA(propertyPrice) {
     return landTransferFee
 }
 
-// ****************
+// ****************************************************************************************************************
 
 //  This function sums all of the fields with the id of 'purchase-costs-field'
+//  This only works on input fields, need to figure out how to add calculated fields to the sum
 
 function sumPropertyFees() {
-    // Get all elements with the "purchase-costs-field" class
-    const feeFields = document.querySelectorAll('.purchase-costs-field');
-
-    // Calculate the sum of all fee fields
     let sum = 0;
-    feeFields.forEach((field) => {
-        const fieldValue = parseFloat(field.value);
-        if (!isNaN(fieldValue)) {
-            sum += fieldValue;
+    const fields = document.querySelectorAll('.purchase-costs-field');
+
+    fields.forEach(field => {
+        if (field.value !== '') {
+            sum += parseInt(field.value);
         }
     });
 
-    // Format the sum as a currency value
-    const formattedSum = new Intl.NumberFormat('en-AU', {
-        style: 'currency',
-        currency: 'AUD'
-    }).format(sum);
-
-    // Output the sum as a currency value
-    const sumPropertyFees = document.querySelector('#sum-output');
-    sumPropertyFees.textContent = formattedSum;
+    document.getElementById('sum-output').innerText = `$${sum}`;
 }
 
-
-
-
-
-// ****************
+// ****************************************************************************************************************
 
 //  This function sums all of the fields with the id of 'bank-fees-field'
 
@@ -501,7 +487,7 @@ function sumBankFees() {
 
 
 
-// ****************
+// ****************************************************************************************************************
 
 //  Function to calculate the LVR (0.8 x Property Price)
 
