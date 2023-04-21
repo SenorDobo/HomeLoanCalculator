@@ -30,6 +30,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 80%;
         }
 
         p {
@@ -120,7 +121,6 @@
     <title>Home Loan Calculator</title>
 </head>
 
-
 <h1>Home Loan Calculator</h1>
 <hr>
 
@@ -134,7 +134,18 @@
 
 <hr>
 
-<h2>Property Details</h2>
+
+
+
+
+
+
+
+
+
+<!-- 
+<h1>Testing</h1>
+
 
 <table>
     <tr>
@@ -143,8 +154,8 @@
                 <span class="tooltiptext">This is the state the property is located</span>
         </td>
         <td style="background-color:rgb(255, 255, 180);">
-            <select id="stateDropdown" name="stateDropdown"
-                onInput="stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator()">
+            <select id="stateDrop" name="stateDrop"
+                onInput="updateKeyDeets()">
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
                 <option value="NSW">New South Wales</option>
@@ -160,7 +171,68 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice" onInput="stampDutyCalculator(); landTransferFeeCalculator()"
+            <input type="number" id="propertyP" onInput="updateKeyDeets(); addNumbers(); sumThings()"
+                for="propertyP" placeholder="$500,000" step="1000" min="10000" max="99999999">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Add this number</td>
+        <td style="background-color:rgb(193, 212, 255);" id="addP">
+            <div onChange="updateKeyDeets()"></div>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Purchase Cost Total</b></td>
+        <td style="background-color:rgb(218, 178, 255);" id="sumThings-output">
+        </td>
+    </tr>
+</table>
+
+<hr> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Property Details</h2>
+
+<table>
+    <tr>
+        <td>State
+            <div class="tooltip">&#9432;
+                <span class="tooltiptext">This is the state the property is located</span>
+        </td>
+        <td style="background-color:rgb(255, 255, 180);">
+            <select id="stateDropdown" name="stateDropdown"
+                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator()">
+                <option value=""></option>
+                <option value="ACT">Australian Capital Territory</option>
+                <option value="NSW">New South Wales</option>
+                <option value="NT">Northern Territory</option>
+                <option value="QLD">Queensland</option>
+                <option value="SA">South Australia</option>
+                <option value="TAS">Tasmania</option>
+                <option value="VIC">Victoria</option>
+                <option value="WA">Western Australia</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Property Price</td>
+        <td style="background-color:rgb(255, 255, 180);">
+            <input type="number" id="propertyPrice" onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator()"
                 for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
@@ -290,6 +362,30 @@
     </tr>
     <tr>
         <td>Application Fee</td>
+        <td style="background-color:rgb(255, 255, 180);">
+            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+                max="99999999">
+        </td>
+        </td>
+    </tr>
+    <tr>
+        <td>Valuation Fee</td>
+        <td style="background-color:rgb(255, 255, 180);">
+            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+                max="99999999">
+        </td>
+        </td>
+    </tr>
+    <tr>
+        <td>Settlement Fee</td>
+        <td style="background-color:rgb(255, 255, 180);">
+            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+                max="99999999">
+        </td>
+        </td>
+    </tr>
+    <tr>
+        <td>Package Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
             <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
                 max="99999999">

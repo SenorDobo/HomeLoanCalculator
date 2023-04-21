@@ -1,56 +1,101 @@
-//  This file contains all the JavaScript for the web page
-
-// ****************************************************************************************************************
-
-//  This section is for defining the data model used for the calculator
+//  Ignore this file. Reference only
 
 const propertyDetails = {
     state: "",
-    propertyPrice: 0
+    propertyPrice: 0,
+    addP: 0
 }
 
-const funding = {
-    deposit: 0
-}
+console.log(keyDeets.state)
+console.log(keyDeets.propertyPrice)
+console.log(keyDeets.addP)
 
-const purchaseCosts = {
-    stampDuty: 0,
-    transferFee: 0,
-    mortgageRegistrationFee: 0,
-    mortgageDischargeFee: 0,
-    conveyancingFee: 0,
-    buildingInspection: 0,
-    pestInspection: 0,
-    homeBuildingContentsInsurance: 0,
-    councilWaterUtilityRates: 0,
-    removalist: 0,
-    refurnishing: 0
-}
 
-const bankFees ={
-    applicationFee: 0,
-    valuationFee: 0,
-    settlementFee: 0,
-    packageFee: 0,
-    lendersMortgageInsurance: 0
-}
 
-// ****************************************************************************************************************
 
-//  This function updates the values in the data model after changes to the dropdowns
 
-function updatePropertyDetails() {
-    const stateDropdown = document.getElementById("stateDropdown");
-    // console.log(stateDropdown)
-    const state = stateDropdown.value;
+function updateKeyDeets() {
+    const stateDrop = document.getElementById("stateDrop");
+    // console.log(stateDrop)
+    const state = stateDrop.value;
     // console.log(state)
-    propertyDetails.state = state
-    // console.log("propertyDetails.state = " + propertyDetails.state)
+    keyDeets.state = state
+    console.log("keyDeets.state = " + keyDeets.state)
 
-    const propertyPriceElement = document.getElementById("propertyPrice");
-    const propertyPrice = Number(propertyPriceElement.value);
-    propertyDetails.propertyPrice = propertyPrice
+    const propertyPElement = document.getElementById("propertyP");
+    // console.log("propertyPElement = " + propertyPElement)
+    const propertyP = Number(propertyPElement.value);
+    // console.log("propertyP = " + propertyP)
+    keyDeets.propertyPrice = propertyP
+    console.log("keyDeets.propertyPrice = " + keyDeets.propertyPrice)
+
+
+
+    // const addPElement = document.getElementById("addP");
+    // console.log("addPElement = " + addPElement)
+    // const addPNumber = addPElement.value;
+    // console.log("addPNumber = " + addPNumber)
+
+
+    // keyDeets.addP = addP
+    // console.log("keyDeets.addP = " + keyDeets.addP)
+
 }
+
+
+
+
+
+function addNumbers() {
+
+    const propertyPElement = document.getElementById("propertyP");
+    // console.log(propertyPElement)
+    const propertyP = Number(propertyPElement.value);
+    console.log(propertyP)
+    keyDeets.propertyPrice = propertyP
+    console.log(keyDeets.propertyPrice)
+
+    total = keyDeets.propertyPrice + 1
+    console.log("total = " + total)
+
+    keyDeets.addP = total
+    console.log("keyDeets.addP = " + keyDeets.addP)
+    const addPResultElement = document.getElementById("addP");
+    addPResultElement.innerHTML = `$${total.toFixed(2)}`;
+
+}
+
+
+
+
+function sumThings() {
+    console.log("SumThings() function called")
+    const sumThings = keyDeets.propertyPrice + keyDeets.addP
+    
+    console.log(keyDeets.propertyPrice)
+    console.log(keyDeets.addP)
+    console.log(sumThings)
+
+    const sumThingsResultElement = document.getElementById("sumThings-output");
+    sumThingsResultElement.innerHTML = `$${sumThings.toFixed(2)}`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+//  This file contains all the JavaScript for the web page
+
+//  Log "Hello World" to console because this is important
+
+// console.log("Hello World")
 
 // ****************************************************************************************************************
 
@@ -59,13 +104,14 @@ function updatePropertyDetails() {
 
 function stampDutyCalculator() {
 
-    // Get the State of the property from the data model propertyDetails object
-    const state = propertyDetails.state;
-    // console.log(state)
+    // Get the State of the property from the dropdown. Getting the dropdown first, then the value of the dropdown
+    const stateDropdown = document.getElementById("stateDropdown");
+    const state = stateDropdown.value;
 
     // Get the Property Price amount. Getting the field first, then getting the value of the field as a Number.
-    const propertyPrice = propertyDetails.propertyPrice;
-    console.log(propertyPrice)
+    const propertyPriceElement = document.getElementById("propertyPrice");
+    const propertyPrice = Number(propertyPriceElement.value);
+
     //  Start with Stamp Duty at 0
     let stampDuty = 0;
 
@@ -281,91 +327,6 @@ function stampDutyCalculatorWA(propertyPrice) {
     }
     return stampDuty
 }
-
-
-
-
-
-// function updateKeyDeets() {
-//     const stateDrop = document.getElementById("stateDrop");
-//     // console.log(stateDrop)
-//     const state = stateDrop.value;
-//     // console.log(state)
-//     keyDeets.state = state
-//     console.log("keyDeets.state = " + keyDeets.state)
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log("propertyPElement = " + propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     // console.log("propertyP = " + propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log("keyDeets.propertyPrice = " + keyDeets.propertyPrice)
-
-
-
-//     // const addPElement = document.getElementById("addP");
-//     // console.log("addPElement = " + addPElement)
-//     // const addPNumber = addPElement.value;
-//     // console.log("addPNumber = " + addPNumber)
-
-
-//     // keyDeets.addP = addP
-//     // console.log("keyDeets.addP = " + keyDeets.addP)
-
-// }
-
-
-
-
-
-// function addNumbers() {
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log(propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     console.log(propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log(keyDeets.propertyPrice)
-
-//     total = keyDeets.propertyPrice + 1
-//     console.log("total = " + total)
-
-//     keyDeets.addP = total
-//     console.log("keyDeets.addP = " + keyDeets.addP)
-//     const addPResultElement = document.getElementById("addP");
-//     addPResultElement.innerHTML = `$${total.toFixed(2)}`;
-
-// }
-
-
-
-
-// function sumThings() {
-//     console.log("SumThings() function called")
-//     const sumThings = keyDeets.propertyPrice + keyDeets.addP
-    
-//     console.log(keyDeets.propertyPrice)
-//     console.log(keyDeets.addP)
-//     console.log(sumThings)
-
-//     const sumThingsResultElement = document.getElementById("sumThings-output");
-//     sumThingsResultElement.innerHTML = `$${sumThings.toFixed(2)}`;
-// }
-
-
-
-
-
-
-
-
-
-
-
-//  Log "Hello World" to console because this is important
-
-// console.log("Hello World")
-
 
 // ****************************************************************************************************************
 
