@@ -556,7 +556,9 @@ function sumPurchaseCosts() {
     sum += landTransferFee;
     sum += mortgageRegistrationFee;
 
-    document.getElementById('sum-output').innerText = `$${sum}`;
+    // Round to 2 decimal places
+    sum = Math.round(sum * 100) / 100; 
+    document.getElementById('sum-output').innerText = `$${sum.toFixed(2)}`;
 }
 
 

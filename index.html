@@ -216,7 +216,7 @@
         </td>
         <td style="background-color:rgb(255, 255, 180);">
             <select id="stateDropdown" name="stateDropdown"
-                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator()">
+                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts()">
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
                 <option value="NSW">New South Wales</option>
@@ -232,7 +232,7 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice" onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator()"
+            <input type="number" id="propertyPrice" onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts()"
                 for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
