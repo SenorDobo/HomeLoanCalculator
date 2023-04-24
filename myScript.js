@@ -15,7 +15,7 @@ const funding = {
 
 const purchaseCosts = {
     stampDuty: 0,
-    transferFee: 0,
+    landTransferFee: 0,
     mortgageRegistrationFee: 0,
     mortgageDischargeFee: 0,
     conveyancingFee: 0,
@@ -63,9 +63,9 @@ function stampDutyCalculator() {
     const state = propertyDetails.state;
     // console.log(state)
 
-    // Get the Property Price amount. Getting the field first, then getting the value of the field as a Number.
+    // Get the Property Price of the property from the data model propertyDetails object
     const propertyPrice = propertyDetails.propertyPrice;
-    console.log(propertyPrice)
+    // console.log(propertyPrice)
     //  Start with Stamp Duty at 0
     let stampDuty = 0;
 
@@ -104,8 +104,11 @@ function stampDutyCalculator() {
     }
 
     // Output the Stamp Duty result in the HTML and to 2 decimal places with a '$' symbol in front
+    
     const stampDutyResultElement = document.getElementById("stampDutyResult");
     stampDutyResultElement.innerHTML = `$${stampDuty.toFixed(2)}`;
+    purchaseCosts.stampDuty = stampDuty
+    // console.log(purchaseCosts.stampDuty)
 }
 
 // ****************************************************************************************************************
@@ -282,91 +285,6 @@ function stampDutyCalculatorWA(propertyPrice) {
     return stampDuty
 }
 
-
-
-
-
-// function updateKeyDeets() {
-//     const stateDrop = document.getElementById("stateDrop");
-//     // console.log(stateDrop)
-//     const state = stateDrop.value;
-//     // console.log(state)
-//     keyDeets.state = state
-//     console.log("keyDeets.state = " + keyDeets.state)
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log("propertyPElement = " + propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     // console.log("propertyP = " + propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log("keyDeets.propertyPrice = " + keyDeets.propertyPrice)
-
-
-
-//     // const addPElement = document.getElementById("addP");
-//     // console.log("addPElement = " + addPElement)
-//     // const addPNumber = addPElement.value;
-//     // console.log("addPNumber = " + addPNumber)
-
-
-//     // keyDeets.addP = addP
-//     // console.log("keyDeets.addP = " + keyDeets.addP)
-
-// }
-
-
-
-
-
-// function addNumbers() {
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log(propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     console.log(propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log(keyDeets.propertyPrice)
-
-//     total = keyDeets.propertyPrice + 1
-//     console.log("total = " + total)
-
-//     keyDeets.addP = total
-//     console.log("keyDeets.addP = " + keyDeets.addP)
-//     const addPResultElement = document.getElementById("addP");
-//     addPResultElement.innerHTML = `$${total.toFixed(2)}`;
-
-// }
-
-
-
-
-// function sumThings() {
-//     console.log("SumThings() function called")
-//     const sumThings = keyDeets.propertyPrice + keyDeets.addP
-    
-//     console.log(keyDeets.propertyPrice)
-//     console.log(keyDeets.addP)
-//     console.log(sumThings)
-
-//     const sumThingsResultElement = document.getElementById("sumThings-output");
-//     sumThingsResultElement.innerHTML = `$${sumThings.toFixed(2)}`;
-// }
-
-
-
-
-
-
-
-
-
-
-
-//  Log "Hello World" to console because this is important
-
-// console.log("Hello World")
-
-
 // ****************************************************************************************************************
 
 //  This function calculates the land transfer fee based on the state and property value
@@ -374,13 +292,8 @@ function stampDutyCalculatorWA(propertyPrice) {
 
 function landTransferFeeCalculator() {
 
-    // Get the State of the property from the dropdown. Getting the dropdown first, then the value of the dropdown
-    const stateDropdown = document.getElementById("stateDropdown");
-    const state = stateDropdown.value;
-
-    // Get the Property Price amount. Getting the field first, then getting the value of the field as a Number.
-    const propertyPriceElement = document.getElementById("propertyPrice");
-    const propertyPrice = Number(propertyPriceElement.value);
+    const state = propertyDetails.state;
+    const propertyPrice = propertyDetails.propertyPrice;
 
     //  Start with Land Transfer Fee at 0
     let landTransferFee = 0;
@@ -422,6 +335,7 @@ function landTransferFeeCalculator() {
     // Output the Land Transfer Fee result in the HTML and to 2 decimal places with a '$' symbol in front
     const landTransferFeeResultElement = document.getElementById("landTransferFeeResult");
     landTransferFeeResultElement.innerHTML = `$${landTransferFee.toFixed(2)}`;
+    purchaseCosts.landTransferFee = landTransferFee
 }
 
 // ****************************************************************************************************************
@@ -612,6 +526,8 @@ function mortgageRegistrationFeeCalculator() {
 
     const mortgageRegistrationFeeResultElement = document.getElementById("mortgageRegistrationFeeResult");
     mortgageRegistrationFeeResultElement.innerHTML = `$${mortgageRegistrationFee.toFixed(2)}`;
+    purchaseCosts.mortgageRegistrationFee = mortgageRegistrationFee
+    console.log("purchaseCosts.mortgageRegistrationFee = " + purchaseCosts.mortgageRegistrationFee)
 }
 
 // ****************************************************************************************************************
@@ -619,9 +535,16 @@ function mortgageRegistrationFeeCalculator() {
 //  This function sums all of the fields with the id of 'purchase-costs-field'
 //  This only works on input fields, need to figure out how to add calculated fields to the sum
 
-function sumPropertyFees() {
+function sumPurchaseCosts() {
+    console.log("sumPurchaseCosts() called")
     let sum = 0;
     const fields = document.querySelectorAll('.purchase-costs-field');
+    const stampDuty = purchaseCosts.stampDuty;
+    console.log("stampDuty = " + stampDuty)
+    const landTransferFee = purchaseCosts.landTransferFee;
+    console.log("landTransferFee = " + landTransferFee)
+    const mortgageRegistrationFee = purchaseCosts.mortgageRegistrationFee;
+    console.log("mortgageRegistrationFee = " + mortgageRegistrationFee)
 
     fields.forEach(field => {
         if (field.value !== '') {
@@ -629,8 +552,147 @@ function sumPropertyFees() {
         }
     });
 
+    sum += stampDuty;
+    sum += landTransferFee;
+    sum += mortgageRegistrationFee;
+
     document.getElementById('sum-output').innerText = `$${sum}`;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function updateKeyDeets() {
+//     const stateDrop = document.getElementById("stateDrop");
+//     // console.log(stateDrop)
+//     const state = stateDrop.value;
+//     // console.log(state)
+//     keyDeets.state = state
+//     console.log("keyDeets.state = " + keyDeets.state)
+
+//     const propertyPElement = document.getElementById("propertyP");
+//     // console.log("propertyPElement = " + propertyPElement)
+//     const propertyP = Number(propertyPElement.value);
+//     // console.log("propertyP = " + propertyP)
+//     keyDeets.propertyPrice = propertyP
+//     console.log("keyDeets.propertyPrice = " + keyDeets.propertyPrice)
+
+
+
+//     // const addPElement = document.getElementById("addP");
+//     // console.log("addPElement = " + addPElement)
+//     // const addPNumber = addPElement.value;
+//     // console.log("addPNumber = " + addPNumber)
+
+
+//     // keyDeets.addP = addP
+//     // console.log("keyDeets.addP = " + keyDeets.addP)
+
+// }
+
+
+
+
+
+// function addNumbers() {
+
+//     const propertyPElement = document.getElementById("propertyP");
+//     // console.log(propertyPElement)
+//     const propertyP = Number(propertyPElement.value);
+//     console.log(propertyP)
+//     keyDeets.propertyPrice = propertyP
+//     console.log(keyDeets.propertyPrice)
+
+//     total = keyDeets.propertyPrice + 1
+//     console.log("total = " + total)
+
+//     keyDeets.addP = total
+//     console.log("keyDeets.addP = " + keyDeets.addP)
+//     const addPResultElement = document.getElementById("addP");
+//     addPResultElement.innerHTML = `$${total.toFixed(2)}`;
+
+// }
+
+
+
+
+// function sumThings() {
+//     console.log("SumThings() function called")
+//     const sumThings = keyDeets.propertyPrice + keyDeets.addP
+    
+//     console.log(keyDeets.propertyPrice)
+//     console.log(keyDeets.addP)
+//     console.log(sumThings)
+
+//     const sumThingsResultElement = document.getElementById("sumThings-output");
+//     sumThingsResultElement.innerHTML = `$${sumThings.toFixed(2)}`;
+// }
+
+
+
+
+
+
+
+
+
+
+
+//  Log "Hello World" to console because this is important
+
+// console.log("Hello World")
+
+
+
+
+
+// ****************************************************************************************************************
+
+// //  This function sums all of the fields with the id of 'purchase-costs-field'
+// //  This only works on input fields, need to figure out how to add calculated fields to the sum
+
+// function sumPropertyFees() {
+//     let sum = 0;
+//     const fields = document.querySelectorAll('.purchase-costs-field');
+
+//     fields.forEach(field => {
+//         if (field.value !== '') {
+//             sum += parseInt(field.value);
+//         }
+//     });
+
+//     document.getElementById('sum-output').innerText = `$${sum}`;
+// }
 
 // ****************************************************************************************************************
 
