@@ -2,6 +2,12 @@
 
 // ****************************************************************************************************************
 
+//  Log "Hello World" to console because this is important
+
+console.log("Hello World")
+
+// ****************************************************************************************************************
+
 //  This section is for defining the data model used for the calculator
 
 const propertyDetails = {
@@ -24,15 +30,23 @@ const purchaseCosts = {
     homeBuildingContentsInsurance: 0,
     councilWaterUtilityRates: 0,
     removalist: 0,
-    refurnishing: 0
+    refurnishing: 0,
+    total: 0
 }
 
-const bankFees ={
+const bankFees = {
     applicationFee: 0,
     valuationFee: 0,
     settlementFee: 0,
     packageFee: 0,
-    lendersMortgageInsurance: 0
+    lendersMortgageInsurance: 0,
+    total: 0
+}
+
+const loanSummary = {
+    totalTransactionAmount: 0,
+    totalLoanAmount: 0,
+    LoanToValueRatio: 0
 }
 
 // ****************************************************************************************************************
@@ -50,6 +64,11 @@ function updatePropertyDetails() {
     const propertyPriceElement = document.getElementById("propertyPrice");
     const propertyPrice = Number(propertyPriceElement.value);
     propertyDetails.propertyPrice = propertyPrice
+
+    const depositElement = document.getElementById("deposit");
+    const deposit = Number(depositElement.value);
+    funding.deposit = deposit
+    console.log(deposit)
 }
 
 // ****************************************************************************************************************
@@ -104,7 +123,7 @@ function stampDutyCalculator() {
     }
 
     // Output the Stamp Duty result in the HTML and to 2 decimal places with a '$' symbol in front
-    
+
     const stampDutyResultElement = document.getElementById("stampDutyResult");
     stampDutyResultElement.innerHTML = `$${stampDuty.toFixed(2)}`;
     purchaseCosts.stampDuty = stampDuty
@@ -546,9 +565,10 @@ function sumPurchaseCosts() {
     const mortgageRegistrationFee = purchaseCosts.mortgageRegistrationFee;
     console.log("mortgageRegistrationFee = " + mortgageRegistrationFee)
 
-    fields.forEach(field => {
-        if (field.value !== '') {
-            sum += parseInt(field.value);
+    fields.forEach((field) => {
+        const fieldValue = parseFloat(field.value);
+        if (!isNaN(fieldValue)) {
+            sum += fieldValue;
         }
     });
 
@@ -556,151 +576,26 @@ function sumPurchaseCosts() {
     sum += landTransferFee;
     sum += mortgageRegistrationFee;
 
-    // Round to 2 decimal places
-    sum = Math.round(sum * 100) / 100; 
-    document.getElementById('sum-output').innerText = `$${sum.toFixed(2)}`;
+    purchaseCosts.total = sum
+
+    // Format the sum as a currency value
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'currency',
+        currency: 'AUD'
+    }).format(sum);
+
+
+    // Output the sum as a currency value
+    const sumPurchaseCosts = document.querySelector('#sum-purchase-costs');
+    sumPurchaseCosts.textContent = formattedSum;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function updateKeyDeets() {
-//     const stateDrop = document.getElementById("stateDrop");
-//     // console.log(stateDrop)
-//     const state = stateDrop.value;
-//     // console.log(state)
-//     keyDeets.state = state
-//     console.log("keyDeets.state = " + keyDeets.state)
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log("propertyPElement = " + propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     // console.log("propertyP = " + propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log("keyDeets.propertyPrice = " + keyDeets.propertyPrice)
-
-
-
-//     // const addPElement = document.getElementById("addP");
-//     // console.log("addPElement = " + addPElement)
-//     // const addPNumber = addPElement.value;
-//     // console.log("addPNumber = " + addPNumber)
-
-
-//     // keyDeets.addP = addP
-//     // console.log("keyDeets.addP = " + keyDeets.addP)
-
-// }
-
-
-
-
-
-// function addNumbers() {
-
-//     const propertyPElement = document.getElementById("propertyP");
-//     // console.log(propertyPElement)
-//     const propertyP = Number(propertyPElement.value);
-//     console.log(propertyP)
-//     keyDeets.propertyPrice = propertyP
-//     console.log(keyDeets.propertyPrice)
-
-//     total = keyDeets.propertyPrice + 1
-//     console.log("total = " + total)
-
-//     keyDeets.addP = total
-//     console.log("keyDeets.addP = " + keyDeets.addP)
-//     const addPResultElement = document.getElementById("addP");
-//     addPResultElement.innerHTML = `$${total.toFixed(2)}`;
-
-// }
-
-
-
-
-// function sumThings() {
-//     console.log("SumThings() function called")
-//     const sumThings = keyDeets.propertyPrice + keyDeets.addP
-    
-//     console.log(keyDeets.propertyPrice)
-//     console.log(keyDeets.addP)
-//     console.log(sumThings)
-
-//     const sumThingsResultElement = document.getElementById("sumThings-output");
-//     sumThingsResultElement.innerHTML = `$${sumThings.toFixed(2)}`;
-// }
-
-
-
-
-
-
-
-
-
-
-
-//  Log "Hello World" to console because this is important
-
-// console.log("Hello World")
-
-
-
-
-
-// ****************************************************************************************************************
-
-// //  This function sums all of the fields with the id of 'purchase-costs-field'
-// //  This only works on input fields, need to figure out how to add calculated fields to the sum
-
-// function sumPropertyFees() {
-//     let sum = 0;
-//     const fields = document.querySelectorAll('.purchase-costs-field');
-
-//     fields.forEach(field => {
-//         if (field.value !== '') {
-//             sum += parseInt(field.value);
-//         }
-//     });
-
-//     document.getElementById('sum-output').innerText = `$${sum}`;
-// }
 
 // ****************************************************************************************************************
 
 //  This function sums all of the fields with the id of 'bank-fees-field'
 
 function sumBankFees() {
+    console.log("sumBankFees() called")
     // Get all elements with the "bank-fees-field" class
     const feeFields = document.querySelectorAll('.bank-fees-field');
 
@@ -713,6 +608,9 @@ function sumBankFees() {
         }
     });
 
+    bankFees.total = sum;
+    console.log("bankFees.total = sum = " + sum)
+
     // Format the sum as a currency value
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'currency',
@@ -723,6 +621,116 @@ function sumBankFees() {
     const sumBankFees = document.querySelector('#sum-bank-fees');
     sumBankFees.textContent = formattedSum;
 }
+
+// ****************************************************************************************************************
+
+//  This function sums the total transaction cost, including property price, purchase costs and bank fees
+
+function sumTransactionAmount() {
+    console.log("sumTransactionAmount() called")
+    const propertyPrice = propertyDetails.propertyPrice
+    const purchaseCostTotal = purchaseCosts.total
+    const bankFeesTotal = bankFees.total
+    const sum = propertyPrice + purchaseCostTotal + bankFeesTotal
+
+    loanSummary.totalTransactionAmount = sum
+
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'currency',
+        currency: 'AUD'
+    }).format(sum);
+
+    // Output the sum as a currency value
+    const transactionAmount = document.querySelector('#sum-transaction-amount');
+    transactionAmount.textContent = formattedSum;
+}
+
+// ****************************************************************************************************************
+
+//  This function sums the total loan amount, including property price and bank fees
+
+function sumTotalLoanAmount() {
+    const propertyPrice = propertyDetails.propertyPrice
+    const bankFeesTotal = bankFees.total
+    const sum = propertyPrice + bankFeesTotal
+
+    loanSummary.totalLoanAmount = sum
+
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'currency',
+        currency: 'AUD'
+    }).format(sum);
+
+    // Output the sum as a currency value
+    const totalAmountAmount = document.querySelector('#sum-total-loan-amount');
+    totalAmountAmount.textContent = formattedSum;
+}
+
+// ****************************************************************************************************************
+
+//  This function sums the total loan amount, including property price and bank fees
+
+function calculateLVR() {
+    const propertyPrice = propertyDetails.propertyPrice
+    const totalLoanAmount = loanSummary.totalLoanAmount
+    const deposit = funding.deposit
+    const sum = (totalLoanAmount - deposit) / propertyPrice
+
+    loanSummary.LoanToValueRatio = sum
+
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'percent',
+        minimumFractionDigits: 2
+    }).format(sum);
+
+    // Output the sum as a percentage value
+    const lvrAmount = document.querySelector('#loan-to-value-ratio');
+    lvrAmount.textContent = formattedSum;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ****************************************************************************************************************
 

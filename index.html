@@ -134,78 +134,6 @@
 
 <hr>
 
-
-
-
-
-
-
-
-
-
-<!-- 
-<h1>Testing</h1>
-
-
-<table>
-    <tr>
-        <td>State
-            <div class="tooltip">&#9432;
-                <span class="tooltiptext">This is the state the property is located</span>
-        </td>
-        <td style="background-color:rgb(255, 255, 180);">
-            <select id="stateDrop" name="stateDrop"
-                onInput="updateKeyDeets()">
-                <option value=""></option>
-                <option value="ACT">Australian Capital Territory</option>
-                <option value="NSW">New South Wales</option>
-                <option value="NT">Northern Territory</option>
-                <option value="QLD">Queensland</option>
-                <option value="SA">South Australia</option>
-                <option value="TAS">Tasmania</option>
-                <option value="VIC">Victoria</option>
-                <option value="WA">Western Australia</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>Property Price</td>
-        <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyP" onInput="updateKeyDeets(); addNumbers(); sumThings()"
-                for="propertyP" placeholder="$500,000" step="1000" min="10000" max="99999999">
-        </td>
-    </tr>
-
-    <tr>
-        <td>Add this number</td>
-        <td style="background-color:rgb(193, 212, 255);" id="addP">
-            <div onChange="updateKeyDeets()"></div>
-        </td>
-    </tr>
-    <tr>
-        <td><b>Purchase Cost Total</b></td>
-        <td style="background-color:rgb(218, 178, 255);" id="sumThings-output">
-        </td>
-    </tr>
-</table>
-
-<hr> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h2>Property Details</h2>
 
 <table>
@@ -216,7 +144,7 @@
         </td>
         <td style="background-color:rgb(255, 255, 180);">
             <select id="stateDropdown" name="stateDropdown"
-                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts()">
+                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()">
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
                 <option value="NSW">New South Wales</option>
@@ -232,14 +160,14 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice" onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts()"
+            <input type="number" id="propertyPrice" onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()"
                 for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
     <tr>
         <td>Deposit Saved</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" placeholder="$50,000" step="1000" min="1000" max="99999999">
+            <input type="number" id="deposit" onInput="updatePropertyDetails(); calculateLVR()" placeholder="$50,000" step="1000" min="1000" max="99999999">
         </td>
         </td>
     </tr>
@@ -259,7 +187,7 @@
     <tr>
         <td>Stamp Duty Amount</td>
         <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts()"></div>
+            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees()"></div>
         </td>
     </tr>
     <tr>
@@ -268,20 +196,20 @@
                 <span class="tooltiptext">Assuming electronic transaction</span>
         </td>
         <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts()"></div>
+            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees()"></div>
         </td>
     </tr>
     <tr>
         <td>Mortgage Registration Fee</td>
         <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts()"></div>
+            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees()"></div>
         </td>
         </td>
     </tr>
     <tr>
         <td>Mortgage Discharge Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -289,7 +217,7 @@
     <tr>
         <td>Conveyancing Fee (inc. PEXA)</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -297,7 +225,7 @@
     <tr>
         <td>Building Inspection</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -305,7 +233,7 @@
     <tr>
         <td>Pest Inspection</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -313,7 +241,7 @@
     <tr>
         <td>Home/building/contents insurance</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -321,7 +249,7 @@
     <tr>
         <td>Council / Water / Utility rates</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -329,7 +257,7 @@
     <tr>
         <td>Removalist</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
@@ -337,14 +265,14 @@
     <tr>
         <td>Refurnishing</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts()" placeholder="$0" step="1"
+            <input type="number" class="purchase-costs-field" onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1"
                 min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td><b>Purchase Cost Total</b></td>
-        <td style="background-color:rgb(218, 178, 255);" id="sum-output" onChange="calculateTotalLoanAmount">
+        <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs" onChange="calculateTotalLoanAmount">
         </td>
     </tr>
 </table>
@@ -363,7 +291,7 @@
     <tr>
         <td>Application Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+            <input type="number" class="bank-fees-field" onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1" min="0"
                 max="99999999">
         </td>
         </td>
@@ -371,7 +299,7 @@
     <tr>
         <td>Valuation Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+            <input type="number" class="bank-fees-field" onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1" min="0"
                 max="99999999">
         </td>
         </td>
@@ -379,7 +307,7 @@
     <tr>
         <td>Settlement Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+            <input type="number" class="bank-fees-field" onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1" min="0"
                 max="99999999">
         </td>
         </td>
@@ -387,7 +315,7 @@
     <tr>
         <td>Package Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field" onInput="sumBankFees()" placeholder="$0" step="1" min="0"
+            <input type="number" class="bank-fees-field" onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()" placeholder="$0" step="1" min="0"
                 max="99999999">
         </td>
         </td>
@@ -395,7 +323,7 @@
     <tr>
         <td>Lenders Mortgage Insurance</td>
         <td style="background-color:rgb(193, 212, 255);"></td>
-        <div id="LMI" class="bank-fees-field" onChange="sumBankFees()"></div>
+        <div id="LMI" class="bank-fees-field" onChange="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR()"></div>
         </td>
         </td>
     </tr>
@@ -418,20 +346,33 @@
 <table>
     <tr>
         <td>Total Transaction Amount</td>
-        <td style="background-color:rgb(193, 212, 255);">Property Price + Purchase + Bank</td>
+        <td style="background-color:rgb(193, 212, 255);" id="sum-transaction-amount">
+        </td>
     </tr>
     <tr>
         <td>Total Loan Amount</td>
-        <td style="background-color:rgb(193, 212, 255);">Property Price + Purchase</td>
+        <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
+        </td>
     </tr>
     <tr>
         <td>Loan To Value (LVR) Ratio</td>
-        <td style="background-color:rgb(193, 212, 255);">Total Loan Amount / Property Price</td>
+        <td style="background-color:rgb(193, 212, 255);" id="loan-to-value-ratio">
+        </td>
     </tr>
 </table>
 
 <br>
 <hr>
+
+
+
+
+
+
+
+
+
+
 
 <!---   Section for deposit information -->
 
