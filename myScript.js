@@ -4,7 +4,7 @@
 
 //  Log "Hello World" to console because this is important
 
-console.log("Hello World")
+// console.log("Hello World")
 
 // ****************************************************************************************************************
 
@@ -16,7 +16,8 @@ const propertyDetails = {
 }
 
 const funding = {
-    deposit: 0
+    deposit: 0,
+    depositRemaining: 0
 }
 
 const purchaseCosts = {
@@ -546,7 +547,7 @@ function mortgageRegistrationFeeCalculator() {
     const mortgageRegistrationFeeResultElement = document.getElementById("mortgageRegistrationFeeResult");
     mortgageRegistrationFeeResultElement.innerHTML = `$${mortgageRegistrationFee.toFixed(2)}`;
     purchaseCosts.mortgageRegistrationFee = mortgageRegistrationFee
-    console.log("purchaseCosts.mortgageRegistrationFee = " + purchaseCosts.mortgageRegistrationFee)
+    // console.log("purchaseCosts.mortgageRegistrationFee = " + purchaseCosts.mortgageRegistrationFee)
 }
 
 // ****************************************************************************************************************
@@ -555,15 +556,15 @@ function mortgageRegistrationFeeCalculator() {
 //  This only works on input fields, need to figure out how to add calculated fields to the sum
 
 function sumPurchaseCosts() {
-    console.log("sumPurchaseCosts() called")
+    // console.log("sumPurchaseCosts() called")
     let sum = 0;
     const fields = document.querySelectorAll('.purchase-costs-field');
     const stampDuty = purchaseCosts.stampDuty;
-    console.log("stampDuty = " + stampDuty)
+    // console.log("stampDuty = " + stampDuty)
     const landTransferFee = purchaseCosts.landTransferFee;
-    console.log("landTransferFee = " + landTransferFee)
+    // console.log("landTransferFee = " + landTransferFee)
     const mortgageRegistrationFee = purchaseCosts.mortgageRegistrationFee;
-    console.log("mortgageRegistrationFee = " + mortgageRegistrationFee)
+    // console.log("mortgageRegistrationFee = " + mortgageRegistrationFee)
 
     fields.forEach((field) => {
         const fieldValue = parseFloat(field.value);
@@ -595,7 +596,7 @@ function sumPurchaseCosts() {
 //  This function sums all of the fields with the id of 'bank-fees-field'
 
 function sumBankFees() {
-    console.log("sumBankFees() called")
+    // console.log("sumBankFees() called")
     // Get all elements with the "bank-fees-field" class
     const feeFields = document.querySelectorAll('.bank-fees-field');
 
@@ -609,7 +610,7 @@ function sumBankFees() {
     });
 
     bankFees.total = sum;
-    console.log("bankFees.total = sum = " + sum)
+    // console.log("bankFees.total = sum = " + sum)
 
     // Format the sum as a currency value
     const formattedSum = new Intl.NumberFormat('en-AU', {
@@ -627,7 +628,7 @@ function sumBankFees() {
 //  This function sums the total transaction cost, including property price, purchase costs and bank fees
 
 function sumTransactionAmount() {
-    console.log("sumTransactionAmount() called")
+    // console.log("sumTransactionAmount() called")
     const propertyPrice = propertyDetails.propertyPrice
     const purchaseCostTotal = purchaseCosts.total
     const bankFeesTotal = bankFees.total
@@ -647,12 +648,53 @@ function sumTransactionAmount() {
 
 // ****************************************************************************************************************
 
+//  This function returns the deposit amount
+
+function depositAmount() {
+    const sum = funding.deposit
+    
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'currency',
+        currency: 'AUD'
+    }).format(sum);
+
+    // Output the sum as a percentage value
+    const depositAmount = document.querySelector('#deposit-amount');
+    depositAmount.textContent = formattedSum;
+}
+
+// ****************************************************************************************************************
+
+//  This function returns the deposit amount minus purchase costs
+
+function depositAmountRemaining() {
+    const deposit = funding.deposit
+    const purchaseCostTotal = purchaseCosts.total
+    const sum = deposit - purchaseCostTotal
+    
+    funding.depositRemaining = sum
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'currency',
+        currency: 'AUD'
+    }).format(sum);
+
+    // Output the sum as a percentage value
+    const depositRemaining = document.querySelector('#deposit-amount-minus-purchase-costs');
+    depositRemaining.textContent = formattedSum;
+}
+
+// ****************************************************************************************************************
+
 //  This function sums the total loan amount, including property price and bank fees
 
 function sumTotalLoanAmount() {
     const propertyPrice = propertyDetails.propertyPrice
     const bankFeesTotal = bankFees.total
-    const sum = propertyPrice + bankFeesTotal
+    const depositRemaining = funding.depositRemaining
+
+    const sum = (propertyPrice + bankFeesTotal) - depositRemaining
+
+    console.log("sumTotalLoanAmount(). Sum = " + sum, "bankFeesTotal = " + bankFeesTotal, "depositRemaining = " + depositRemaining)
 
     loanSummary.totalLoanAmount = sum
 
@@ -662,21 +704,24 @@ function sumTotalLoanAmount() {
     }).format(sum);
 
     // Output the sum as a currency value
-    const totalAmountAmount = document.querySelector('#sum-total-loan-amount');
-    totalAmountAmount.textContent = formattedSum;
+    const totalLoanAmount = document.querySelector('#sum-total-loan-amount');
+    totalLoanAmount.textContent = formattedSum;
 }
 
 // ****************************************************************************************************************
 
-//  This function sums the total loan amount, including property price and bank fees
+//  This function calculates the LVR based on the loan amount and the property price
 
 function calculateLVR() {
     const propertyPrice = propertyDetails.propertyPrice
+    console.log("propertyPrice = " + propertyPrice)
     const totalLoanAmount = loanSummary.totalLoanAmount
-    const deposit = funding.deposit
-    const sum = (totalLoanAmount - deposit) / propertyPrice
+    console.log("totalLoanAmount = " + totalLoanAmount)
+    const sum = totalLoanAmount / propertyPrice
+    console.log("sum = " + sum)
 
     loanSummary.LoanToValueRatio = sum
+    console.log("loanSummary.LoanToValueRatio = " + loanSummary.LoanToValueRatio)
 
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'percent',
@@ -687,10 +732,6 @@ function calculateLVR() {
     const lvrAmount = document.querySelector('#loan-to-value-ratio');
     lvrAmount.textContent = formattedSum;
 }
-
-
-
-
 
 
 
