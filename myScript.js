@@ -50,6 +50,15 @@ const loanSummary = {
     LoanToValueRatio: 0
 }
 
+const LMI = {
+    isLMIRequired: "",
+    additionalSavingsRequired: 0,
+    lmiPercent: 0,
+    lmiCost: 0,
+    lmiStampDuty: 0,
+    lmiStampDutyCost: 0
+}
+
 // ****************************************************************************************************************
 
 //  This function updates the values in the data model after changes to the dropdowns
@@ -69,7 +78,6 @@ function updatePropertyDetails() {
     const depositElement = document.getElementById("deposit");
     const deposit = Number(depositElement.value);
     funding.deposit = deposit
-    console.log(deposit)
 }
 
 // ****************************************************************************************************************
@@ -694,8 +702,6 @@ function sumTotalLoanAmount() {
 
     const sum = (propertyPrice + bankFeesTotal) - depositRemaining
 
-    console.log("sumTotalLoanAmount(). Sum = " + sum, "bankFeesTotal = " + bankFeesTotal, "depositRemaining = " + depositRemaining)
-
     loanSummary.totalLoanAmount = sum
 
     const formattedSum = new Intl.NumberFormat('en-AU', {
@@ -714,14 +720,10 @@ function sumTotalLoanAmount() {
 
 function calculateLVR() {
     const propertyPrice = propertyDetails.propertyPrice
-    console.log("propertyPrice = " + propertyPrice)
     const totalLoanAmount = loanSummary.totalLoanAmount
-    console.log("totalLoanAmount = " + totalLoanAmount)
     const sum = totalLoanAmount / propertyPrice
-    console.log("sum = " + sum)
 
     loanSummary.LoanToValueRatio = sum
-    console.log("loanSummary.LoanToValueRatio = " + loanSummary.LoanToValueRatio)
 
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'percent',
@@ -731,6 +733,26 @@ function calculateLVR() {
     // Output the sum as a percentage value
     const lvrAmount = document.querySelector('#loan-to-value-ratio');
     lvrAmount.textContent = formattedSum;
+}
+
+// ****************************************************************************************************************
+
+//  This function calculates if LMI is required
+
+function lmiRequired() {
+  const LVR = loanSummary.LoanToValueRatio;
+  console.log(LVR)
+
+
+  let isLMIRequired;
+  if (LVR >= 0.8) {
+    isLMIRequired = "Yes";
+  } else {
+    isLMIRequired = "No";
+  }
+
+  const isLMIRequiredResultElement = document.getElementById("lmi-required-result");
+  isLMIRequiredResultElement.innerHTML = `${isLMIRequired}`;
 }
 
 
