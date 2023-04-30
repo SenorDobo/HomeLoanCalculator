@@ -660,7 +660,7 @@ function sumTransactionAmount() {
 
 function depositAmount() {
     const sum = funding.deposit
-    
+
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'currency',
         currency: 'AUD'
@@ -679,7 +679,7 @@ function depositAmountRemaining() {
     const deposit = funding.deposit
     const purchaseCostTotal = purchaseCosts.total
     const sum = deposit - purchaseCostTotal
-    
+
     funding.depositRemaining = sum
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'currency',
@@ -740,25 +740,80 @@ function calculateLVR() {
 //  This function calculates if LMI is required
 
 function lmiRequired() {
-  const LVR = loanSummary.LoanToValueRatio;
-  console.log(LVR)
+    const LVR = loanSummary.LoanToValueRatio;
 
+    let isLMIRequired;
+    if (LVR >= 0.8) {
+        isLMIRequired = "Yes";
+    } else {
+        isLMIRequired = "No";
+    }
 
-  let isLMIRequired;
-  if (LVR >= 0.8) {
-    isLMIRequired = "Yes";
-  } else {
-    isLMIRequired = "No";
-  }
+    LMI.isLMIRequired = isLMIRequired
 
-  const isLMIRequiredResultElement = document.getElementById("lmi-required-result");
-  isLMIRequiredResultElement.innerHTML = `${isLMIRequired}`;
+    const isLMIRequiredResultElement = document.getElementById("lmi-required-result");
+    isLMIRequiredResultElement.innerHTML = `${isLMIRequired}`;
 }
 
+// ****************************************************************************************************************
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ****************************************************************************************************************
+
+//  This function calculates how much more deposit is required to avoid LMI
+
+function additionalSavingsRequired() {
+
+    const LVR = loanSummary.LoanToValueRatio;
+    const propertyPrice = propertyDetails.propertyPrice
+    const depositRemaining = funding.depositRemaining
+
+    let additionalSavingsRequired;
+
+    if (LVR >= 0.8) {
+        console.log("if triggered")
+        additionalSavingsRequired = (propertyPrice * .2) - depositRemaining;
+    } else {
+        console.log("else triggered")
+        additionalSavingsRequired = 0;
+    }
+
+    LMI.additionalSavingsRequired = additionalSavingsRequired
+
+    const additionalSavingsRequiredResultElement = document.getElementById("additional-savings-required");
+    additionalSavingsRequiredResultElement.innerHTML = `$${additionalSavingsRequired}`;
+}
+
+// ****************************************************************************************************************
+
+//  Function to calculate the Lenders Mortgage Insurance Rate (%)
+
+// function calculateLMIRate() {
+//     const 
+
+
+
+// }
 
 
 
