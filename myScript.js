@@ -757,29 +757,6 @@ function lmiRequired() {
 
 // ****************************************************************************************************************
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ****************************************************************************************************************
-
 //  This function calculates how much more deposit is required to avoid LMI
 
 function additionalSavingsRequired() {
@@ -809,44 +786,72 @@ function additionalSavingsRequired() {
 //  Function to calculate the Lenders Mortgage Insurance Rate (%)
 
 // function calculateLMIRate() {
-//     const 
-
-
-
+//     const LVR = loanSummary.LoanToValueRatio;
+//     const totalLoanAmount = loanSummary.totalLoanAmount;
 // }
 
 
 
+// ****
 
+function calculateLMIRate() {
+    console.log("calcLMIRate called")
 
+    const LVR = loanSummary.LoanToValueRatio;
+    const totalLoanAmount = loanSummary.totalLoanAmount;
 
+    const rateTable = [
+        // LVR 80%
+        [0.475, 0.568, 0.904, 0.904, 0.913], // LoanAmount: up to 300k, 300,001-500,000, 500,001-600,000, 600,001-750,000, 750,000 plus
+        // LVR 81%
+        [0.485, 0.568, 0.904, 0.904, 0.913]
+        // LVR 82%
+        [0.596, 0.699, 0.932, 1.090, 1.109],
+        // LVR 83%
+        [0.662, 0.829, 0.960, 1.090, 1.146],
+        // LVR 84%
+        [0.727, 0.969, 1.165, 1.333, 1.407],
+        // LVR 856%
+        [0.876, 1.081, 1.258, 1.407, 1.463],
+        // LVR 86%
+        [0.932, 1.146, 1.407, 1.631, 1.733],
+        // LVR 87%
+        [1.062, 1.305, 1.463, 1.631, 1.752],
+        // LVR 88%
+        [1.295, 1.621, 1.948, 2.218, 2.395],
+        // LVR 89%
+        [1.463, 1.873, 2.180, 2.367, 2.516],
+        // LVR 90%
+        [2.013, 2.618, 3.513, 3.783, 3.820],
+        // LVR 91%
+        [2.013, 2.674, 3.569, 3.867, 3.932],
+        // LVR 92%
+        [2.330, 3.028, 3.802, 4.081, 4.156],
+        // LVR 93%
+        [2.376, 3.028, 3.802, 4.286, 4.324],
+        // LVR 94%
+        [2.609, 3.345, 3.998, 4.613, 4.603],
+    ];
 
+    if (LVR >= 80 && LVR <= 94) {
+        let columnIndex;
+        if (totalLoanAmount <= 300000) {
+            columnIndex = 0;
+        } else if (totalLoanAmount >= 300001 && totalLoanAmount <= 500000) {
+            columnIndex = 1;
+        } else if (totalLoanAmount >= 500001 && totalLoanAmount <= 600000) {
+            columnIndex = 2;
+        } else if (totalLoanAmount >= 600001 && totalLoanAmount <= 750000) {
+            columnIndex = 3;
+        } else if (totalLoanAmount > 750000) {
+            columnIndex = 4;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if (typeof columnIndex !== "undefined") {
+            return rateTable[LVR - 80][columnIndex];
+        }
+    }
+}
 
 
 
