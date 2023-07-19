@@ -768,10 +768,8 @@ function additionalSavingsRequired() {
     let additionalSavingsRequired;
 
     if (LVR >= 0.8) {
-        console.log("if triggered")
         additionalSavingsRequired = (propertyPrice * .2) - depositRemaining;
     } else {
-        console.log("else triggered")
         additionalSavingsRequired = 0;
     }
 
@@ -795,23 +793,31 @@ function additionalSavingsRequired() {
 // ****
 
 function calculateLMIRate() {
+
+
+    // Add result to html
+
     console.log("calcLMIRate called")
 
     const LVR = loanSummary.LoanToValueRatio;
+    console.log("LVR is here = " + LVR)
+    const LVRRoundDown = Math.floor(LVR * 100);
+    console.log("LVRRoundDown = " + LVRRoundDown)
     const totalLoanAmount = loanSummary.totalLoanAmount;
+    console.log("totalLoanAmount is here = " + totalLoanAmount)
 
     const rateTable = [
         // LVR 80%
         [0.475, 0.568, 0.904, 0.904, 0.913], // LoanAmount: up to 300k, 300,001-500,000, 500,001-600,000, 600,001-750,000, 750,000 plus
         // LVR 81%
-        [0.485, 0.568, 0.904, 0.904, 0.913]
+        [0.485, 0.568, 0.904, 0.904, 0.913],
         // LVR 82%
         [0.596, 0.699, 0.932, 1.090, 1.109],
         // LVR 83%
         [0.662, 0.829, 0.960, 1.090, 1.146],
         // LVR 84%
         [0.727, 0.969, 1.165, 1.333, 1.407],
-        // LVR 856%
+        // LVR 85%
         [0.876, 1.081, 1.258, 1.407, 1.463],
         // LVR 86%
         [0.932, 1.146, 1.407, 1.631, 1.733],
@@ -833,8 +839,9 @@ function calculateLMIRate() {
         [2.609, 3.345, 3.998, 4.613, 4.603],
     ];
 
-    if (LVR >= 80 && LVR <= 94) {
-        let columnIndex;
+    if (LVRRoundDown >= 80 && LVRRoundDown <= 94) {
+        let columnIndex = 0;
+        console.log("columnIndex = " + columnIndex)
         if (totalLoanAmount <= 300000) {
             columnIndex = 0;
         } else if (totalLoanAmount >= 300001 && totalLoanAmount <= 500000) {
@@ -846,10 +853,12 @@ function calculateLMIRate() {
         } else if (totalLoanAmount > 750000) {
             columnIndex = 4;
         }
+        console.log("columnIndex = " + columnIndex)
 
-        if (typeof columnIndex !== "undefined") {
-            return rateTable[LVR - 80][columnIndex];
-        }
+        const lmiPercent = rateTable[LVRRoundDown - 80][columnIndex];
+        console.log("lmiPercent = " + lmiPercent);
+        LMI.lmiPercent = lmiPercent;
+        console.log("LMI.lmiPercent = " + LMI.lmiPercent);
     }
 }
 
