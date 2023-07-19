@@ -783,30 +783,23 @@ function additionalSavingsRequired() {
 
 //  Function to calculate the Lenders Mortgage Insurance Rate (%)
 
-// function calculateLMIRate() {
-//     const LVR = loanSummary.LoanToValueRatio;
-//     const totalLoanAmount = loanSummary.totalLoanAmount;
-// }
-
-
-
-// ****
-
 function calculateLMIRate() {
 
-
-    // Add result to html
-
-    console.log("calcLMIRate called")
+    //  This is my first array, fun times
 
     const LVR = loanSummary.LoanToValueRatio;
-    console.log("LVR is here = " + LVR)
+    //  Retrieve the LVR from the loanSummary data model
     const LVRRoundDown = Math.floor(LVR * 100);
-    console.log("LVRRoundDown = " + LVRRoundDown)
+    //  Turn the LVR from a decimal to a full number and round down. e.g. from 0.8149 to 81
+    //  This is done to help with the logic when looking up the array table. See const lmiPercent...
     const totalLoanAmount = loanSummary.totalLoanAmount;
-    console.log("totalLoanAmount is here = " + totalLoanAmount)
+    //  Retrieve the total loan amount from the loanSummary data model
 
     const rateTable = [
+
+        //  Define the rate table for the LMI percent, based on LVR and total loan amount
+        //  Pulled from: https://www.homeloanexperts.com.au/lenders-mortgage-insurance/lmi-premium-rates/
+
         // LVR 80%
         [0.475, 0.568, 0.904, 0.904, 0.913], // LoanAmount: up to 300k, 300,001-500,000, 500,001-600,000, 600,001-750,000, 750,000 plus
         // LVR 81%
@@ -841,7 +834,6 @@ function calculateLMIRate() {
 
     if (LVRRoundDown >= 80 && LVRRoundDown <= 94) {
         let columnIndex = 0;
-        console.log("columnIndex = " + columnIndex)
         if (totalLoanAmount <= 300000) {
             columnIndex = 0;
         } else if (totalLoanAmount >= 300001 && totalLoanAmount <= 500000) {
@@ -853,12 +845,12 @@ function calculateLMIRate() {
         } else if (totalLoanAmount > 750000) {
             columnIndex = 4;
         }
-        console.log("columnIndex = " + columnIndex)
 
         const lmiPercent = rateTable[LVRRoundDown - 80][columnIndex];
-        console.log("lmiPercent = " + lmiPercent);
         LMI.lmiPercent = lmiPercent;
-        console.log("LMI.lmiPercent = " + LMI.lmiPercent);
+
+        const lmiPercentRateResultElement = document.getElementById("lmi-percent-rate");
+        lmiPercentRateResultElement.innerHTML = `${lmiPercent}%`;
     }
 }
 
