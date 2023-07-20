@@ -55,7 +55,7 @@ const LMI = {
     additionalSavingsRequired: 0,
     lmiPercent: 0,
     lmiSubTotal: 0,
-    lmiStampDuty: 0,
+    lmiStampDutyPercent: 0,
     lmiStampDutyCost: 0
 }
 
@@ -68,7 +68,6 @@ elementsToWatch.forEach((element) => {
     //  Watch all elements that are text inputs, number inputs or the stateDropdown and run the following functions:
 
     element.addEventListener('input', function () {
-        function1();
         updatePropertyDetails();
         stampDutyCalculator();
         landTransferFeeCalculator();
@@ -84,6 +83,8 @@ elementsToWatch.forEach((element) => {
         additionalSavingsRequired();
         calculateLMIRate();
         lmiSubTotal();
+        lmiStampDutyPercent();
+        lmiStampDutyCost();
     });
 });
 
@@ -899,11 +900,8 @@ function calculateLMIRate() {
 function lmiSubTotal() {
 
     const totalLoanAmount = loanSummary.totalLoanAmount;
-    console.log(totalLoanAmount)
     const lmiPercent = LMI.lmiPercent
-    console.log(lmiPercent)
     const lmiSubTotal = totalLoanAmount * (lmiPercent / 100);
-    console.log(lmiSubTotal)
     LMI.lmiSubTotal = lmiSubTotal
 
     const lmiSubTotalResultElement = document.getElementById("lmi-sub-total");
@@ -913,10 +911,68 @@ function lmiSubTotal() {
 
 // ****************************************************************************************************************
 
-//  Function to calculate the LMI tax 
+//  Function to calculate the LMI tax percentage depending on the property state
 
+function lmiStampDutyPercent() {
 
+    const stateDropdown = document.getElementById("stateDropdown");
+    const state = stateDropdown.value;
+    let lmiStampDutyPercent = 0;
 
+    switch (state) {
+        case "ACT":
+            lmiStampDutyPercent = 6;
+            break;
+        case "NSW":
+            lmiStampDutyPercent = 9;
+            break;
+        case "NT":
+            lmiStampDutyPercent = 10;
+            break;
+        case "QLD":
+            lmiStampDutyPercent = 9;
+            break;
+        case "SA":
+            lmiStampDutyPercent = 11;
+            break;
+        case "TAS":
+            lmiStampDutyPercent = 10;
+            break;
+        case "VIC":
+            lmiStampDutyPercent = 10;
+            break;
+        case "WA":
+            lmiStampDutyPercent = 10;
+            break;
+        default:
+            lmiStampDutyPercent = 0;
+            break;
+    }
+ 
+    LMI.lmiStampDutyPercent = lmiStampDutyPercent
+
+    const lmiStampDutyPercentResultElement = document.getElementById("lmi-stamp-duty-percent");
+    lmiStampDutyPercentResultElement.innerHTML = `${lmiStampDutyPercent}%`;
+}
+
+// ****************************************************************************************************************
+
+//  Function to calculate the LMI tax total
+
+function lmiStampDutyCost() {
+
+    const lmiStampDutyPercent = LMI.lmiStampDutyPercent
+    console.log(lmiStampDutyPercent)
+    const lmiSubTotal = LMI.lmiSubTotal
+    console.log(lmiSubTotal)
+    const lmiStampDutyCost = lmiSubTotal * (lmiStampDutyPercent / 100);
+    console.log(lmiStampDutyCost)
+
+    LMI.lmiStampDutyCost = lmiStampDutyCost
+
+    const lmiStampDutyCostResultElement = document.getElementById("lmi-stamp-duty-cost");
+    lmiStampDutyCostResultElement.innerHTML = `$${lmiStampDutyCost.toFixed(2)}`;
+}
 
 
 

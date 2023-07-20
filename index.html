@@ -2,9 +2,11 @@
 <html>
 
 <head>
+    <script src="https://dohliam.github.io/dropin-minimal-css/switcher.js" type="text/javascript"></script>
+
     <style>
         /* Set styles here that can be used throughout the rest of the file */
-
+        /* 
         body {
             background-color: #f9f9f9;
         }
@@ -115,7 +117,7 @@
         img {
             border: 2px solid #1D5297;
             border-radius: 10px;
-        }
+        } */
     </style>
 
     <title>Home Loan Calculator</title>
@@ -144,7 +146,7 @@
         </td>
         <td style="background-color:rgb(255, 255, 180);">
             <select id="stateDropdown" name="stateDropdown">
-        <!-- <select id="stateDropdown" name="stateDropdown"
+                <!-- <select id="stateDropdown" name="stateDropdown"
                 onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"> -->
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
@@ -161,7 +163,8 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
+            <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000" step="1000" min="10000"
+                max="99999999">
         </td>
     </tr>
     <tr>
@@ -349,7 +352,8 @@
     </tr>
     <tr>
         <td>Total Loan Amount<br>
-        <i>Purchase Price + Bank Fees - Deposit remaining</i></td>
+            <i>Purchase Price + Bank Fees - Deposit remaining</i>
+        </td>
         <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
         </td>
     </tr>
@@ -376,7 +380,8 @@
 <table>
     <tr>
         <td>Capitalised LMI Loan Amount<br>
-        <i>Loan amount + LMI premium + LMI stamp Duty</i></td>
+            <i>Loan amount + LMI premium + LMI stamp Duty</i>
+        </td>
         <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
         </td>
     </tr>
@@ -414,16 +419,21 @@
         <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
     </tr>
     <tr>
-        <td>LMI Stamp Duty %</td>
-        <td style="background-color:rgb(193, 212, 255);"></td>
+        <td>LMI Stamp Duty %
+            <div class="tooltip">&#9432;
+                <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost * LMI Stamp Duty amount. This
+                    is not the same as the stamp duty charged on the purchase property.</span>
+        </td>
+        <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-percent"></td>
     </tr>
     <tr>
         <td>LMI Stamp Duty Cost</td>
-        <td style="background-color:rgb(193, 212, 255);"></td>
+        <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-cost"></td>
     </tr>
     <tr>
         <td>Additional savings required to avoid LMI<br>
-        <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i></td>
+            <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
+        </td>
         <td style="background-color:rgb(193, 212, 255);" id="additional-savings-required"></td>
     </tr>
 </table>
