@@ -143,8 +143,9 @@
                 <span class="tooltiptext">This is the state the property is located</span>
         </td>
         <td style="background-color:rgb(255, 255, 180);">
-            <select id="stateDropdown" name="stateDropdown"
-                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()">
+            <select id="stateDropdown" name="stateDropdown">
+        <!-- <select id="stateDropdown" name="stateDropdown"
+                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"> -->
                 <option value=""></option>
                 <option value="ACT">Australian Capital Territory</option>
                 <option value="NSW">New South Wales</option>
@@ -160,17 +161,13 @@
     <tr>
         <td>Property Price</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="propertyPrice"
-                onInput="updatePropertyDetails(); stampDutyCalculator(); landTransferFeeCalculator(); mortgageRegistrationFeeCalculator(); sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
+            <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000" step="1000" min="10000" max="99999999">
         </td>
     </tr>
     <tr>
         <td>Deposit Saved</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" id="deposit"
-                onInput="updatePropertyDetails(); depositAmount(); depositAmountRemaining(); depositAmountRemaining(); sumTotalLoanAmount(); calculateLVR(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$50,000" step="1000" min="1000" max="99999999">
+            <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000" max="99999999">
         </td>
         </td>
     </tr>
@@ -190,7 +187,7 @@
     <tr>
         <td>Stamp Duty Amount</td>
         <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees(); calculateLMIRate()"></div>
+            <div class="purchase-costs-field"></div>
         </td>
     </tr>
     <tr>
@@ -199,91 +196,75 @@
                 <span class="tooltiptext">Assuming electronic transaction</span>
         </td>
         <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees(); calculateLMIRate()"></div>
+            <div class="purchase-costs-field"></div>
         </td>
     </tr>
     <tr>
         <td>Mortgage Registration Fee</td>
         <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
-            <div class="purchase-costs-field" onChange="sumPurchaseCosts(); sumBankFees(); calculateLMIRate()"></div>
+            <div class="purchase-costs-field"></div>
         </td>
         </td>
     </tr>
     <tr>
         <td>Mortgage Discharge Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Conveyancing Fee (inc. PEXA)</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Building Inspection</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Pest Inspection</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Home/building/contents insurance</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Council / Water / Utility rates</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Removalist</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Refurnishing</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="purchase-costs-field"
-                onInput="sumPurchaseCosts(); sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"
-                placeholder="$0" step="1" min="0" max="99999999">
+            <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td><b>Purchase Cost Total</b></td>
-        <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs" onChange="calculateTotalLoanAmount(); calculateLMIRate()">
+        <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
         </td>
     </tr>
 </table>
@@ -302,44 +283,35 @@
     <tr>
         <td>Application Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field"
-                onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()" placeholder="$0"
-                step="1" min="0" max="99999999">
+            <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Valuation Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field"
-                onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()" placeholder="$0"
-                step="1" min="0" max="99999999">
+            <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Settlement Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field"
-                onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()" placeholder="$0"
-                step="1" min="0" max="99999999">
+            <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Package Fee</td>
         <td style="background-color:rgb(255, 255, 180);">
-            <input type="number" class="bank-fees-field"
-                onInput="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()" placeholder="$0"
-                step="1" min="0" max="99999999">
+            <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0" max="99999999">
         </td>
         </td>
     </tr>
     <tr>
         <td>Lenders Mortgage Insurance</td>
         <td style="background-color:rgb(193, 212, 255);"></td>
-        <div id="LMI" class="bank-fees-field"
-            onChange="sumBankFees(); sumTransactionAmount(); sumTotalLoanAmount(); calculateLVR(); depositAmountRemaining(); lmiRequired(); additionalSavingsRequired(); calculateLMIRate()"></div>
+        <div id="LMI" class="bank-fees-field"></div>
         </td>
         </td>
     </tr>
@@ -352,7 +324,6 @@
 
 <br>
 <hr>
-
 
 <!-- Section for base loan summary -->
 
@@ -396,12 +367,6 @@
 <br>
 <hr>
 
-
-
-
-
-
-
 <!-- Section for capitalised LMI loan summary -->
 
 <h2>Capitalised LMI Loan Summary<br>
@@ -425,13 +390,7 @@
 <br>
 <hr>
 
-
-
-
-
-
-
-
+<!-- Section for additional or supporting information -->
 
 <h2>Additional Information / Breakdowns<br>
     <sub>Here are things</sub>
@@ -452,7 +411,7 @@
     </tr>
     <tr>
         <td>LMI Cost</td>
-        <td style="background-color:rgb(193, 212, 255);"></td>
+        <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
     </tr>
     <tr>
         <td>LMI Stamp Duty %</td>

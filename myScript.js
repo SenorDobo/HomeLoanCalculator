@@ -54,10 +54,38 @@ const LMI = {
     isLMIRequired: "",
     additionalSavingsRequired: 0,
     lmiPercent: 0,
-    lmiCost: 0,
+    lmiSubTotal: 0,
     lmiStampDuty: 0,
     lmiStampDutyCost: 0
 }
+
+// ****************************************************************************************************************
+
+//  Trying to trigger functions when an input changes, rather than having all functions listed to trigger on each field
+//  Attach event listener to all relevant elements
+const elementsToWatch = document.querySelectorAll('input[type="text"], input[type="number"], #stateDropdown');
+elementsToWatch.forEach((element) => {
+    //  Watch all elements that are text inputs, number inputs or the stateDropdown and run the following functions:
+
+    element.addEventListener('input', function () {
+        function1();
+        updatePropertyDetails();
+        stampDutyCalculator();
+        landTransferFeeCalculator();
+        mortgageRegistrationFeeCalculator();
+        sumPurchaseCosts();
+        sumBankFees();
+        sumTransactionAmount();
+        depositAmount();
+        depositAmountRemaining();
+        sumTotalLoanAmount();
+        calculateLVR();
+        lmiRequired();
+        additionalSavingsRequired();
+        calculateLMIRate();
+        lmiSubTotal();
+    });
+});
 
 // ****************************************************************************************************************
 
@@ -65,11 +93,11 @@ const LMI = {
 
 function updatePropertyDetails() {
     const stateDropdown = document.getElementById("stateDropdown");
-    // console.log(stateDropdown)
+// console.log(stateDropdown)
     const state = stateDropdown.value;
-    // console.log(state)
+// console.log(state)
     propertyDetails.state = state
-    // console.log("propertyDetails.state = " + propertyDetails.state)
+// console.log("propertyDetails.state = " + propertyDetails.state)
 
     const propertyPriceElement = document.getElementById("propertyPrice");
     const propertyPrice = Number(propertyPriceElement.value);
@@ -776,7 +804,7 @@ function additionalSavingsRequired() {
     LMI.additionalSavingsRequired = additionalSavingsRequired
 
     const additionalSavingsRequiredResultElement = document.getElementById("additional-savings-required");
-    additionalSavingsRequiredResultElement.innerHTML = `$${additionalSavingsRequired}`;
+    additionalSavingsRequiredResultElement.innerHTML = `$${additionalSavingsRequired.toFixed(2)}`;
 }
 
 // ****************************************************************************************************************
@@ -784,7 +812,6 @@ function additionalSavingsRequired() {
 //  Function to calculate the Lenders Mortgage Insurance Rate (%)
 
 function calculateLMIRate() {
-
     //  This is my first array, fun times
 
     const LVR = loanSummary.LoanToValueRatio;
@@ -834,7 +861,7 @@ function calculateLMIRate() {
     ];
 
     if (LVRRoundDown >= 80 && LVRRoundDown <= 94) {
-    //  Checking that the LVR is between 80 and 94. LMI is often only applicable within this range, as 95+ the banks will rarely engage
+        //  Checking that the LVR is between 80 and 94. LMI is often only applicable within this range, as 95+ the banks will rarely engage
         let columnIndex = 0;
         //  Starting the columnIndex at 0, which is the column that's selected from the table above
         if (totalLoanAmount <= 300000) {
@@ -854,7 +881,7 @@ function calculateLMIRate() {
         //  Uses the rounded down LVR value to determine the row to use, starting at 0
         //  Example 1: LVRRoundDown is 80, minus 80 = 0. This selects row 0 from the rateTable
         //  Example 2: LVRRoundDown is 90, minus 80 = 10. This selects row 10, which given it starts at 0, is actually the 11th row
-        
+
         LMI.lmiPercent = lmiPercent;
         //  Saves the lmiPercent to the data model so it can be used later
 
@@ -864,4 +891,57 @@ function calculateLMIRate() {
         //  Writes the lmiPercent with a percentage sign into the element
     }
 }
+
+// ****************************************************************************************************************
+
+//  Function to calculate the LMI Cost (subtotal)
+
+function lmiSubTotal() {
+
+    const totalLoanAmount = loanSummary.totalLoanAmount;
+    console.log(totalLoanAmount)
+    const lmiPercent = LMI.lmiPercent
+    console.log(lmiPercent)
+    const lmiSubTotal = totalLoanAmount * (lmiPercent / 100);
+    console.log(lmiSubTotal)
+    LMI.lmiSubTotal = lmiSubTotal
+
+    const lmiSubTotalResultElement = document.getElementById("lmi-sub-total");
+    lmiSubTotalResultElement.innerHTML = `$${lmiSubTotal.toFixed(2)}`;
+
+}
+
+// ****************************************************************************************************************
+
+//  Function to calculate the LMI tax 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
