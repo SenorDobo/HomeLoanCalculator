@@ -47,7 +47,9 @@ const bankFees = {
 const loanSummary = {
     totalTransactionAmount: 0,
     totalLoanAmount: 0,
-    LoanToValueRatio: 0
+    LoanToValueRatio: 0,
+    totalLoanWithCapLMI: 0,
+    totalLoanWithCapLMILVR: 0
 }
 
 const LMI = {
@@ -85,6 +87,8 @@ elementsToWatch.forEach((element) => {
         lmiSubTotal();
         lmiStampDutyPercent();
         lmiStampDutyCost();
+        totalLoanWithCapLMI();
+        totalLoanWithCapLMILVR();
     });
 });
 
@@ -962,11 +966,8 @@ function lmiStampDutyPercent() {
 function lmiStampDutyCost() {
 
     const lmiStampDutyPercent = LMI.lmiStampDutyPercent
-    console.log(lmiStampDutyPercent)
     const lmiSubTotal = LMI.lmiSubTotal
-    console.log(lmiSubTotal)
     const lmiStampDutyCost = lmiSubTotal * (lmiStampDutyPercent / 100);
-    console.log(lmiStampDutyCost)
 
     LMI.lmiStampDutyCost = lmiStampDutyCost
 
@@ -974,12 +975,47 @@ function lmiStampDutyCost() {
     lmiStampDutyCostResultElement.innerHTML = `$${lmiStampDutyCost.toFixed(2)}`;
 }
 
+// ****************************************************************************************************************
+
+//  Function to calculate the total loan amount including LMI cost and LMI stamp duty
+
+function totalLoanWithCapLMI() {
+    const totalLoanAmount = loanSummary.totalLoanAmount
+    const lmiSubTotal = LMI.lmiSubTotal
+    const lmiStampDutyCost = LMI.lmiStampDutyCost
+
+    const totalLoanWithCapLMI = totalLoanAmount + lmiSubTotal + lmiStampDutyCost
+
+    loanSummary.totalLoanWithCapLMI = totalLoanWithCapLMI
+
+    const totalLoanWithCapLMIResultElement = document.getElementById("total-loan-with-cap-lmi")
+    totalLoanWithCapLMIResultElement.innerHTML = `$${totalLoanWithCapLMI.toFixed(2)}`;
+
+}
+
+// ****************************************************************************************************************
+
+//  Function to calculate the LVR for total loan amount including LMI
+
+function totalLoanWithCapLMILVR() {
+    const propertyPrice = propertyDetails.propertyPrice
+    console.log(propertyPrice)
+    const totalLoanWithCapLMI = loanSummary.totalLoanWithCapLMI
+    console.log(totalLoanWithCapLMI)
+    const capLMILVRPercent = totalLoanWithCapLMI / propertyPrice
+    console.log(capLMILVRPercent)
+
+    const formattedSum = new Intl.NumberFormat('en-AU', {
+        style: 'percent',
+        minimumFractionDigits: 2
+    }).format(capLMILVRPercent);
+    console.log(formattedSum)
 
 
-
-
-
-
+    // Output the sum as a percentage value
+    const CapLMILVR = document.querySelector('#cap-lmi-lvr');
+    CapLMILVR.textContent = formattedSum;
+}
 
 
 
