@@ -63,6 +63,15 @@ const LMI = {
 
 // ****************************************************************************************************************
 
+// JS required for the stateDropdown to work
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+});
+
+// ****************************************************************************************************************
+
 //  Trying to trigger functions when an input changes, rather than having all functions listed to trigger on each field
 //  Attach event listener to all relevant elements
 const elementsToWatch = document.querySelectorAll('input[type="text"], input[type="number"], #stateDropdown');
@@ -98,11 +107,11 @@ elementsToWatch.forEach((element) => {
 
 function updatePropertyDetails() {
     const stateDropdown = document.getElementById("stateDropdown");
-// console.log(stateDropdown)
+    // console.log(stateDropdown)
     const state = stateDropdown.value;
-// console.log(state)
+    // console.log(state)
     propertyDetails.state = state
-// console.log("propertyDetails.state = " + propertyDetails.state)
+    // console.log("propertyDetails.state = " + propertyDetails.state)
 
     const propertyPriceElement = document.getElementById("propertyPrice");
     const propertyPrice = Number(propertyPriceElement.value);
@@ -952,7 +961,7 @@ function lmiStampDutyPercent() {
             lmiStampDutyPercent = 0;
             break;
     }
- 
+
     LMI.lmiStampDutyPercent = lmiStampDutyPercent
 
     const lmiStampDutyPercentResultElement = document.getElementById("lmi-stamp-duty-percent");

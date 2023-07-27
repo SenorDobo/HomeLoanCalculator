@@ -1,174 +1,426 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Home Loan Calculator</title>
 
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
 
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+
+    <title>Home Loan Calculator</title>
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
 </head>
+
+
+
+
+
+
+
 <body>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-<!-- 
-      <a id="logo-container" href="#" class="brand-logo">
-        <img src="images/favicon.png" alt="Favicon"> 
-        Logo</a> -->
 
-
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="" class="brand-logo"><i class="material-icons">home</i>Home Loan Calculator</a>
         </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-        </div>
-        <br><br>
-
-      </div>
-    </div>
-    <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>
-  </div>
+    </nav>
 
 
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="background2.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
-  </div>
 
-  <footer class="page-footer teal">
+
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12">
+                  <p class="light">Intro goes here....</p>
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">home</i></h2>
+                        <h5 class="center">Property Details</h5>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>State
+                                <div class="tooltip">&#9432;
+                                    <!-- <span class="tooltiptext">This is the state the property is located</span> -->
+                                </div>
+                            </td>
+                            <td>
+                                <select id="stateDropdown" name="stateDropdown">
+                                    <option value=""></option>
+                                    <option value="ACT">Australian Capital Territory</option>
+                                    <option value="NSW">New South Wales</option>
+                                    <option value="NT">Northern Territory</option>
+                                    <option value="QLD">Queensland</option>
+                                    <option value="SA">South Australia</option>
+                                    <option value="TAS">Tasmania</option>
+                                    <option value="VIC">Victoria</option>
+                                    <option value="WA">Western Australia</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Property Price</td>
+                            <td>
+                                <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
+                                    step="1000" min="10000" max="99999999">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Deposit Saved</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                        <h5 class="center">Purchase Costs</h5>
+                        <p class="light">These are the upfront fees that you'll need to budget for.</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Expense</th>
+                            <th>Amount ($)</th>
+                        </tr>
+                        <tr>
+                            <td>Stamp Duty Amount</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
+                                <div class="purchase-costs-field"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Transfer Fee (Title Transfer)
+                                <div class="tooltip">&#9432;
+                                    <!-- <span class="tooltiptext">Assuming electronic transaction</span> -->
+                            </td>
+                            <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
+                                <div class="purchase-costs-field"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mortgage Registration Fee</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
+                                <div class="purchase-costs-field"></div>
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mortgage Discharge Fee</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Conveyancing Fee (inc. PEXA)</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Building Inspection</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pest Inspection</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Home/building/contents insurance</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Council / Water / Utility rates</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Removalist</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Refurnishing</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Purchase Cost Total</b></td>
+                            <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">attach_money</i></h2>
+                        <h5 class="center">Bank Fees</h5>
+                        <p class="light">These are fees charged by the bank and can be capitalised (added) to the loan
+                            amount.</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Expense</th>
+                            <th>Amount ($)</th>
+                        </tr>
+                        <tr>
+                            <td>Application Fee</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Valuation Fee</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Settlement Fee</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Package Fee</td>
+                            <td style="background-color:rgb(255, 255, 180);">
+                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                    max="99999999">
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Bank Fees Total</b></td>
+                            <td style="background-color:rgb(218, 178, 255);" id="sum-bank-fees">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- New Column -->
+
+                <div class="col s6 m6">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">monetization_on</i></h2>
+                        <h5 class="center">Loan Summary</h5>
+                        <p class="light">This is a summary of your home loan.</p>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Total Transaction Amount<br>
+                                <i>Purchase Price + Purchase Costs + Bank Costs</i>
+                            </td>
+                            <td style="background-color:rgb(193, 212, 255);" id="sum-transaction-amount">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Starting deposit</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="deposit-amount"></td>
+                        </tr>
+                        <tr>
+                            <td>Deposit remaining after Purchase Costs</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="deposit-amount-minus-purchase-costs">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total Loan Amount<br>
+                                <i>Purchase Price + Bank Fees - Deposit remaining</i>
+                            </td>
+                            <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Loan To Value (LVR) Ratio</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="loan-to-value-ratio">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LMI Required?</td>
+                            <td style="background-color:rgb(193, 212, 255);" id="lmi-required-result"></td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
 
 
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
 
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
 
-  </body>
+    <hr>
+
+    <div class="container">
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+
+
+                <div class="col s12 m12">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                        <h5 class="center">Lenders Mortgage Insurance</h5>
+
+                        <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes out to
+                            insure
+                            itself against the risk of not
+                            recovering the outstanding loan balance if you, the borrower, are unable to meet your
+                            loan
+                            payments and the
+                            property is sold for less than the outstanding loan balance.</p>
+
+
+                        <table>
+                            <tr>
+                                <td>LMI %</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="lmi-percent-rate"></td>
+                            </tr>
+                            <tr>
+                                <td>LMI Cost</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
+                            </tr>
+                            <tr>
+                                <td>LMI Stamp Duty %
+                                    <div class="tooltip">&#9432;
+                                        <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost *
+                                            LMI
+                                            Stamp Duty amount. This
+                                            is not the same as the stamp duty charged on the purchase
+                                            property.</span>
+                                </td>
+                                <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-percent"></td>
+                            </tr>
+                            <tr>
+                                <td>LMI Stamp Duty Cost</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-cost"></td>
+                            </tr>
+                            <tr>
+                                <td>Additional savings required to avoid LMI<br>
+                                    <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
+                                </td>
+                                <td style="background-color:rgb(193, 212, 255);" id="additional-savings-required">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Capitalised LMI Loan Amount<br>
+                                    <i>Loan amount + LMI premium + LMI stamp Duty</i>
+                                </td>
+                                <td style="background-color:rgb(193, 212, 255);" id="total-loan-with-cap-lmi">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="cap-lmi-lvr">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+</body>
+
+
+
+
+
+<hr>
+
+
+<br>
+<hr>
+
+<p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
+<button onclick="window.print()">Print this page</button>
+
+<hr>
+<address>
+    Written by Dobbo.<br>
+    Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
+    Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
+</address>
+
+<script src="myScript.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+
 </html>
