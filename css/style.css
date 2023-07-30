@@ -48,7 +48,7 @@ p {
 }
 
 .icon-block {
-  padding: 0 15px;
+  padding: 0 1px;
 }
 
 .icon-block .material-icons {
@@ -120,14 +120,28 @@ table tr {
 
 
 
-.fixed-column {
+/* .fixed-column {
   position: fixed;
   /* top: 0; */
   /* right: 0; */
   /* Set the width to 5 columns out of 12 */
-  width: calc(100% / 12 * 5);
+  /* width: calc(100% / 12 * 5); */
   /* Optionally, you can add some padding or background color */
   /* padding: 0px; */
-  background-color: #cdeeff;
+  /* background-color: #cdeeff; */
   /* Add any other styles you want */
+/* } */
+
+
+
+.nav-column {
+/*  background-color: #e8e8e8; /* Replace #ff0000 with your desired color code */
+  height: 100vh;
+  /* Add any other styles you want for the column here */
+}
+
+
+.center {
+  margin: 1px;
+  margin-top: 10px;
 }

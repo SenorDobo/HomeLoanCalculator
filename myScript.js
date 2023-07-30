@@ -1008,27 +1008,62 @@ function totalLoanWithCapLMI() {
 
 function totalLoanWithCapLMILVR() {
     const propertyPrice = propertyDetails.propertyPrice
-    console.log(propertyPrice)
     const totalLoanWithCapLMI = loanSummary.totalLoanWithCapLMI
-    console.log(totalLoanWithCapLMI)
     const capLMILVRPercent = totalLoanWithCapLMI / propertyPrice
-    console.log(capLMILVRPercent)
 
     const formattedSum = new Intl.NumberFormat('en-AU', {
         style: 'percent',
         minimumFractionDigits: 2
     }).format(capLMILVRPercent);
-    console.log(formattedSum)
-
 
     // Output the sum as a percentage value
     const CapLMILVR = document.querySelector('#cap-lmi-lvr');
     CapLMILVR.textContent = formattedSum;
 }
 
+// ****************************************************************************************************************
 
+//  This doesn't work
 
+//   // Function to format a number as currency
+//   function formatCurrency(value) {
+//     const formatter = new Intl.NumberFormat('en-US', {
+//       style: 'currency',
+//       currency: 'USD', // Change 'USD' to your desired currency code if needed
+//       minimumFractionDigits: 0, // Number of decimal places (0 for integers)
+//     });
 
+//     return formatter.format(value);
+//   }
+
+//   // Function to parse a formatted currency value back to a number
+//   function parseCurrency(value) {
+//     // Remove commas from the value before parsing
+//     const numericValue = value.replace(/[^\d.-]/g, '');
+
+//     // Check if the value is already formatted currency
+//     const regex = /^[+-]?\d+(?:\.\d+)?$/;
+//     if (regex.test(numericValue)) {
+//       // If the value is numeric, parse it as a number
+//       return parseFloat(numericValue);
+//     } else {
+//       // If the value is formatted currency, parse it as a number
+//       return parseFloat(numericValue);
+//     }
+//   }
+
+//   // Add an event listener to format the currency when the input field loses focus
+//   document.addEventListener('DOMContentLoaded', function () {
+//     const currencyInputs = document.querySelectorAll('.currency-input');
+
+//     currencyInputs.forEach((input) => {
+//       input.addEventListener('blur', function () {
+//         const value = parseCurrency(input.value);
+//         const formattedValue = formatCurrency(value);
+//         input.value = formattedValue;
+//       });
+//     });
+//   });
 
 
 
