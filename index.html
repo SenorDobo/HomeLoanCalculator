@@ -6,7 +6,7 @@
     </style>
 
     <title>Home Loan Calculator</title>
-    
+
     <!-- Icons  -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -42,346 +42,414 @@
                     </div>
                 </div>
 
-
-                <div class="col s8">
-                    <p class="light">Intro goes here....</p>
-
-                    <div id="property-details">
-                        <div class="icon-block">
-                            <h5 class="valign-wrapper"><i class="material-icons">home</i>Property Details</h5>
-
-                            <p class="light">Let's start with some basic information about the property and your
-                                deposit.</p>
-
-                        </div>
+                <div class="col s8 m8">
+                    <div class="card-panel white">
+                        <span class="black-text" class="light">Intro goes here....
+                        </span>
                     </div>
-                    <table class="highlight">
-                        <tr>
-                            <td>State
-                                <!-- <div class="tooltip">&#9432;
-                  <span class="tooltiptext">This is the state the property is located</span>
-                </div> -->
-                            </td>
-                            <td>
-                                <select id="stateDropdown" name="stateDropdown">
-                                    <option value=""></option>
-                                    <option value="ACT">Australian Capital Territory</option>
-                                    <option value="NSW">New South Wales</option>
-                                    <option value="NT">Northern Territory</option>
-                                    <option value="QLD">Queensland</option>
-                                    <option value="SA">South Australia</option>
-                                    <option value="TAS">Tasmania</option>
-                                    <option value="VIC">Victoria</option>
-                                    <option value="WA">Western Australia</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Property Price</td>
-                            <td>
-                                <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
-                                    step="1000" min="10000" max="99999999">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Deposit Saved</td>
-                            <td>
-                                <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                    </table>
 
-                    <div id="purchase-costs">
-                        <hr>
-
-                        <div class="icon-block">
-                            <h5 class="valign-wrapper"><i class="material-icons">group</i>Purchase Costs</h5>
-                            <p class="light">These are the upfront fees that you'll need to budget for.</p>
-                        </div>
-                        <table class="highlight">
-                            <tr>
-                                <th>Expense</th>
-                                <th>Amount ($)</th>
-                            </tr>
-                            <tr>
-                                <td>Stamp Duty Amount</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
-                                    <div class="purchase-costs-field"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Transfer Fee (Title Transfer)
-                                    <!-- <div class="tooltip">&#9432;
-                    <span class="tooltiptext">Assuming electronic transaction</span>
-                </td> -->
-                                <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
-                                    <div class="purchase-costs-field"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mortgage Registration Fee</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
-                                    <div class="purchase-costs-field"></div>
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mortgage Discharge Fee</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Conveyancing Fee (inc. PEXA)</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Building Inspection</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Pest Inspection</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Home/building/contents insurance</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Council / Water / Utility rates</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Removalist</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Refurnishing</td>
-                                <td>
-                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>Purchase Cost Total</b></td>
-                                <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div id="bank-fees">
-                            <hr>
-
+                    <div class="card-panel white">
+                        <div id="property-details">
                             <div class="icon-block">
+                                <h5 class="valign-wrapper"><i class="material-icons">home</i>Property Details</h5>
 
-                                <h5 class="valign-wrapper"><i class="material-icons">attach_money</i>Bank Fees</h5>
-                                <p class="light">These are fees charged by the bank and may be capitalised (added) to
-                                    the
-                                    loan
-                                    amount depending on your lender.</p>
+                                <p class="light">Let's start with some basic information about the property and your
+                                    deposit.</p>
+
                             </div>
                         </div>
                         <table class="highlight">
                             <tr>
-                                <th>Expense</th>
-                                <th>Amount ($)</th>
+                                <td>State
+                                    <!-- <div class="tooltip">&#9432;
+                      <span class="tooltiptext">This is the state the property is located</span>
+                    </div> -->
+                                </td>
+                                <td>
+                                    <select id="stateDropdown" name="stateDropdown">
+                                        <option value=""></option>
+                                        <option value="ACT">Australian Capital Territory</option>
+                                        <option value="NSW">New South Wales</option>
+                                        <option value="NT">Northern Territory</option>
+                                        <option value="QLD">Queensland</option>
+                                        <option value="SA">South Australia</option>
+                                        <option value="TAS">Tasmania</option>
+                                        <option value="VIC">Victoria</option>
+                                        <option value="WA">Western Australia</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Application Fee</td>
+                                <td>Property Price</td>
                                 <td>
-                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                    <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
+                                        step="1000" min="10000" max="99999999">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Deposit Saved</td>
+                                <td>
+                                    <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000"
                                         max="99999999">
                                 </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Valuation Fee</td>
-                                <td>
-                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Settlement Fee</td>
-                                <td>
-                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Package Fee</td>
-                                <td>
-                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                        max="99999999">
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>Bank Fees Total</b></td>
-                                <td style="background-color:rgb(218, 178, 255);" id="sum-bank-fees">
                                 </td>
                             </tr>
                         </table>
                     </div>
+                </div>
 
-                    <div class="icon-block">
-                        <hr>
-                        <div id="loan-summary">
-                            <h5 class="valign-wrapper"><i class="material-icons">monetization_on</i>Loan Summary</h5>
-                            <p class="light">This is a summary of your home loan.</p>
+
+                <div class="card-panel white">
+                    <div class="col s8">
+                        <p class="light">Intro goes here....</p>
+
+                        <div id="property-details">
+                            <div class="icon-block">
+                                <h5 class="valign-wrapper"><i class="material-icons">home</i>Property Details</h5>
+
+                                <p class="light">Let's start with some basic information about the property and your
+                                    deposit.</p>
+
+                            </div>
                         </div>
                         <table class="highlight">
                             <tr>
-                                <td>Total Transaction Amount<br>
-                                    <i>Purchase Price + Purchase Costs + Bank Costs</i>
+                                <td>State
+                                    <!-- <div class="tooltip">&#9432;
+                  <span class="tooltiptext">This is the state the property is located</span>
+                </div> -->
                                 </td>
-                                <td style="background-color:rgb(193, 212, 255);" id="sum-transaction-amount">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Starting deposit</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="deposit-amount"></td>
-                            </tr>
-                            <tr>
-                                <td>Deposit remaining after Purchase Costs</td>
-                                <td style="background-color:rgb(193, 212, 255);"
-                                    id="deposit-amount-minus-purchase-costs">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total Loan Amount<br>
-                                    <i>Purchase Price + Bank Fees - Deposit remaining</i>
-                                </td>
-                                <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
+                                <td>
+                                    <select id="stateDropdown" name="stateDropdown">
+                                        <option value=""></option>
+                                        <option value="ACT">Australian Capital Territory</option>
+                                        <option value="NSW">New South Wales</option>
+                                        <option value="NT">Northern Territory</option>
+                                        <option value="QLD">Queensland</option>
+                                        <option value="SA">South Australia</option>
+                                        <option value="TAS">Tasmania</option>
+                                        <option value="VIC">Victoria</option>
+                                        <option value="WA">Western Australia</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Loan To Value (LVR) Ratio</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="loan-to-value-ratio">
+                                <td>Property Price</td>
+                                <td>
+                                    <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
+                                        step="1000" min="10000" max="99999999">
                                 </td>
                             </tr>
                             <tr>
-                                <td>LMI Required?</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="lmi-required-result"></td>
+                                <td>Deposit Saved</td>
+                                <td>
+                                    <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000"
+                                        max="99999999">
+                                </td>
+                                </td>
                             </tr>
                         </table>
+                        <div class="card-panel white">
+                            <br>
+                            <div id="purchase-costs">
 
 
-                    </div>
+                                <div class="icon-block">
+                                    <h5 class="valign-wrapper"><i class="material-icons">group</i>Purchase Costs</h5>
+                                    <p class="light">These are the upfront fees that you'll need to budget for.</p>
+                                </div>
+                                <table class="highlight">
+                                    <tr>
+                                        <th>Expense</th>
+                                        <th>Amount ($)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Stamp Duty Amount</td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
+                                            <div class="purchase-costs-field"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Transfer Fee (Title Transfer)
+                                            <!-- <div class="tooltip">&#9432;
+                    <span class="tooltiptext">Assuming electronic transaction</span>
+                </td> -->
+                                        <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
+                                            <div class="purchase-costs-field"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mortgage Registration Fee</td>
+                                        <td style="background-color:rgb(193, 212, 255);"
+                                            id="mortgageRegistrationFeeResult">
+                                            <div class="purchase-costs-field"></div>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mortgage Discharge Fee</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Conveyancing Fee (inc. PEXA)</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Building Inspection</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pest Inspection</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home/building/contents insurance</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Council / Water / Utility rates</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Removalist</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Refurnishing</td>
+                                        <td>
+                                            <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Purchase Cost Total</b></td>
+                                        <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <div id="bank-fees">
+
+
+                                    <div class="icon-block">
+
+                                        <h5 class="valign-wrapper"><i class="material-icons">attach_money</i>Bank Fees
+                                        </h5>
+                                        <p class="light">These are fees charged by the bank and may be capitalised
+                                            (added)
+                                            to
+                                            the
+                                            loan
+                                            amount depending on your lender.</p>
+                                    </div>
+                                </div>
+                                <table class="highlight">
+                                    <tr>
+                                        <th>Expense</th>
+                                        <th>Amount ($)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Application Fee</td>
+                                        <td>
+                                            <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Valuation Fee</td>
+                                        <td>
+                                            <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Settlement Fee</td>
+                                        <td>
+                                            <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Package Fee</td>
+                                        <td>
+                                            <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                min="0" max="99999999">
+                                        </td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Bank Fees Total</b></td>
+                                        <td style="background-color:rgb(218, 178, 255);" id="sum-bank-fees">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="icon-block">
+                                <br>
+                                <div id="loan-summary">
+                                    <h5 class="valign-wrapper"><i class="material-icons">monetization_on</i>Loan Summary
+                                    </h5>
+                                    <p class="light">This is a summary of your home loan.</p>
+                                </div>
+                                <table class="highlight">
+                                    <tr>
+                                        <td>Total Transaction Amount<br>
+                                            <i>Purchase Price + Purchase Costs + Bank Costs</i>
+                                        </td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="sum-transaction-amount">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Starting deposit</td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="deposit-amount"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deposit remaining after Purchase Costs</td>
+                                        <td style="background-color:rgb(193, 212, 255);"
+                                            id="deposit-amount-minus-purchase-costs">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Loan Amount<br>
+                                            <i>Purchase Price + Bank Fees - Deposit remaining</i>
+                                        </td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loan To Value (LVR) Ratio</td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="loan-to-value-ratio">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LMI Required?</td>
+                                        <td style="background-color:rgb(193, 212, 255);" id="lmi-required-result"></td>
+                                    </tr>
+                                </table>
+
+
+                            </div>
 
 
 
+                            <br>
+                            <div id="lmi">
 
-                    <div id="lmi">
-                        <hr>
-                        <div class="icon-block">
+                                <div class="icon-block">
 
-                            <h5 class="valign-wrapper"><i class="material-icons">group</i>Lenders Mortgage Insurance
-                            </h5>
-                            <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes out to
-                                insure
-                                itself
-                                against the risk of not recovering the outstanding loan balance if you, the borrower,
-                                are
-                                unable to meet
-                                your loan payments and the property is sold for less than the outstanding loan balance.
-                            </p>
+                                    <h5 class="valign-wrapper"><i class="material-icons">group</i>Lenders Mortgage
+                                        Insurance
+                                    </h5>
+                                    <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
+                                        out
+                                        to
+                                        insure
+                                        itself
+                                        against the risk of not recovering the outstanding loan balance if you, the
+                                        borrower,
+                                        are
+                                        unable to meet
+                                        your loan payments and the property is sold for less than the outstanding loan
+                                        balance.
+                                    </p>
+                                </div>
+                            </div>
+                            <table class="highlight">
+                                <tr>
+                                    <td>LMI %</td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="lmi-percent-rate"></td>
+                                </tr>
+                                <tr>
+                                    <td>LMI Cost</td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
+                                </tr>
+                                <tr>
+                                    <td>LMI Stamp Duty %
+                                        <div class="tooltip">&#9432;
+                                            <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost *
+                                                LMI
+                                                Stamp Duty amount. This
+                                                is not the same as the stamp duty charged on the purchase
+                                                property.</span>
+                                    </td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-percent"></td>
+                                </tr>
+                                <tr>
+                                    <td>LMI Stamp Duty Cost</td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-cost"></td>
+                                </tr>
+                                <tr>
+                                    <td>Additional savings required to avoid LMI<br>
+                                        <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
+                                    </td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="additional-savings-required">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Capitalised LMI Loan Amount<br>
+                                        <i>Loan amount + LMI premium + LMI stamp Duty</i>
+                                    </td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="total-loan-with-cap-lmi">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
+                                    <td style="background-color:rgb(193, 212, 255);" id="cap-lmi-lvr">
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+
                     </div>
-                    <table class="highlight">
-                        <tr>
-                            <td>LMI %</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-percent-rate"></td>
-                        </tr>
-                        <tr>
-                            <td>LMI Cost</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
-                        </tr>
-                        <tr>
-                            <td>LMI Stamp Duty %
-                                <div class="tooltip">&#9432;
-                                    <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost *
-                                        LMI
-                                        Stamp Duty amount. This
-                                        is not the same as the stamp duty charged on the purchase
-                                        property.</span>
-                            </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-percent"></td>
-                        </tr>
-                        <tr>
-                            <td>LMI Stamp Duty Cost</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-cost"></td>
-                        </tr>
-                        <tr>
-                            <td>Additional savings required to avoid LMI<br>
-                                <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
-                            </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="additional-savings-required">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Capitalised LMI Loan Amount<br>
-                                <i>Loan amount + LMI premium + LMI stamp Duty</i>
-                            </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="total-loan-with-cap-lmi">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="cap-lmi-lvr">
-                            </td>
-                        </tr>
-                    </table>
                 </div>
 
+                <hr>
+
+                <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
+                <button onclick="window.print()">Print this page</button>
+
+                <hr>
+                <address>
+                    Written by Dobbo.<br>
+                    Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
+                    Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
+                </address>
+                <br>
+
             </div>
-        </div>
-
-        <hr>
-
-        <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
-        <button onclick="window.print()">Print this page</button>
-
-        <hr>
-        <address>
-            Written by Dobbo.<br>
-            Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
-            Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
-        </address>
-        <br>
-
-    </div>
 
 
 </body>
