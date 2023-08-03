@@ -74,32 +74,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //  Trying to trigger functions when an input changes, rather than having all functions listed to trigger on each field
 //  Attach event listener to all relevant elements
-const elementsToWatch = document.querySelectorAll('input[type="text"], input[type="number"], #stateDropdown');
-elementsToWatch.forEach((element) => {
-    //  Watch all elements that are text inputs, number inputs or the stateDropdown and run the following functions:
 
-    element.addEventListener('input', function () {
-        updatePropertyDetails();
-        stampDutyCalculator();
-        landTransferFeeCalculator();
-        mortgageRegistrationFeeCalculator();
-        sumPurchaseCosts();
-        sumBankFees();
-        sumTransactionAmount();
-        depositAmount();
-        depositAmountRemaining();
-        sumTotalLoanAmount();
-        calculateLVR();
-        lmiRequired();
-        additionalSavingsRequired();
-        calculateLMIRate();
-        lmiSubTotal();
-        lmiStampDutyPercent();
-        lmiStampDutyCost();
-        totalLoanWithCapLMI();
-        totalLoanWithCapLMILVR();
-    });
+// Define the common set of functions to be executed when the dropdown value changes or when any relevant input field changes
+function updateOnChange() {
+    updatePropertyDetails();
+    stampDutyCalculator();
+    landTransferFeeCalculator();
+    mortgageRegistrationFeeCalculator();
+    sumPurchaseCosts();
+    sumBankFees();
+    sumTransactionAmount();
+    depositAmount();
+    depositAmountRemaining();
+    sumTotalLoanAmount();
+    calculateLVR();
+    lmiRequired();
+    additionalSavingsRequired();
+    calculateLMIRate();
+    lmiSubTotal();
+    lmiStampDutyPercent();
+    lmiStampDutyCost();
+    totalLoanWithCapLMI();
+    totalLoanWithCapLMILVR();
+}
+
+// Attach event listener to the stateDropdown element
+const stateDropdown = document.getElementById('stateDropdown');
+stateDropdown.addEventListener('change', updateOnChange);
+
+// Attach event listener to all relevant input elements
+const elementsToWatch = document.querySelectorAll('input[type="text"], input[type="number"]');
+elementsToWatch.forEach((element) => {
+    element.addEventListener('input', updateOnChange);
 });
+
 
 // ****************************************************************************************************************
 
@@ -446,9 +454,9 @@ function landTransferFeeNT(propertyPrice) {
 function landTransferFeeQLD(propertyPrice) {
 
     if (propertyPrice <= 180000) {
-        landTransferFee = 208.83
+        landTransferFee = 224.32
     } else {
-        landTransferFee = 208.83 + (20 * ((propertyPrice - 180000) / 100));
+        landTransferFee = 224.32 + (42.13 * ((propertyPrice - 180000) / 10000));
     }
     //  Returns the landTransferFee value to the function that initiated this function
     return landTransferFee
