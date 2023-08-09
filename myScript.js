@@ -108,7 +108,6 @@ elementsToWatch.forEach((element) => {
     element.addEventListener('input', updateOnChange);
 });
 
-
 // ****************************************************************************************************************
 
 //  This function updates the values in the data model after changes to the dropdowns

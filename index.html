@@ -16,17 +16,22 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
+
+
 </head>
+
+
 
 <body>
     <div class="navbar-fixed">
-    <!-- The div above fixes the nav bar, but means that my links from the LHS nav var don't work properly. Fun times-->
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a href="" class="brand-logo"><i class="material-icons">home</i>Home Loan Calculator</a>
-        </div>
-    </nav>
+        <!-- The div above fixes the nav bar, but means that my links from the LHS nav var don't work properly. Fun times-->
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a href="" class="brand-logo"><i class="material-icons">home</i>Home Loan Calculator</a>
+            </div>
+        </nav>
     </div>
+
     <div class="container">
         <div class="section">
 
@@ -48,22 +53,16 @@
                         </span>
                     </div>
                     <div class="card-panel white">
-                        <div id="property-details">
-                            <div class="icon-block">
-                                <h5 class="valign-wrapper"><i class="material-icons">home</i>Property Details</h5>
-
-                                <p class="light">Let's start with some basic information about the property and your
-                                    deposit.</p>
-
-                            </div>
+                        <div class="icon-block">
+                            <h5 id="property-details" class="valign-wrapper"><i class="material-icons">home</i>Property
+                                Details</h5>
+                            <p class="light">Let's start with some basic information about the property and your
+                                deposit.</p>
                         </div>
-                        <table class="highlight">
+                        <!-- <table class="highlight"> -->
+                            <table class="striped">
                             <tr>
-                                <td>State
-                                    <!-- <div class="tooltip">&#9432;
-                      <span class="tooltiptext">This is the state the property is located</span>
-                    </div> -->
-                                </td>
+                                <td>In which state is the property located?</td>
                                 <td>
                                     <select id="stateDropdown" name="stateDropdown">
                                         <option value=""></option>
@@ -79,14 +78,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Property Price</td>
+                                <td>What is the property price?</td>
                                 <td>
                                     <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
                                         step="1000" min="10000" max="99999999">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Deposit Saved</td>
+                                <td>How much have you saved for a deposit?</td>
                                 <td>
                                     <input type="number" id="deposit" placeholder="$50,000" step="1000" min="1000"
                                         max="99999999">
@@ -96,129 +95,124 @@
                         </table>
                     </div>
 
-
-
-
-
-
                     <div class="card-panel white">
-                        <div id="purchase-costs">
-                            <div class="icon-block">
-                                <h5 class="valign-wrapper"><i class="material-icons">group</i>Purchase Costs</h5>
-                                <p class="light">These are the upfront fees that you'll need to budget for.</p>
-                            </div>
-                            <table class="highlight">
-                                <tr>
-                                    <th>Expense</th>
-                                    <th>Amount ($)</th>
-                                </tr>
-                                <tr>
-                                    <td>Stamp Duty Amount</td>
-                                    <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
-                                        <div class="purchase-costs-field"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Transfer Fee (Title Transfer)
-                                        <!-- <div class="tooltip">&#9432;
+
+                        <div class="icon-block">
+                            <h5 id="purchase-costs" class="valign-wrapper"><i class="material-icons">group</i>Purchase
+                                Costs</h5>
+                            <p class="light">These are the upfront fees that you'll need to budget for.</p>
+                        </div>
+                        <table class="highlight">
+                            <tr>
+                                <th>Expense</th>
+                                <th>Amount ($)</th>
+                            </tr>
+                            <tr>
+                                <td>Stamp Duty Amount</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
+                                    <div class="purchase-costs-field"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Transfer Fee (Title Transfer)
+                                    <!-- <div class="tooltip">&#9432;
                     <span class="tooltiptext">Assuming electronic transaction</span>
                 </td> -->
-                                    <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
-                                        <div class="purchase-costs-field"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Mortgage Registration Fee</td>
-                                    <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
-                                        <div class="purchase-costs-field"></div>
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Mortgage Discharge Fee</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Conveyancing Fee (inc. PEXA)</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Building Inspection</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Pest Inspection</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Home/building/contents insurance</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Council / Water / Utility rates</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Removalist</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Refurnishing</td>
-                                    <td>
-                                        <input type="number" class="purchase-costs-field" placeholder="$0" step="1"
-                                            min="0" max="99999999">
-                                    </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>Purchase Cost Total</b></td>
-                                    <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                                <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
+                                    <div class="purchase-costs-field"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage Registration Fee</td>
+                                <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
+                                    <div class="purchase-costs-field"></div>
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage Discharge Fee</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Conveyancing Fee (inc. PEXA)</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Building Inspection</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pest Inspection</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Home/building/contents insurance</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Council / Water / Utility rates</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Removalist</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Refurnishing</td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Purchase Cost Total</b></td>
+                                <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
 
                     <div class="card-panel white">
-                        <div id="bank-fees">
-                            <div class="icon-block">
-                                <h5 class="valign-wrapper"><i class="material-icons">attach_money</i>Bank Fees
-                                </h5>
-                                <p class="light">These are fees charged by the bank and may be capitalised
-                                    (added)
-                                    to
-                                    the
-                                    loan
-                                    amount depending on your lender.</p>
-                            </div>
+
+                        <div class="icon-block">
+                            <h5 id="bank-fees" class="valign-wrapper"><i class="material-icons">attach_money</i>Bank
+                                Fees
+                            </h5>
+                            <p class="light">These are fees charged by the bank and may be capitalised
+                                (added)
+                                to
+                                the
+                                loan
+                                amount depending on your lender.</p>
                         </div>
                         <table class="highlight">
                             <tr>
@@ -271,11 +265,10 @@
 
                     <div class="card-panel white">
                         <div class="icon-block">
-                            <div id="loan-summary">
-                                <h5 class="valign-wrapper"><i class="material-icons">monetization_on</i>Loan Summary
-                                </h5>
-                                <p class="light">This is a summary of your home loan.</p>
-                            </div>
+                            <h5 id="loan-summary" class="valign-wrapper"><i
+                                    class="material-icons">monetization_on</i>Loan Summary
+                            </h5>
+                            <p class="light">This is a summary of your home loan.</p>
                             <table class="highlight">
                                 <tr>
                                     <td>Total Transaction Amount<br>
@@ -316,26 +309,24 @@
                         </div>
                     </div>
                     <div class="card-panel white">
-                        <div id="lmi">
 
-                            <div class="icon-block">
+                        <div class="icon-block">
 
-                                <h5 class="valign-wrapper"><i class="material-icons">group</i>Lenders Mortgage
-                                    Insurance
-                                </h5>
-                                <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
-                                    out
-                                    to
-                                    insure
-                                    itself
-                                    against the risk of not recovering the outstanding loan balance if you, the
-                                    borrower,
-                                    are
-                                    unable to meet
-                                    your loan payments and the property is sold for less than the outstanding loan
-                                    balance.
-                                </p>
-                            </div>
+                            <h5 id="lmi" class="valign-wrapper"><i class="material-icons">group</i>Lenders Mortgage
+                                Insurance
+                            </h5>
+                            <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
+                                out
+                                to
+                                insure
+                                itself
+                                against the risk of not recovering the outstanding loan balance if you, the
+                                borrower,
+                                are
+                                unable to meet
+                                your loan payments and the property is sold for less than the outstanding loan
+                                balance.
+                            </p>
                         </div>
                         <table class="highlight">
                             <tr>
