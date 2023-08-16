@@ -118,22 +118,6 @@ table tr {
   opacity: 1;
 }
 
-
-
-/* .fixed-column {
-  position: fixed;
-  /* top: 0; */
-  /* right: 0; */
-  /* Set the width to 5 columns out of 12 */
-  /* width: calc(100% / 12 * 5); */
-  /* Optionally, you can add some padding or background color */
-  /* padding: 0px; */
-  /* background-color: #cdeeff; */
-  /* Add any other styles you want */
-/* } */
-
-
-
 .nav-column {
 /*  background-color: #e8e8e8; /* Replace #ff0000 with your desired color code */
   height: 100vh;
@@ -146,9 +130,12 @@ table tr {
   margin-top: 10px;
 }
 
-/* 
-
-/* Adjust the position of the heading when it's the target
-h5:target {
-  padding-top: 110px;
+/* .card-panel {
+  opacity: 0.5;
 } */
+
+/* .card-panel {
+  background-color: transparent
+} */
+
+
