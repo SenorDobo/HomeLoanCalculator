@@ -5,13 +5,6 @@
     <style>
         #background {
             background-image: url("images/bg/b10.jpg");
-
-            /* background-image: url("images/bg/b3.jpg"); */
-            /* background-image: url("images/bg/b5.jpg"); */
-            /* background-image: url("images/bg/b6.jpg"); */
-            /* background-image: url("images/bg/b9.jpg"); */
-            /* background-image: url("images/bg/b11.jpg"); */
-
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -75,6 +68,10 @@
                         and we recommend consulting financial experts ensures a tailored approach to your unique
                         situation</i></p>
 
+
+<!-- Property Details -->
+
+
                 <div class="card-panel white">
                     <div class="icon-block">
                         <h5 id="property-details" class="valign-wrapper"><i class="material-icons">home</i>Property
@@ -82,7 +79,7 @@
                         <p class="light">Let's start with some basic information about the property and your
                             deposit.</p>
                     </div>
-                    <!-- <table class="highlight"> -->
+
                     <table class="striped">
                         <tr>
                             <td>In which state is the property located?</td>
@@ -104,7 +101,7 @@
                             <td>What is the property price?</td>
                             <td>
                                 <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
-                                    step="1000" min="10000" max="99999999">
+                                    step="1000" min="100000" max="99999999">
                             </td>
                         </tr>
                         <tr>
@@ -121,10 +118,7 @@
 
 
 
-
-
-
-
+<!-- Purchase Costs -->
 
                 <div class="card-panel white">
 
@@ -140,22 +134,21 @@
                         </tr>
                         <tr>
                             <td>Stamp Duty Amount</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="stampDutyResult">
-                                <div class="purchase-costs-field"></div>
+                            <td id="stampDutyResult">
+                                <div class="purchase-costs-field">
+                                    <input disabled>
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>Transfer Fee (Title Transfer)
-                                <!-- <div class="tooltip">&#9432;
-                    <span class="tooltiptext">Assuming electronic transaction</span>
-                </td> -->
-                            <td style="background-color:rgb(193, 212, 255);" id="landTransferFeeResult">
+                            <td id="landTransferFeeResult">
                                 <div class="purchase-costs-field"></div>
                             </td>
                         </tr>
                         <tr>
                             <td>Mortgage Registration Fee</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="mortgageRegistrationFeeResult">
+                            <td id="mortgageRegistrationFeeResult">
                                 <div class="purchase-costs-field"></div>
                             </td>
                             </td>
