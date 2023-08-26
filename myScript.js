@@ -72,6 +72,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ****************************************************************************************************************
 
+// JS required for the tooltips to work
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+    var instance = M.Tooltip.getInstance(elems[0]);
+});
+
+// ****************************************************************************************************************
+
+// JS required for the modals to work
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+});
+
+// ****************************************************************************************************************
+
 //  Trying to trigger functions when an input changes, rather than having all functions listed to trigger on each field
 //  Attach event listener to all relevant elements
 

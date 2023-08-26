@@ -37,7 +37,7 @@
 
                 <p class="light">Welcome to Kalculate, your comprehensive home loan tool.<br>
                     Let us help you navigate the complexities of purchasing your dream home and provide you with
-                    clarity into the loan that will make it all possible. Qalculate follows a very simple
+                    clarity into the loan that will make it all possible. Kalculate follows a very simple
                     process:
                 </p>
 
@@ -63,19 +63,11 @@
                     </div>
                 </div>
 
-                <p><i>* Remember that while Qalculate offers calculation and education, this is not financial
-                        advice
-                        and we recommend consulting financial experts ensures a tailored approach to your unique
-                        situation</i></p>
+                <!-- The Basics -->
 
-
-<!-- Property Details -->
-
-
-                <div class="card-panel white">
+                <div class="card-panel white" id="the-basics-card">
                     <div class="icon-block">
-                        <h5 id="property-details" class="valign-wrapper"><i class="material-icons">home</i>Property
-                            Details</h5>
+                        <h5 id="property-details" class="valign-wrapper">The Basics</h5>
                         <p class="light">Let's start with some basic information about the property and your
                             deposit.</p>
                     </div>
@@ -83,7 +75,7 @@
                     <table class="striped">
                         <tr>
                             <td>In which state is the property located?</td>
-                            <td>
+                            <td width="30%">
                                 <select id="stateDropdown" name="stateDropdown">
                                     <option value=""></option>
                                     <option value="ACT">Australian Capital Territory</option>
@@ -98,7 +90,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>What is the property price?</td>
+                            <td>What is the expected purchase price?</td>
                             <td>
                                 <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
                                     step="1000" min="100000" max="99999999">
@@ -115,25 +107,41 @@
                     </table>
                 </div>
 
+                <!-- Purchase Costs -->
 
-
-
-<!-- Purchase Costs -->
-
-                <div class="card-panel white">
+                <div class="card-panel white" id="purchase-costs-card">
 
                     <div class="icon-block">
-                        <h5 id="purchase-costs" class="valign-wrapper"><i class="material-icons">group</i>Purchase
-                            Costs</h5>
-                        <p class="light">These are the upfront fees that you'll need to budget for.</p>
+                        <h5 id="purchase-costs" class="valign-wrapper">Purchase Costs</h5>
+                        <p class="light">These are the upfront fees that you'll need to budget for. We'll start you off
+                            by calculating the Stamp Duty, Transfer and Mortgage Registration fees.</p>
                     </div>
                     <table class="striped">
                         <tr>
                             <th>Expense</th>
-                            <th>Amount ($)</th>
+                            <th width="30%">Amount ($)</th>
                         </tr>
                         <tr>
-                            <td>Stamp Duty Amount</td>
+                            <td>Stamp Duty
+                                <a class="modal-trigger" href="#modal1">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal1" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>Stamp Duty</h4>
+                                        <p>
+                                            Stamp Duty is a tax charged by the government on the purchase of a property.
+                                            It's calculated based on the value of the property and varies by state or
+                                            territory.
+                                            You can expect this to be your biggest upfront purchase cost, and
+                                            unfortunately cannot be included in your home loan amount.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td id="stampDutyResult">
                                 <div class="purchase-costs-field">
                                     <input disabled>
@@ -141,15 +149,55 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Transfer Fee (Title Transfer)
+                            <td>Title Transfer Fee
+                                <a class="modal-trigger" href="#modal2">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal2" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>X</h4>
+                                        <p>
+                                            Y
+
+
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                                </td>
                             <td id="landTransferFeeResult">
-                                <div class="purchase-costs-field"></div>
+                                <div class="purchase-costs-field">
+                                    <input disabled>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Mortgage Registration Fee</td>
+                            <td>Mortgage Registration Fee
+                                <a class="modal-trigger" href="#modal3">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal3" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>X</h4>
+                                        <p>
+                                            Y
+
+
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td id="mortgageRegistrationFeeResult">
-                                <div class="purchase-costs-field"></div>
+                                <div class="purchase-costs-field">
+                                    <input disabled>
+                                </div>
                             </td>
                             </td>
                         </tr>
@@ -219,18 +267,18 @@
                         </tr>
                         <tr>
                             <td><b>Purchase Cost Total</b></td>
-                            <td style="background-color:rgb(218, 178, 255);" id="sum-purchase-costs">
+                            <td id="sum-purchase-costs">
                             </td>
                         </tr>
                     </table>
                 </div>
 
-                <div class="card-panel white">
+                <!-- Bank Fees -->
+
+                <div class="card-panel white" id="bank-costs-card">
 
                     <div class="icon-block">
-                        <h5 id="bank-fees" class="valign-wrapper"><i class="material-icons">attach_money</i>Bank
-                            Fees
-                        </h5>
+                        <h5 id="bank-fees" class="valign-wrapper">Bank Fees</h5>
                         <p class="light">These are fees charged by the bank and may be capitalised
                             (added)
                             to
@@ -238,14 +286,14 @@
                             loan
                             amount depending on your lender.</p>
                     </div>
-                    <table class="highlight">
+                    <table class="striped">
                         <tr>
                             <th>Expense</th>
                             <th>Amount ($)</th>
                         </tr>
                         <tr>
                             <td>Application Fee</td>
-                            <td>
+                            <td width="30%">
                                 <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
                                     max="99999999">
                             </td>
@@ -277,68 +325,82 @@
                         </tr>
                         <tr>
                             <td><b>Bank Fees Total</b></td>
-                            <td style="background-color:rgb(218, 178, 255);" id="sum-bank-fees">
+                            <td id="sum-bank-fees">
                             </td>
                         </tr>
                     </table>
                 </div>
 
+                <!-- Loan Summary -->
 
-
-
-
-                <div class="card-panel white">
+                <div class="card-panel white" id="loan-summary-card">
                     <div class="icon-block">
-                        <h5 id="loan-summary" class="valign-wrapper"><i class="material-icons">monetization_on</i>Loan
-                            Summary
-                        </h5>
+                        <h5 id="loan-summary" class="valign-wrapper">Loan Summary</h5>
                         <p class="light">This is a summary of your home loan.</p>
-                        <table class="highlight">
+                        <table class="striped">
                             <tr>
                                 <td>Total Transaction Amount<br>
                                     <i>Purchase Price + Purchase Costs + Bank Costs</i>
                                 </td>
-                                <td style="background-color:rgb(193, 212, 255);" id="sum-transaction-amount">
+                                <td id="sum-transaction-amount" width="30%">
+                                    <input disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Starting deposit</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="deposit-amount"></td>
+                                <td id="deposit-amount">
+                                    <input disabled>
+                                </td>
+
                             </tr>
                             <tr>
                                 <td>Deposit remaining after Purchase Costs</td>
-                                <td style="background-color:rgb(193, 212, 255);"
-                                    id="deposit-amount-minus-purchase-costs">
+                                <td id="deposit-amount-minus-purchase-costs">
+                                    <input disabled>
+
                                 </td>
                             </tr>
                             <tr>
                                 <td>Total Loan Amount<br>
                                     <i>Purchase Price + Bank Fees - Deposit remaining</i>
                                 </td>
-                                <td style="background-color:rgb(193, 212, 255);" id="sum-total-loan-amount">
+                                <td id="sum-total-loan-amount">
+                                    <input disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Loan To Value (LVR) Ratio</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="loan-to-value-ratio">
+                                <td id="loan-to-value-ratio">
+                                    <input disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>LMI Required?</td>
-                                <td style="background-color:rgb(193, 212, 255);" id="lmi-required-result"></td>
+                                <td id="lmi-required-result">
+                                    <input disabled>
+                                </td>
                             </tr>
                         </table>
-
-
                     </div>
+                    <div class="card-action">
+                        <p>Jump to:</p>
+                        <a class="waves-effect waves-light btn" href="#the-basics-card">The basics</a>
+                        <a class="waves-effect waves-light btn" href="#purchase-costs-card">Purchase costs</a>
+                        <a class="waves-effect waves-light btn" href="#bank-costs-card">Bank fees</a>
+                    </div>
+
+
+
+
                 </div>
+
+                <!-- Lenders Mortgage Insurance -->
+
                 <div class="card-panel white">
 
                     <div class="icon-block">
 
-                        <h5 id="lmi" class="valign-wrapper"><i class="material-icons">group</i>Lenders Mortgage
-                            Insurance
-                        </h5>
+                        <h5 id="lmi" class="valign-wrapper">Lenders Mortgage Insurance</h5>
                         <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
                             out
                             to
@@ -352,14 +414,18 @@
                             balance.
                         </p>
                     </div>
-                    <table class="highlight">
+                    <table class="striped">
                         <tr>
                             <td>LMI %</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-percent-rate"></td>
+                            <td id="lmi-percent-rate" width="30%">
+                                <input disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>LMI Cost</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-sub-total"></td>
+                            <td id="lmi-sub-total">
+                                <input disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>LMI Stamp Duty %
@@ -370,29 +436,36 @@
                                         is not the same as the stamp duty charged on the purchase
                                         property.</span>
                             </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-percent"></td>
+                            <td id="lmi-stamp-duty-percent">
+                                <input disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>LMI Stamp Duty Cost</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="lmi-stamp-duty-cost"></td>
+                            <td id="lmi-stamp-duty-cost">
+                                <input disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>Additional savings required to avoid LMI<br>
                                 <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
                             </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="additional-savings-required">
+                            <td id="additional-savings-required">
+                                <input disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Capitalised LMI Loan Amount<br>
                                 <i>Loan amount + LMI premium + LMI stamp Duty</i>
                             </td>
-                            <td style="background-color:rgb(193, 212, 255);" id="total-loan-with-cap-lmi">
+                            <td id="total-loan-with-cap-lmi">
+                                <input disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
-                            <td style="background-color:rgb(193, 212, 255);" id="cap-lmi-lvr">
+                            <td id="cap-lmi-lvr">
+                                <input disabled>
                             </td>
                         </tr>
                     </table>
@@ -402,18 +475,40 @@
 
                 <hr>
 
-                <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
-                <button onclick="window.print()">Print this page</button>
 
-                <hr>
-                <address>
-                    Written by Dobbo.<br>
-                    Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
-                    Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
-                </address>
-                <br>
+
+
+
+
+
+
+
             </div>
 </body>
+
+<!-- Footer -->
+
+<div class="card-panel white">
+
+    <div class="icon-block">
+
+        <h5 id="lmi" class="valign-wrapper">The wrap</h5>
+        <p class="light">I truly hope that you've found Kalculate to be a useful tool on your adventure to home
+            ownership. <br>
+        <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
+        <button onclick="window.print()">Print this page</button>
+
+        </p>
+        <hr>
+        <address>
+            Written by Dobbo.<br>
+            Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
+            Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
+        </address>
+        <br>
+    </div>
+
+</div>
 
 <script src="myScript.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -119,7 +119,7 @@ table tr {
 }
 
 .nav-column {
-/*  background-color: #e8e8e8; /* Replace #ff0000 with your desired color code */
+  /*  background-color: #e8e8e8; /* Replace #ff0000 with your desired color code */
   height: 100vh;
   /* Add any other styles you want for the column here */
 }
@@ -130,12 +130,12 @@ table tr {
   margin-top: 10px;
 }
 
-/* .card-panel {
-  opacity: 0.5;
-} */
-
-/* .card-panel {
-  background-color: transparent
-} */
+#sum-purchase-costs {
+  font-weight: bold;
+}
 
 
+
+.icon-align-middle {
+  vertical-align: middle;
+}
