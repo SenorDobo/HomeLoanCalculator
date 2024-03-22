@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #background {
+            background-image: url("images/background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        #multi-step-form-container {
+            margin-top: 5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pl-0 {
+            padding-left: 0;
+        }
+
+        .button {
+            padding: 0.7rem 1.5rem;
+            border: 1px solid #4361ee;
+            background-color: #4361ee;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            border: 1px solid #0e9594;
+            background-color: #0e9594;
+        }
+
+        .mt-3 {
+            margin-top: 2rem;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .form-step {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .font-normal {
+            font-weight: normal;
+        }
+
+        ul.form-stepper {
+            counter-reset: section;
+            margin-bottom: 3rem;
+        }
+
+        ul.form-stepper .form-stepper-circle {
+            position: relative;
+        }
+
+        ul.form-stepper .form-stepper-circle span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+        .form-stepper-horizontal {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        ul.form-stepper>li:not(:last-of-type) {
+            margin-bottom: 0.625rem;
+            -webkit-transition: margin-bottom 0.4s;
+            -o-transition: margin-bottom 0.4s;
+            transition: margin-bottom 0.4s;
+        }
+
+        .form-stepper-horizontal>li:not(:last-of-type) {
+            margin-bottom: 0 !important;
+        }
+
+        .form-stepper-horizontal li {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: start;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        .form-stepper-horizontal li:not(:last-child):after {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            height: 1px;
+            content: "";
+            top: 32%;
+        }
+
+        .form-stepper-horizontal li:after {
+            background-color: #dee2e6;
+        }
+
+        .form-stepper-horizontal li.form-stepper-completed:after {
+            background-color: #4da3ff;
+        }
+
+        .form-stepper-horizontal li:last-child {
+            flex: unset;
+        }
+
+        ul.form-stepper li a .form-stepper-circle {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin-right: 0;
+            line-height: 1.7rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.38);
+            border-radius: 50%;
+        }
+
+        .form-stepper .form-stepper-active .form-stepper-circle {
+            background-color: #006064 !important;
+            color: #fff;
+        }
+
+        .form-stepper .form-stepper-active .label {
+            color: #006064 !important;
+        }
+
+        .form-stepper .form-stepper-active .form-stepper-circle:hover {
+            background-color: #4361ee !important;
+            color: #fff !important;
+        }
+
+        .form-stepper .form-stepper-unfinished .form-stepper-circle {
+            background-color: #f8f7ff;
+        }
+
+        .form-stepper .form-stepper-completed .form-stepper-circle {
+            background-color: #0e9594 !important;
+            color: #fff;
+        }
+
+        .form-stepper .form-stepper-completed .label {
+            color: #0e9594 !important;
+        }
+
+        .form-stepper .form-stepper-completed .form-stepper-circle:hover {
+            background-color: #0e9594 !important;
+            color: #fff !important;
+        }
+
+        .form-stepper .form-stepper-active span.text-muted {
+            color: #fff !important;
+        }
+
+        .form-stepper .form-stepper-completed span.text-muted {
+            color: #fff !important;
+        }
+
+        .form-stepper .label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-stepper a {
+            cursor: default;
+        }
+    </style>
+
+    <title>The Gardenia Calculator</title>
+
+    <!-- Icons  -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+
+
+
+    <div id="background">
+        <div class="container">
+            <div class="section">
+                <h2>The Gardenia Calculator</h2>
+                <p class="light">Welcome to the Gardenia home loan calculator.<br>
+                    Let us help you navigate the complexities of purchasing your next property and provide you with
+                    clarity into the home loan that will make it all possible. There are four simple steps to get you
+                    started:
+                </p>
+
+                <div class="row">
+                    <div class="col s3">
+                        <div class="center promo promo-example">
+                            <i class="medium material-icons cyan-text text-darken-4">home</i>
+                            <p class="light center">Tell us about the property and your hard-earned deposit</p>
+                        </div>
+
+                    </div>
+                    <div class="col s3">
+                        <div class="center promo promo-example">
+                            <i class="medium material-icons cyan-text text-darken-4">attach_money</i>
+                            <p class="light center">Understand the purchase costs</p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="center promo promo-example">
+                            <i class="medium material-icons cyan-text text-darken-4">insert_drive_file</i>
+                            <p class="light center">Present a clear summary of the loan you need</p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="center promo promo-example">
+                            <i class="medium material-icons cyan-text text-darken-4">person</i>
+                            <p class="light center">Connect with you the right person to help</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Multi Step -->
+
+
+
+                <div class="card-panel white" id="multi-step-card">
+                    <div id="multi-step-form-container">
+
+                        <!-- Form Steps / Progress Bar -->
+                        <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+                            <!-- Step 1 -->
+                            <li class="form-stepper-active text-center form-stepper-list" step="1">
+                                <a class="mx-2">
+                                    <span class="form-stepper-circle">
+                                        <span>1</span>
+                                    </span>
+                                    <div class="label">Property & Deposit</div>
+                                </a>
+                            </li>
+                            <!-- Step 2 -->
+                            <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                                <a class="mx-2">
+                                    <span class="form-stepper-circle text-muted">
+                                        <span>2</span>
+                                    </span>
+                                    <div class="label text-muted">Purchase Costs</div>
+                                </a>
+                            </li>
+                            <!-- Step 3 -->
+                            <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+                                <a class="mx-2">
+                                    <span class="form-stepper-circle text-muted">
+                                        <span>3</span>
+                                    </span>
+                                    <div class="label text-muted">Bank Fees</div>
+                                </a>
+                            </li>
+                            <!-- Step 4 -->
+                            <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+                                <a class="mx-2">
+                                    <span class="form-stepper-circle text-muted">
+                                        <span>4</span>
+                                    </span>
+                                    <div class="label text-muted">Loan Information</div>
+                                </a>
+                            </li>
+
+
+                            <!-- Step 5 -->
+                            <li class="form-stepper-unfinished text-center form-stepper-list" step="5">
+                                <a class="mx-2">
+                                    <span class="form-stepper-circle text-muted">
+                                        <span>5</span>
+                                    </span>
+                                    <div class="label text-muted">Connect</div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+
+                        <!-- Step Wise Form Content -->
+                        <form id="homeLoanCalculator" name="homeLoanCalculator" enctype="multipart/form-data"
+                            method="POST">
+
+                            <!-- Step 1 Content -->
+                            <section id="step-1" class="form-step">
+                                <h5 id="property-details" class="valign-wrapper">The Basics</h5>
+                                <p class="light">Let's start with some basic information about the property and your
+                                    deposit.</p>
+                                <!-- Step 1 input fields -->
+                                <div class="mt-3">
+
+
+                                    <table class="striped">
+                                        <tr>
+                                            <td>In which state is the property located?</td>
+                                            <td width="30%">
+                                                <select id="stateDropdown" name="stateDropdown">
+                                                    <option value=""></option>
+                                                    <option value="ACT">Australian Capital Territory</option>
+                                                    <option value="NSW">New South Wales</option>
+                                                    <option value="NT">Northern Territory</option>
+                                                    <option value="QLD">Queensland</option>
+                                                    <option value="SA">South Australia</option>
+                                                    <option value="TAS">Tasmania</option>
+                                                    <option value="VIC">Victoria</option>
+                                                    <option value="WA">Western Australia</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>What is the expected purchase price?</td>
+                                            <td>
+                                                <input type="number" id="propertyPrice" for="propertyPrice"
+                                                    placeholder="$500,000" step="10000" min="100000" max="99999999">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>How much have you saved for a deposit?</td>
+                                            <td>
+                                                <input type="number" id="deposit" placeholder="$100,000" step="1000"
+                                                    min="1000" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="2">Next</button>
+                                </div>
+                            </section>
+
+                            <!-- Step 2 Content, default hidden on page load. -->
+                            <section id="step-2" class="form-step d-none">
+
+                                <h5 id="purchase-costs" class="valign-wrapper">Purchase Costs</h5>
+                                <p class="light">These are the upfront fees that you'll need to budget for. We'll start
+                                    you off
+                                    by calculating the Stamp Duty, Transfer and Mortgage Registration fees. For the
+                                    remaining values, we've included a guide for your consideration.</p>
+                                <!-- Step 2 input fields -->
+                                <div class="mt-3">
+
+
+                                    <table class="striped">
+                                        <tr>
+                                            <th>Expense</th>
+                                            <th width="30%">Amount ($)</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Stamp Duty
+                                                <a class="modal-trigger" href="#modal1">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal1" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Stamp Duty</h4>
+                                                        <p>
+                                                            Stamp Duty is a tax charged by the government on the
+                                                            purchase of a property.
+                                                            It's calculated based on the value of the property and
+                                                            varies by state or
+                                                            territory.
+                                                            You can expect this to be your biggest upfront purchase
+                                                            cost, and
+                                                            unfortunately cannot be included in your home loan amount.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="stampDutyResult">
+                                                <div class="purchase-costs-field">
+                                                    <input disabled>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Title Transfer Fee
+                                                <a class="modal-trigger" href="#modal2">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal2" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Title Transfer Fee</h4>
+                                                        <p>
+                                                            This is a state/territory government fee for transferring
+                                                            the property title
+                                                            from the seller to the buyer.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="landTransferFeeResult">
+                                                <div class="purchase-costs-field">
+                                                    <input disabled>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mortgage Registration Fee
+                                                <a class="modal-trigger" href="#modal3">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal3" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Mortgage Registration Fee</h4>
+                                                        <p>
+                                                            This is a state/territory government fee for registering the
+                                                            lender's
+                                                            mortgage on the property's title record. For example, if you
+                                                            go for a home
+                                                            loan with a specific lender, this fee is for registering the
+                                                            lender's
+                                                            mortgage on the property.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="mortgageRegistrationFeeResult">
+                                                <div class="purchase-costs-field">
+                                                    <input disabled>
+                                                </div>
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mortgage Discharge Fee
+                                                <a class="modal-trigger" href="#modal4">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal4" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>X</h4>
+                                                        <p>
+                                                            Y
+
+
+
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Conveyancing Fee
+                                                <a class="modal-trigger" href="#modal5">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal5" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Conveyancing Fees</h4>
+                                                        <p>
+                                                            Conveyancing fees cover the legal work required to transfer
+                                                            property
+                                                            ownership. PEXA is an electronic platform used for property
+                                                            settlements in
+                                                            Australia.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Building Inspection
+                                                <a class="modal-trigger" href="#modal6">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal6" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Building Inspection</h4>
+                                                        <p>
+                                                            A building inspection is a thorough examination of a
+                                                            property's condition,
+                                                            focusing on the structural and safety aspects. It helps
+                                                            identify any
+                                                            potential issues with the property.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pest Inspection
+                                                <a class="modal-trigger" href="#modal7">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal7" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Pest Inspection</h4>
+                                                        <p>
+                                                            A pest inspection checks for the presence of pests, such as
+                                                            termites or
+                                                            other wood-destroying insects, that can damage the property.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Home / Building / Contents insurance
+                                                <a class="modal-trigger" href="#modal8">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal8" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Home / Building / Contents insurance</h4>
+                                                        <p>
+                                                            This insurance provides coverage for your home, its
+                                                            contents, and any
+                                                            structures on your property. It protects against risks like
+                                                            fire, theft, and
+                                                            other damages.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Council / Water / Utility rates
+                                                <a class="modal-trigger" href="#modal9">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal9" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Council / Water / Utility rates</h4>
+                                                        <p>
+                                                            These are regular fees you'll need to pay for services like
+                                                            local government
+                                                            rates, water usage, and utilities like electricity and gas.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Removalist
+                                                <a class="modal-trigger" href="#modal10">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal10" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Removalist</h4>
+                                                        <p>
+                                                            This covers the cost of hiring a professional removalist or
+                                                            moving company
+                                                            to help you transport your belongings to your new home.
+                                                            Depending on your
+                                                            personal scenario, this may be a professional organisation,
+                                                            or a truck with
+                                                            a few friends.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Refurnishing
+                                                <a class="modal-trigger" href="#modal11">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal11" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Refurnishing</h4>
+                                                        <p>
+                                                            This is the budget for furnishing and decorating your new
+                                                            home. It includes
+                                                            buying new furniture and decor items.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="purchase-costs-field" placeholder="$0"
+                                                    step="1" min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Purchase Cost Total</b></td>
+                                            <td id="sum-purchase-costs">
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="1">Prev</button>
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="3">Next</button>
+                                </div>
+                            </section>
+
+                            <!-- Step 3 Content, default hidden on page load. -->
+                            <section id="step-3" class="form-step d-none">
+                                <h5 id="bank-fees" class="valign-wrapper">Bank Fees</h5>
+                                <p class="light">These are fees charged by the bank as part of the home loan application
+                                    process. Some of these fees may be capitalised (added) to the loan amount depending
+                                    on your lender. Don't worry if you don't know what these are yet, a Gardenia
+                                    mortgage broker will be able to help you through this.</p>
+
+                                <!-- Step 3 input fields -->
+                                <div class="mt-3">
+
+                                    <table class="striped">
+                                        <tr>
+                                            <th>Expense</th>
+                                            <th>Amount ($)</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Application Fee
+                                                <a class="modal-trigger" href="#modal12">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal12" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Application Fee</h4>
+                                                        <p>
+                                                            The application fee is a one-time charge imposed by the
+                                                            lender when you
+                                                            apply for a home loan. It covers the cost of processing your
+                                                            loan
+                                                            application.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="30%">
+                                                <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                    min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Valuation Fee
+                                                <a class="modal-trigger" href="#modal13">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal13" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Valuation Fee</h4>
+                                                        <p>
+                                                            The valuation fee is a charge for the assessment of the
+                                                            property's value,
+                                                            conducted by a qualified valuer. This assessment is
+                                                            essential for the lender
+                                                            to determine the property's worth. This fee will vary
+                                                            depending on the type
+                                                            of valuation required.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                    min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Settlement Fee
+                                                <a class="modal-trigger" href="#modal14">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal14" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Settlement Fee</h4>
+                                                        <p>
+                                                            The settlement fee covers the costs associated with the
+                                                            legal process of
+                                                            transferring property ownership. It includes the preparation
+                                                            of legal
+                                                            documents and settlement services.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                    min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Package Fee
+                                                <a class="modal-trigger" href="#modal15">
+                                                    <i
+                                                        class="material-icons info-icon icon-align-middle">info_outline</i>
+                                                </a>
+                                                <div id="modal15" class="modal dismissable">
+                                                    <div class="modal-content">
+                                                        <h4>Package Fee</h4>
+                                                        <p>
+                                                            The package fee is associated with certain loan packages
+                                                            offered by lenders.
+                                                            These packages may include additional features such as
+                                                            offset accounts or
+                                                            discounted interest rates.
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!"
+                                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="number" class="bank-fees-field" placeholder="$0" step="1"
+                                                    min="0" max="99999999">
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Bank Fees Total</b></td>
+                                            <td id="sum-bank-fees">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="2">Prev</button>
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="4">Next</button>
+                                </div>
+                            </section>
+
+                            <!-- Step 4 Content, default hidden on page load. -->
+                            <section id="step-4" class="form-step d-none">
+                                <h5 id="loan-summary" class="valign-wrapper">Your Loan Report</h5>
+                                <p class="light">This is a summary of your home loan.</p>
+                                <!-- Step 4 input fields -->
+                                <div class="mt-3">
+                                    <table class="striped">
+                                        <tr>
+                                            <td>Total Transaction Amount<br>
+                                                <i>Purchase Price + Purchase Costs + Bank Costs</i>
+                                            </td>
+                                            <td id="sum-transaction-amount" width="30%">
+                                                <input disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Starting deposit</td>
+                                            <td id="deposit-amount">
+                                                <input disabled>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Deposit remaining after Purchase Costs</td>
+                                            <td id="deposit-amount-minus-purchase-costs">
+                                                <input disabled>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Loan Amount<br>
+                                                <i>Purchase Price + Bank Fees - Deposit remaining</i>
+                                            </td>
+                                            <td id="sum-total-loan-amount">
+                                                <input disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loan To Value (LVR) Ratio</td>
+                                            <td id="loan-to-value-ratio">
+                                                <input disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>LMI Required?</td>
+                                            <td id="lmi-required-result">
+                                                <input disabled>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="3">Prev</button>
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="5">Next</button>
+                                </div>
+                            </section>
+
+
+
+
+
+                            <!-- Step 5 Content, default hidden on page load. -->
+                            <section id="step-5" class="form-step d-none">
+                                <h2 class="font-normal">Connect</h2>
+                                <!-- Step 5 input fields -->
+                                <div class="mt-3">
+                                    Step 5 input fields goes here..
+                                </div>
+                                <div class="mt-3">
+                                    <button class="button btn-navigate-form-step" type="button"
+                                        step_number="4">Prev</button>
+                                    <button class="button submit-btn" type="submit">Save</button>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Loan Summary -->
+
+            <div class="card-panel white" id="loan-summary-card">
+
+
+                <!-- Lenders Mortgage Insurance -->
+
+                <div class="card-panel white">
+
+                    <div class="icon-block">
+
+                        <h5 id="lmi" class="valign-wrapper">Lenders Mortgage Insurance</h5>
+                        <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
+                            out
+                            to
+                            insure
+                            itself
+                            against the risk of not recovering the outstanding loan balance if you, the
+                            borrower,
+                            are
+                            unable to meet
+                            your loan payments and the property is sold for less than the outstanding loan
+                            balance.
+                        </p>
+                    </div>
+                    <table class="striped">
+                        <tr>
+                            <td>LMI %</td>
+                            <td id="lmi-percent-rate" width="30%">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LMI Cost</td>
+                            <td id="lmi-sub-total">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LMI Stamp Duty %
+                                <div class="tooltip">&#9432;
+                                    <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost *
+                                        LMI
+                                        Stamp Duty amount. This
+                                        is not the same as the stamp duty charged on the purchase
+                                        property.</span>
+                            </td>
+                            <td id="lmi-stamp-duty-percent">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LMI Stamp Duty Cost</td>
+                            <td id="lmi-stamp-duty-cost">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Additional savings required to avoid LMI<br>
+                                <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
+                            </td>
+                            <td id="additional-savings-required">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Capitalised LMI Loan Amount<br>
+                                <i>Loan amount + LMI premium + LMI stamp Duty</i>
+                            </td>
+                            <td id="total-loan-with-cap-lmi">
+                                <input disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
+                            <td id="cap-lmi-lvr">
+                                <input disabled>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+</body>
+
+<!-- Footer -->
+
+<div class="card-panel white">
+
+    <div class="icon-block">
+
+        <h5 id="lmi" class="valign-wrapper">The wrap</h5>
+        <p class="light">I truly hope that you've found Kalculate to be a useful tool on your adventure to home
+            ownership. <br>
+        <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
+        <button onclick="window.print()">Print this page</button>
+
+        </p>
+        <hr>
+        <address>
+            Written by Dobbo.<br>
+            Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
+            Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
+        </address>
+        <br>
+    </div>
+
+</div>
+
+<script src="myScript_gardenia.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+
+</html>
