@@ -1167,16 +1167,3 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
         navigateToFormStep(stepNumber);
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
