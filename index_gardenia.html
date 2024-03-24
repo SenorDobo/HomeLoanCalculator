@@ -202,6 +202,23 @@
         .form-stepper a {
             cursor: default;
         }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .person {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .person img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
     </style>
 
     <title>The Gardenia Calculator</title>
@@ -332,7 +349,7 @@
                                 <div class="mt-3">
 
 
-                                    <table class="striped">
+                                    <table class="striped" style="margin: 0px auto;">
                                         <tr>
                                             <td>In which state is the property located?</td>
                                             <td width="30%">
@@ -924,25 +941,6 @@
                                         </tr>
                                     </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     <h5 id="lmi" class="valign-wrapper">Lenders Mortgage Insurance</h5>
                                     <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
                                         out
@@ -1029,7 +1027,20 @@
                                 <!-- Step 5 input fields -->
                                 <div class="mt-3">
 
-
+                                    <div class="container">
+                                        <div class="person">
+                                          <img src="tom.jpg" alt="Tom">
+                                          <div><strong>Tom</strong></div>
+                                          <div>Buyer's agent</div>
+                                          <div>Tom can help you find the perfect property and negotiate the best deal on your behalf.</div>
+                                        </div>
+                                        <div class="person">
+                                          <img src="kosta.jpg" alt="Kosta">
+                                          <div><strong>Kosta</strong></div>
+                                          <div>Mortgage Broker</div>
+                                          <div>Kosta can assist you in finding the right mortgage product and guide you through the loan application process.</div>
+                                        </div>
+                                      </div>
 
                                     Step 5 input fields goes here..
 
