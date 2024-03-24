@@ -203,14 +203,16 @@
             cursor: default;
         }
 
-        .container {
-            display: flex;
-            justify-content: space-between;
+
+
+        .container .people {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
         }
 
         .person {
             text-align: center;
-            margin-bottom: 20px;
         }
 
         .person img {
@@ -349,7 +351,7 @@
                                 <div class="mt-3">
 
 
-                                    <table class="striped" style="margin: 0px auto;">
+                                    <table class="striped">
                                         <tr>
                                             <td>In which state is the property located?</td>
                                             <td width="30%">
@@ -1023,26 +1025,40 @@
 
                             <!-- Step 5 Content, default hidden on page load. -->
                             <section id="step-5" class="form-step d-none">
-                                <h2 class="font-normal">Connect</h2>
+                                <h5 id="loan-summary" class="valign-wrapper">Connect</h5>
+                                <p class="light">Let us help you connect with one of the Gardenia team to take your next
+                                    step towards buying your property</p>
                                 <!-- Step 5 input fields -->
                                 <div class="mt-3">
 
-                                    <div class="container">
+                                    <div class="container people">
                                         <div class="person">
-                                          <img src="tom.jpg" alt="Tom">
-                                          <div><strong>Tom</strong></div>
-                                          <div>Buyer's agent</div>
-                                          <div>Tom can help you find the perfect property and negotiate the best deal on your behalf.</div>
-                                        </div>
-                                        <div class="person">
-                                          <img src="kosta.jpg" alt="Kosta">
-                                          <div><strong>Kosta</strong></div>
-                                          <div>Mortgage Broker</div>
-                                          <div>Kosta can assist you in finding the right mortgage product and guide you through the loan application process.</div>
-                                        </div>
-                                      </div>
+                                            <img src="images/tom.jpeg" alt="Tom">
+                                            <div><strong>Tom</strong></div>
+                                            <div>Buyer's agent</div>
+                                            <div>Tom can help you find the perfect property and negotiate the best deal
+                                                on your behalf.<br></div>
+                                            <a href="https://calendly.com/tomgardeniaprop/30min"
+                                                class="btn waves-effect waves-light" target="_blank">
+                                                Connect with Tom
+                                                <i class="material-icons right">send</i>
+                                            </a>
 
-                                    Step 5 input fields goes here..
+                                        </div>
+                                        <div class="person">
+                                            <img src="images/kosta.jpeg" alt="Kosta">
+                                            <div><strong>Kosta</strong></div>
+                                            <div>Mortgage Broker</div>
+                                            <div>Kosta can assist you in finding the right home loan product and guide
+                                                you through the loan application process.</div>
+                                            <a href="https://calendly.com/kosta-dbu/kostagardeniaprop"
+                                                class="btn waves-effect waves-light" target="_blank">
+                                                Connect with Kosta
+                                                <i class="material-icons right">send</i>
+                                            </a>
+                                        </div>
+                                    </div>
+
 
 
 
