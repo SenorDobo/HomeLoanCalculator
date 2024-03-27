@@ -866,7 +866,7 @@ function calculateLMIRate() {
 
         //  Define the rate table for the LMI percent, based on LVR and total loan amount
         //  Pulled from: https://www.homeloanexperts.com.au/lenders-mortgage-insurance/lmi-premium-rates/
-        //  LoanAmount: up to 300k, 300,001-500,000, 500,001-600,000, 600,001-750,000, 750,000 plus
+        //  LoanAmount: up to 300k, 300_001-500_000, 500_001-600_000, 600_001-750_000, 750_000 plus
 
         //  LVR 80%
         [0.475, 0.568, 0.904, 0.904, 0.913],
