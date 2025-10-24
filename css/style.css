@@ -6,7 +6,6 @@
  * Made By MaterializeCSS.com
  */
 
-
 #background {
   background-image: url("../images/background.jpg");
   background-position: center;
@@ -33,14 +32,14 @@ p {
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255, 255, 255, .9);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .parallax-container .section {
   width: 100%;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -51,7 +50,7 @@ p {
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
@@ -99,7 +98,6 @@ table tr {
   margin-bottom: 0;
 }
 
-
 .tooltip {
   position: relative;
   display: inline-block;
@@ -132,7 +130,6 @@ table tr {
   height: 100vh;
 }
 
-
 .center {
   margin: 1px;
   margin-top: 10px;
@@ -160,19 +157,47 @@ table tr {
 }
 
 /* Improve text styles */
-h2, h5 {
+h2,
+h5 {
   margin-bottom: 1.5rem;
   color: #006064;
 }
 
 .light {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #424242;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #424242;
 }
 
 /* Make tables more readable */
 .striped td {
-    padding: 1rem !important;
-    vertical-align: middle;
+  padding: 1rem !important;
+  vertical-align: middle;
+}
+
+/* Keep the navbar visible (fixed) and style it */
+.site-nav nav {
+  background: rgba(0, 96, 100); 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.site-nav .brand-logo,
+.site-nav .nav-wrapper a,
+.site-nav .nav-wrapper a i {
+  color: #ffffff !important;
+}
+
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: #ffffff !important;
+}
+
+.brand-logo-img {
+  height: 36px; 
+  width: auto;
+  display: block;
 }
