@@ -2,8 +2,18 @@
 <html>
 
 <head>
+    <style>
+        #background {
+            background-image: url("images/background.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            background-size: cover;
+        }
+    </style>
 
-    <title>The Path Home</title>
+    <title>Your path home</title>
 
     <!-- Icons  -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -19,14 +29,11 @@
     <div id="background">
         <div class="container">
             <div class="section">
-                <h2>Welcome to The Path Home</h2>
-                <p class="light">The Path Home is your simple guide to understanding the real costs of buying a
-                    home.<br><br>
-                    From stamp duty and LMI to bank fees and hidden charges, the process can be confusing. That’s where
-                    The Path Home steps in.
-
-                    By entering a few key details about the property you want to buy and your deposit, we’ll
-                    provide you with a summary of the loan you need to get you into your new home.
+                <h2>Kalculate</h2>
+                <p class="light">Welcome to Kalculate, your comprehensive home loan tool.<br>
+                    Let us help you navigate the complexities of purchasing your dream home and provide you with
+                    clarity into the loan that will make it all possible. Kalculate follows a very simple
+                    process:
                 </p>
 
                 <div class="row">
@@ -97,14 +104,12 @@
 
                 <!-- Purchase Costs -->
 
-
-                
                 <div class="card-panel white" id="purchase-costs-card">
 
                     <div class="icon-block">
                         <h5 id="purchase-costs" class="valign-wrapper">Purchase Costs</h5>
                         <p class="light">These are the upfront fees that you'll need to budget for. We'll start you off
-                            by calculating the Stamp Duty as well as Transfer and Mortgage Registration fees. </p>
+                            by calculating the Stamp Duty, Transfer and Mortgage Registration fees.</p>
                     </div>
                     <table class="striped">
                         <tr>
@@ -402,9 +407,8 @@
                     <div class="icon-block">
                         <h5 id="bank-fees" class="valign-wrapper">Bank Fees</h5>
                         <p class="light">These are fees charged by the bank as part of the home loan application
-                            process. Some of these fees may be capitalised (added) to the loan amount depending on your
-                            lender. You may not know these details yet, but it's important to ask your lender for a
-                            breakdown of all fees involved.</p>
+                            process. Some of these fees may be capitalised (added) to the loan
+                            amount depending on your lender.</p>
                     </div>
                     <table class="striped">
                         <tr>
@@ -525,32 +529,25 @@
                 <div class="card-panel white" id="loan-summary-card">
                     <div class="icon-block">
                         <h5 id="loan-summary" class="valign-wrapper">Loan Summary</h5>
-                        <p class="light">This section shows how much the home will cost, how your deposit is broken down
-                            and how much you’ll likely need to borrow. It also checks if LMI is needed, but more on that
-                            in the next section.</p>
+                        <p class="light">This is a summary of your home loan.</p>
                         <table class="striped">
                             <tr>
                                 <td>Total Transaction Amount<br>
-                                    <i>Property purchase price + purchase costs + bank fees</i>
+                                    <i>Purchase Price + Purchase Costs + Bank Costs</i>
                                 </td>
                                 <td id="sum-transaction-amount" width="30%">
                                     <input disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Starting Deposit<br>
-                                    <i>How much you have saved</i>
-                                </td>
+                                <td>Starting deposit</td>
                                 <td id="deposit-amount">
                                     <input disabled>
                                 </td>
 
                             </tr>
                             <tr>
-                                <td>Deposit remaining after purchase costs<br>
-                                    <i>Once you've paid the upfront costs, this is how much you have left for the
-                                        deposit</i>
-                                </td>
+                                <td>Deposit remaining after Purchase Costs</td>
                                 <td id="deposit-amount-minus-purchase-costs">
                                     <input disabled>
 
@@ -565,17 +562,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Loan To Value (LVR) Ratio<br>
-                                    <i>The loan amount as a percentage of the property price</i>
-                                </td>
+                                <td>Loan To Value (LVR) Ratio</td>
                                 <td id="loan-to-value-ratio">
                                     <input disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>LMI Required?<br>
-                                    <i>Lenders Mortage Insurance, see next section for details</i>
-                                </td>
+                                <td>LMI Required?</td>
                                 <td id="lmi-required-result">
                                     <input disabled>
                                 </td>
@@ -601,10 +594,17 @@
                     <div class="icon-block">
 
                         <h5 id="lmi" class="valign-wrapper">Lenders Mortgage Insurance</h5>
-                        <p class="light">Lenders Mortgage Insurance (LMI) is insurance your lender (the bank) takes out
-                            to protect themselves in case you can’t repay your loan. This is usually required if your
-                            deposit is less than 20% of the property value. The exact values will depend on your lender
-                            (bank).
+                        <p class="light">Lenders Mortgage Insurance (LMI) is insurance that a lender takes
+                            out
+                            to
+                            insure
+                            itself
+                            against the risk of not recovering the outstanding loan balance if you, the
+                            borrower,
+                            are
+                            unable to meet
+                            your loan payments and the property is sold for less than the outstanding loan
+                            balance.
                         </p>
                     </div>
                     <table class="striped">
@@ -623,9 +623,11 @@
                         <tr>
                             <td>LMI Stamp Duty %
                                 <div class="tooltip">&#9432;
-                                    <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost * LMI
-                                        Stamp Duty amount. This is not the same as the stamp duty charged on the
-                                        purchase property.</span>
+                                    <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost *
+                                        LMI
+                                        Stamp Duty amount. This
+                                        is not the same as the stamp duty charged on the purchase
+                                        property.</span>
                             </td>
                             <td id="lmi-stamp-duty-percent">
                                 <input disabled>
@@ -671,21 +673,17 @@
     <div class="icon-block">
 
         <h5 id="lmi" class="valign-wrapper">The wrap</h5>
-        <p class="light">I truly hope that you've found The Path Home to be a useful tool on your adventure to home
+        <p class="light">I truly hope that you've found Kalculate to be a useful tool on your adventure to home
             ownership. <br>
-            <!-- <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
-        <button onclick="window.print()">Print this page</button> -->
+        <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
+        <button onclick="window.print()">Print this page</button>
 
         </p>
         <hr>
         <address>
-            Written by Dobbo (not vibe coded).<br>
-            Have feedback or a new feature you'd like to see? Click <a
-                href="https://forms.gle/iJkMiFZc2TWrwiUP7">here</a> and tell me all about it. <br>
-            More than happy to build out new features or make adjustments in exchange for caffeine!<br>
-            <br>
-            This calculator is provided as a general guide only and does not constitute financial advice. Please
-            consult a qualified financial advisor for advice specific to your situation.
+            Written by Dobbo.<br>
+            Shoot me an email at <a href="mailto:Dobbo.Dobbo@gmail.com">Dobbo.Dobbo@gmail.com</a><br>
+            Or buy me a coffee by clicking <a href="https://www.google.com">here</a>
         </address>
         <br>
     </div>
