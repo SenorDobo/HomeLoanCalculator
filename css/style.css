@@ -45,9 +45,9 @@ p {
     top: 40%;
   }
 
-  #index-banner .section {
-    top: 10%;
-  }
+#index-banner .section {
+  top: 10%;
+}
 }
 
 @media only screen and (max-width: 600px) {
@@ -78,24 +78,23 @@ footer.page-footer {
   /* Set the right column to be fixed */
 }
 
-/* Reduce the vertical padding and margin of table cells */
-table tr td {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 0;
-  margin-bottom: 0;
+table tr td,
+#purchase-costs-card td,
+#loan-summary-card td,
+#loan-summary-card td[id$="-result"],
+#loan-summary-card td[id*="-amount"],
+#loan-summary-card td[id*="-total"] {
+    padding: 8px 1rem !important;
+    vertical-align: middle;
+    /* line-height: 1.4;
+    min-height: 24px; */
+    display: table-cell;
 }
 
 /* Vertical padding of table headers */
 table tr th {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-/* Vertical margin of table rows */
-table tr {
-  margin-top: 0;
-  margin-bottom: 0;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
 
 .tooltip {
@@ -171,7 +170,7 @@ h5 {
 
 /* Make tables more readable */
 .striped td {
-  padding: 1rem !important;
+  padding: 4px 1rem !important;
   vertical-align: middle;
 }
 
@@ -200,4 +199,13 @@ h5 {
   height: 36px; 
   width: auto;
   display: block;
+}
+
+/* Ensure all info icons are same readable size and aligned */
+.info-icon {
+  font-size: 20px;          
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  color: rgba(27, 77, 255, 0.8);  
 }

@@ -24,11 +24,18 @@
                 <h2>Welcome to The Path Home</h2>
                 <p class="light">The Path Home is your simple guide to understanding the real costs of buying a
                     home.<br><br>
-                    From stamp duty and LMI to bank fees and hidden charges, the process can be confusing. That’s where
-                    The Path Home steps in.
+                    When you start looking to buy a home, the amount of information and calculations can be
+                    overwhelming. From stamp duty, transfer fees, LVR, LMI, bank fees and 'hidden' charges. This is
+                    where Your Path Home steps in.<br><br>
+                    Each cost, fee or detail is explained, without the real estate jargon, so you can understand the
+                    home buying process. Simply click the <i
+                        class="material-icons info-icon icon-align-middle">info_outline</i> icon for more information.
+
+                    <br><br>
 
                     By entering a few key details about the property you want to buy and your deposit, we’ll
                     provide you with a summary of the loan you need to get you into your new home.
+
                 </p>
 
                 <div class="row">
@@ -64,7 +71,7 @@
 
                     <table class="striped">
                         <tr>
-                            <td>In which state is the property located?</td>
+                            <td>In which state are you looking to purchase?</td>
                             <td width="30%">
                                 <select id="stateDropdown" name="stateDropdown">
                                     <option value=""></option>
@@ -80,7 +87,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>What is the expected purchase price?</td>
+                            <td>How much are you looking to spend?</td>
                             <td>
                                 <input type="number" id="propertyPrice" for="propertyPrice" placeholder="$500,000"
                                     step="1000" min="100000" max="99999999">
@@ -99,305 +106,326 @@
 
                 <!-- Purchase Costs -->
 
-
-
                 <div class="card-panel white" id="purchase-costs-card">
 
                     <div class="icon-block">
                         <h5 id="purchase-costs" class="valign-wrapper">Purchase Costs</h5>
                         <p class="light">These are the upfront fees that you'll need to budget for. We'll start you off
                             by calculating the Stamp Duty as well as Transfer and Mortgage Registration fees. </p>
+
+                        <table class="striped">
+                            <tr>
+                                <th>Expense</th>
+                                <th width="30%">Amount ($)</th>
+                            </tr>
+                            <tr>
+                                <td>Stamp Duty
+                                    <a class="modal-trigger" href="#modal1">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal1" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Stamp Duty</h4>
+                                            <p>
+                                                Stamp Duty is a tax charged by the government on the purchase of a
+                                                property. It's calculated based on the value of the property and varies
+                                                by state
+                                                or territory. You can expect this to be your biggest upfront purchase
+                                                cost, and
+                                                unfortunately cannot be included in your home loan amount.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="stampDutyResult">
+                                    <div class="purchase-costs-field">
+                                        <input disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Title Transfer Fee
+                                    <a class="modal-trigger" href="#modal2">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal2" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Title Transfer Fee</h4>
+                                            <p>
+                                                This is a state/territory government fee for transferring the property
+                                                title
+                                                from the seller to the buyer.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="landTransferFeeResult">
+                                    <div class="purchase-costs-field">
+                                        <input disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mortgage Registration Fee
+                                    <a class="modal-trigger" href="#modal3">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal3" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Mortgage Registration Fee</h4>
+                                            <p>
+                                                This is a state/territory government fee for registering the lender's
+                                                mortgage on the property's title record. For example, if you go for a
+                                                home
+                                                loan with a specific lender, this fee is for registering the lender's
+                                                mortgage on the property.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="mortgageRegistrationFeeResult">
+                                    <div class="purchase-costs-field">
+                                        <input disabled>
+                                    </div>
+                                </td>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Conveyancing Fee
+                                    <a class="modal-trigger" href="#modal5">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal5" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Conveyancing Fees</h4>
+                                            <p>
+                                                Conveyancing fees cover the legal work required to transfer property
+                                                ownership including all the paperwork, searches, and ensuring everything
+                                                is
+                                                in order for the settlement.<br><br>
+                                                An estimated range for conveyancing is $750 to $1,500 depending on
+                                                complexity and location.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Building Inspection
+                                    <a class="modal-trigger" href="#modal6">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal6" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Building Inspection</h4>
+                                            <p>
+                                                A building inspection is a thorough examination of a property's
+                                                condition,
+                                                focusing on the structural and safety aspects. It helps identify any
+                                                potential issues with the property.<br><br>
+                                                An estimated range for building inspections is $250 to $600 depending on
+                                                complexity and location. Many building inspectors will also offer pest
+                                                inspection as part of their service for an additional fee. This is often
+                                                cheaper than getting building and pest inspections performed by
+                                                different
+                                                businesses.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pest Inspection
+                                    <a class="modal-trigger" href="#modal7">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal7" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Pest Inspection</h4>
+                                            <p>
+                                                A pest inspection checks for the presence of pests, such as termites or
+                                                other wood-destroying insects, that can damage the property.<br><br>
+                                                An estimated range for standalone pest inspections is $150 to $300
+                                                depending
+                                                on complexity and location. Many building inspectors will also offer
+                                                pest
+                                                inspection as part of their service for an additional fee. This is often
+                                                cheaper than getting building and pest inspections performed by
+                                                different
+                                                businesses.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Building & contents insurance
+                                    <a class="modal-trigger" href="#modal8">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal8" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Building & contents insurance</h4>
+                                            <p>
+                                                This insurance provides coverage for your home, its contents and any
+                                                structures on your property. It protects against risks like fire, theft
+                                                and
+                                                other damages.<br><br>
+                                                An estimated range for building and contents insurance is between $1,600
+                                                and
+                                                $2,000. This can vary significantly based on location, property value
+                                                and
+                                                level of coverage.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Council & water rates
+                                    <a class="modal-trigger" href="#modal9">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal9" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Council & water rates</h4>
+                                            <p>
+                                                These are regular fees you'll need to pay for services like local
+                                                government
+                                                rates, water usage and waste services. This does not include your
+                                                regular
+                                                on-going bills like electricity and gas. When you buy a property,
+                                                council
+                                                and water rates are split between you and the seller based on how long
+                                                each
+                                                of you owns the home during the current billing period. Your conveyancer
+                                                adjusts this at settlement. So if the seller has already paid for the
+                                                quarter, you’ll reimburse them for your share. For example, if
+                                                settlement is
+                                                halfway through the quarter, you’ll pay them back for the remaining
+                                                half.<br><br>
+
+                                                An estimated range for council and water rates is between $1,500 and
+                                                $2,500.
+                                                This can vary significantly based on location, property value and
+                                                level of coverage.
+
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Removalist
+                                    <a class="modal-trigger" href="#modal10">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal10" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Removalist</h4>
+                                            <p>
+                                                This covers the cost of hiring a professional removalist or moving
+                                                company
+                                                to help you transport your belongings to your new home. Depending on
+                                                your
+                                                personal scenario, this may be a professional organisation, or a truck
+                                                with
+                                                a few friends.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Refurnishing
+                                    <a class="modal-trigger" href="#modal11">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal11" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Refurnishing</h4>
+                                            <p>
+                                                This is the budget for furnishing and decorating your new home. It
+                                                includes
+                                                buying new furniture and decor items.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Purchase Cost Total</b></td>
+                                <td id="sum-purchase-costs">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <table class="striped">
-                        <tr>
-                            <th>Expense</th>
-                            <th width="30%">Amount ($)</th>
-                        </tr>
-                        <tr>
-                            <td>Stamp Duty
-                                <a class="modal-trigger" href="#modal1">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal1" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Stamp Duty</h4>
-                                        <p>
-                                            Stamp Duty is a tax charged by the government on the purchase of a property.
-                                            It's calculated based on the value of the property and varies by state or
-                                            territory.
-                                            You can expect this to be your biggest upfront purchase cost, and
-                                            unfortunately cannot be included in your home loan amount.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="stampDutyResult">
-                                <div class="purchase-costs-field">
-                                    <input disabled>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Title Transfer Fee
-                                <a class="modal-trigger" href="#modal2">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal2" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Title Transfer Fee</h4>
-                                        <p>
-                                            This is a state/territory government fee for transferring the property title
-                                            from the seller to the buyer.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="landTransferFeeResult">
-                                <div class="purchase-costs-field">
-                                    <input disabled>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mortgage Registration Fee
-                                <a class="modal-trigger" href="#modal3">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal3" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Mortgage Registration Fee</h4>
-                                        <p>
-                                            This is a state/territory government fee for registering the lender's
-                                            mortgage on the property's title record. For example, if you go for a home
-                                            loan with a specific lender, this fee is for registering the lender's
-                                            mortgage on the property.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="mortgageRegistrationFeeResult">
-                                <div class="purchase-costs-field">
-                                    <input disabled>
-                                </div>
-                            </td>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Conveyancing Fee
-                                <a class="modal-trigger" href="#modal5">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal5" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Conveyancing Fees</h4>
-                                        <p>
-                                            Conveyancing fees cover the legal work required to transfer property
-                                            ownership including all the paperwork, searches, and ensuring everything is
-                                            in order for the settlement.<br><br>
-                                            An estimated range for conveyancing is $750 to $1,500 depending on
-                                            complexity and location.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Building Inspection
-                                <a class="modal-trigger" href="#modal6">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal6" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Building Inspection</h4>
-                                        <p>
-                                            A building inspection is a thorough examination of a property's condition,
-                                            focusing on the structural and safety aspects. It helps identify any
-                                            potential issues with the property.<br><br>
-                                            An estimated range for building inspections is $250 to $600 depending on
-                                            complexity and location. Many building inspectors will also offer pest
-                                            inspection as part of their service for an additional fee. This is often
-                                            cheaper than getting building and pest inspections performed by different
-                                            businesses.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Pest Inspection
-                                <a class="modal-trigger" href="#modal7">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal7" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Pest Inspection</h4>
-                                        <p>
-                                            A pest inspection checks for the presence of pests, such as termites or
-                                            other wood-destroying insects, that can damage the property.<br><br>
-                                            An estimated range for standalone pest inspections is $150 to $300 depending
-                                            on complexity and location. Many building inspectors will also offer pest
-                                            inspection as part of their service for an additional fee. This is often
-                                            cheaper than getting building and pest inspections performed by different
-                                            businesses.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Building & contents insurance
-                                <a class="modal-trigger" href="#modal8">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal8" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Building & contents insurance</h4>
-                                        <p>
-                                            This insurance provides coverage for your home, its contents and any
-                                            structures on your property. It protects against risks like fire, theft and
-                                            other damages.<br><br>
-                                            An estimated range for building and contents insurance is between $1,600 and
-                                            $2,000. This can vary significantly based on location, property value and
-                                            level of coverage.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Council & water rates
-                                <a class="modal-trigger" href="#modal9">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal9" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Council & water rates</h4>
-                                        <p>
-                                            These are regular fees you'll need to pay for services like local government
-                                            rates, water usage and waste services. This does not include your regular
-                                            on-going bills like electricity and gas. When you buy a property, council
-                                            and water rates are split between you and the seller based on how long each
-                                            of you owns the home during the current billing period. Your conveyancer
-                                            adjusts this at settlement. So if the seller has already paid for the
-                                            quarter, you’ll reimburse them for your share. For example, if settlement is
-                                            halfway through the quarter, you’ll pay them back for the remaining
-                                            half.<br><br>
-
-                                            An estimated range for council and water rates is between $1,500 and $2,500.
-                                            This can vary significantly based on location, property value and
-                                            level of coverage.
-
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Removalist
-                                <a class="modal-trigger" href="#modal10">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal10" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Removalist</h4>
-                                        <p>
-                                            This covers the cost of hiring a professional removalist or moving company
-                                            to help you transport your belongings to your new home. Depending on your
-                                            personal scenario, this may be a professional organisation, or a truck with
-                                            a few friends.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Refurnishing
-                                <a class="modal-trigger" href="#modal11">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal11" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Refurnishing</h4>
-                                        <p>
-                                            This is the budget for furnishing and decorating your new home. It includes
-                                            buying new furniture and decor items.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="purchase-costs-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>Purchase Cost Total</b></td>
-                            <td id="sum-purchase-costs">
-                            </td>
-                        </tr>
-                    </table>
                 </div>
 
                 <!-- Bank Fees -->
@@ -410,129 +438,137 @@
                             process. Some of these fees may be capitalised (added) to the loan amount depending on your
                             lender. You may not know these details yet, but it's important to ask your lender for a
                             breakdown of all fees involved.</p>
+
+                        <table class="striped">
+                            <tr>
+                                <th>Expense</th>
+                                <th>Amount ($)</th>
+                            </tr>
+                            <tr>
+                                <td>Application Fee
+                                    <a class="modal-trigger" href="#modal12">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal12" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Application Fee</h4>
+                                            <p>
+                                                The application fee is a one-time charge imposed by the lender when you
+                                                apply for a home loan. It covers the cost of processing your loan
+                                                application.<br><br>
+                                                An estimated range is between $150 and $500. This can vary significantly
+                                                based on lender (bank).
+
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Valuation Fee
+                                    <a class="modal-trigger" href="#modal13">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal13" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Valuation Fee</h4>
+                                            <p>
+                                                The valuation fee is a charge for the assessment of the property's
+                                                value,
+                                                conducted by a qualified valuer. This assessment is essential for the
+                                                lender
+                                                to determine the property's worth. This fee will vary depending on the
+                                                type
+                                                of valuation required.<br><br>
+                                                An estimated range is between $150 and $300. This can vary significantly
+                                                based on lender (bank).
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Settlement Fee
+                                    <a class="modal-trigger" href="#modal14">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal14" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Settlement Fee</h4>
+                                            <p>
+                                                The settlement fee covers the costs associated with the legal process of
+                                                transferring property ownership. It includes the preparation of legal
+                                                documents and settlement services.<br><br>
+                                                An estimated range is between $150 and $300. This can vary significantly
+                                                based on lender (bank).
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Package Fee
+                                    <a class="modal-trigger" href="#modal15">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+
+                                    </a>
+                                    <div id="modal15" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Package Fee</h4>
+                                            <p>A optional package fee is an annual fee charged on a home loan that
+                                                bundles
+                                                it with other financial products, such as a credit card, savings account
+                                                or
+                                                insurance. It is designed to be a more cost-effective alternative to
+                                                paying
+                                                separate, individual fees on each product.<br><br>
+                                                An estimated range is between $300 and $600. This can vary significantly
+                                                based on lender (bank).
+
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
+                                        max="99999999">
+                                </td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Bank Fees Total</b></td>
+                                <td id="sum-bank-fees">
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <table class="striped">
-                        <tr>
-                            <th>Expense</th>
-                            <th>Amount ($)</th>
-                        </tr>
-                        <tr>
-                            <td>Application Fee
-                                <a class="modal-trigger" href="#modal12">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal12" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Application Fee</h4>
-                                        <p>
-                                            The application fee is a one-time charge imposed by the lender when you
-                                            apply for a home loan. It covers the cost of processing your loan
-                                            application.<br><br>
-                                            An estimated range is between $150 and $500. This can vary significantly
-                                            based on lender (bank).
-
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td width="30%">
-                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Valuation Fee
-                                <a class="modal-trigger" href="#modal13">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal13" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Valuation Fee</h4>
-                                        <p>
-                                            The valuation fee is a charge for the assessment of the property's value,
-                                            conducted by a qualified valuer. This assessment is essential for the lender
-                                            to determine the property's worth. This fee will vary depending on the type
-                                            of valuation required.<br><br>
-                                            An estimated range is between $150 and $300. This can vary significantly
-                                            based on lender (bank).
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Settlement Fee
-                                <a class="modal-trigger" href="#modal14">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal14" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Settlement Fee</h4>
-                                        <p>
-                                            The settlement fee covers the costs associated with the legal process of
-                                            transferring property ownership. It includes the preparation of legal
-                                            documents and settlement services.<br><br>
-                                            An estimated range is between $150 and $300. This can vary significantly
-                                            based on lender (bank).
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Package Fee
-                                <a class="modal-trigger" href="#modal15">
-                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
-                                </a>
-                                <div id="modal15" class="modal dismissable">
-                                    <div class="modal-content">
-                                        <h4>Package Fee</h4>
-                                        <p>A optional package fee is an annual fee charged on a home loan that bundles
-                                            it with other financial products, such as a credit card, savings account or
-                                            insurance. It is designed to be a more cost-effective alternative to paying
-                                            separate, individual fees on each product.<br><br>
-                                            An estimated range is between $300 and $600. This can vary significantly
-                                            based on lender (bank).
-
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number" class="bank-fees-field" placeholder="$0" step="1" min="0"
-                                    max="99999999">
-                            </td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>Bank Fees Total</b></td>
-                            <td id="sum-bank-fees">
-                            </td>
-                        </tr>
-                    </table>
                 </div>
 
                 <!-- Loan Summary -->
@@ -550,24 +586,14 @@
                                 <th width="30%">Amount ($)</th>
                             </tr>
 
-
-
-
-
-
-
-
-
-
-
                             <tr>
-                                <td>Total Transaction Amount
+                                <td>Total transaction amount
                                     <a class="modal-trigger" href="#modal16">
                                         <i class="material-icons info-icon icon-align-middle">info_outline</i>
                                     </a>
                                     <div id="modal16" class="modal dismissable">
                                         <div class="modal-content">
-                                            <h4>Total Transaction Amount</h4>
+                                            <h4>Total transaction amount</h4>
                                             <p>
                                                 The total transaction amount is the full cost of buying the property.
                                                 This is including the purchase price, upfront purchase costs (like stamp
@@ -575,7 +601,8 @@
 
                                                 It gives you a complete picture of how much you’ll need to complete the
                                                 purchase, not just the price of the property itself.<br><br>
-                                                Total transaction amount = Property purchase price + Purchase costs + Bank fees
+                                                Total transaction amount = Property purchase price + purchase costs +
+                                                bank fees
                                             </p>
                                         </div>
                                         <div class="modal-footer">
@@ -583,75 +610,131 @@
                                         </div>
                                     </div>
                                 </td>
-                                <!-- <td>Total Transaction Amount<br>
-                                    <i>Property purchase price + purchase costs + bank fees</i>
-                                </td> -->
                                 <td id="sum-transaction-amount" width="30%">
                                     <input disabled>
                                 </td>
                             </tr>
-
-
-
-
-
-<!-- UP TO HERE -->
-
-
-
-
-
-
-
-
-
-<!-- 
                             <tr>
-                                <td>Total Transaction Amount<br>
-                                    <i>Property purchase price + purchase costs + bank fees</i>
-                                </td>
-                                <td id="sum-transaction-amount" width="30%">
-                                    <input disabled>
-                                </td>
-                            </tr> -->
-                            <tr>
-                                <td>Starting Deposit<br>
-                                    <i>How much you have saved</i>
+                                <td>Starting deposit
+                                    <a class="modal-trigger" href="#modal17">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal17" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Starting deposit</h4>
+                                            <p>
+                                                This is the amount you entered at the start, sharing the hard-earned
+                                                money that you've saved towards your house deposit.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td id="deposit-amount">
                                     <input disabled>
                                 </td>
-
                             </tr>
                             <tr>
-                                <td>Deposit remaining after purchase costs<br>
-                                    <i>Once you've paid the upfront costs, this is how much you have left for the
-                                        deposit</i>
+                                <td>Deposit remaining after upfront purchase costs
+                                    <a class="modal-trigger" href="#modal18">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal18" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Deposit remaining after upfront purchase costs</h4>
+                                            <p>
+                                                Once you've paid the upfront costs for your property purchase, this is
+                                                how much you'll have left from your original deposit amount. <br><br>
+                                                Deposit remaining after upfront purchase costs = Starting deposit -
+                                                upfront purchase costs.
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td id="deposit-amount-minus-purchase-costs">
                                     <input disabled>
-
                                 </td>
                             </tr>
                             <tr>
-                                <td>Total Loan Amount<br>
-                                    <i>Purchase Price + Bank Fees - Deposit remaining</i>
+                                <td><strong>Total loan amount</strong>
+                                    <a class="modal-trigger" href="#modal19">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal19" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Total home loan amount required</h4>
+                                            <p>
+                                                This is the total amount you'll need to borrow from the bank to complete
+                                                your property purchase.<br><br>
+                                                Total home loan amount required = Purchase price + bank fees - deposit
+                                                remaining
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td id="sum-total-loan-amount">
                                     <input disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Loan To Value (LVR) Ratio<br>
-                                    <i>The loan amount as a percentage of the property price</i>
+                                <td>Loan To Value (LVR) Ratio
+                                    <a class="modal-trigger" href="#modal20">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal20" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>Loan To Value (LVR) Ratio</h4>
+                                            <p>
+                                                The Loan to Value Ratio (LVR) is a financial term used by lenders to
+                                                express the ratio of a loan to the value of the property. It is
+                                                calculated by dividing the loan amount by the valuation of the
+                                                property. The higher the LVR, the riskier the loan is considered for the
+                                                lender (bank). As a result, you may be charged a higher interest rate or
+                                                require Lenders Mortgage Insurace (LMI). More on that further
+                                                down.<br><br>
+                                                LVR = (Loan amount / property value) * 100<br><br>
+                                                For example, if you're purchasing a property worth $1,000,000 and you
+                                                need to borrow $850,000, your LVR would be 85%.<br>
+                                                LVR = ($850,000 / $1,000,000) * 100<br>
+                                                LVR = 85%
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td id="loan-to-value-ratio">
                                     <input disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>LMI Required?<br>
-                                    <i>Lenders Mortage Insurance, see next section for details</i>
+                                <td>LMI required?
+                                    <a class="modal-trigger" href="#modal21">
+                                        <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                    </a>
+                                    <div id="modal21" class="modal dismissable">
+                                        <div class="modal-content">
+                                            <h4>LMI required?</h4>
+                                            <p>
+                                                Lender's Mortgage Insurance (LMI) is typically required when your Loan
+                                                To Value ratio (LVR) is greater than 80%. See the below section for more
+                                                information.
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td id="lmi-required-result">
                                     <input disabled>
@@ -660,15 +743,11 @@
                         </table>
                     </div>
                     <div class="card-action">
-                        <p>Jump to:</p>
+                        <p>Need to make some changes or want to try a new scenario? Jump back to:</p>
                         <a class="waves-effect waves-light btn" href="#the-basics-card">The basics</a>
                         <a class="waves-effect waves-light btn" href="#purchase-costs-card">Purchase costs</a>
                         <a class="waves-effect waves-light btn" href="#bank-costs-card">Bank fees</a>
                     </div>
-
-
-
-
                 </div>
 
                 <!-- Lenders Mortgage Insurance -->
@@ -681,61 +760,191 @@
                         <p class="light">Lenders Mortgage Insurance (LMI) is insurance your lender (the bank) takes out
                             to protect themselves in case you can’t repay your loan. This is usually required if your
                             deposit is less than 20% of the property value. The exact values will depend on your lender
-                            (bank).
+                            (bank). LMI is a one-off cost that can be capitalised (added) to your loan amount or paid
+                            upfront. Whilst this may seem like a penalty for not having a larger deposit, it may allow
+                            you to get into the property market sooner.
                         </p>
                     </div>
                     <table class="striped">
                         <tr>
-                            <td>LMI %</td>
+                            <td>LMI rate (%)
+                                <a class="modal-trigger" href="#modal22">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal22" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>LMI rate (%)</h4>
+                                        <p>
+                                            The percentage of the loan amount that is charged as Lenders Mortgage
+                                            Insurance (LMI). Often referred to as the LMI premium. This rate varies
+                                            based
+                                            on the Loan to Value Ratio (LVR).<br><br>
+                                            Example #1 - 85% LVR<br>
+                                            The LMI percentage is 1.463% of the loan amount.<br>
+                                            This means for a $750,000+ property, if you’re borrowing 85% of the value,
+                                            you’ll pay approx. 1.463% of the loan as LMI.<br><br>
+
+                                            Example #2 - Higher LVR at 90%<br>
+                                            The LMI percentage is 3.820% of the loan amount.<br>
+                                            At 90% LVR, the LMI charge jumps significantly. You’ll pay approximately
+                                            3.820% of the loan as LMI.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td id="lmi-percent-rate" width="30%">
                                 <input disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>LMI Cost</td>
+                            <td>LMI cost
+                                <a class="modal-trigger" href="#modal23">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal23" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>LMI cost</h4>
+                                        <p>
+                                            Using the amount that you would need to borrow, and the LMI rate (%), this
+                                            is the amount you can expect to be in Lender's Mortgage Insurance
+                                            (LMI.)<br><br>
+                                            The exact amount will depend on your lender (bank). This information is
+                                            often not readily available until you formally apply for a home loan, so
+                                            please use this as a guide only.
+
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td id="lmi-sub-total">
                                 <input disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>LMI Stamp Duty %
-                                <div class="tooltip">&#9432;
-                                    <span class="tooltiptext">Stamp Duty applied to the LMI Premium. LMI Cost * LMI
-                                        Stamp Duty amount. This is not the same as the stamp duty charged on the
-                                        purchase property.</span>
+                            <td>LMI stamp duty (%)
+                                <a class="modal-trigger" href="#modal24">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal24" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>LMI stamp duty (%)</h4>
+                                        <p>
+                                            This is where Lender's Mortgage Insurance (LMI) gets even more fun.
+                                            Different states charge stamp duty on top of the LMI cost. This
+                                            is different to the stamp duty charged on the property purchase
+                                            itself. This percentage is the stamp duty rate applied for the LMI
+                                            premium.<br><br>
+                                            The exact amount will depend on your state you're purchasing your property
+                                            in. This information
+                                            is often not readily available until you formally apply for a home loan, so
+                                            please use this as a guide only.
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+
                             </td>
                             <td id="lmi-stamp-duty-percent">
                                 <input disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>LMI Stamp Duty Cost</td>
+                            <td>LMI stamp duty cost
+                                <a class="modal-trigger" href="#modal25">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal25" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>LMI stamp duty cost</h4>
+                                        <p>
+                                            This is where Lender's Mortgage Insurance (LMI) gets even more fun.
+                                            Different states charge stamp duty on top of the LMI cost. This
+                                            is different to the stamp duty charged on the property purchase
+                                            itself. This dollar value is the stamp duty cost applied for the LMI
+                                            premium.<br><br>
+                                            The exact amount will depend on your state you're purchasing your property
+                                            in. This information
+                                            is often not readily available until you formally apply for a home loan, so
+                                            please use this as a guide only.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </td>
                             <td id="lmi-stamp-duty-cost">
                                 <input disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>Additional savings required to avoid LMI<br>
-                                <i>(Purchase Price * 80%) - Deposit after Purchase Costs</i>
+                            <td>Additional savings required to avoid LMI
+                                <a class="modal-trigger" href="#modal26">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal26" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>Additional savings required to avoid LMI</h4>
+                                        <p>
+                                            This is the additional amount you'd need to save/add to your deposit to avoid paying Lender's Mortgage Insurance (LMI).<br><br>
+                                            <strong>Additional savings required:</strong> (Purchase price * 80%) - Deposit after remaining after upfront purchase costs<br><br>
+                                            For example:<br>
+                                            Additional savings required = ($1,000,000 * 80%) - $150,000<br>
+                                            Additional savings required = $50,000
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </td>
                             <td id="additional-savings-required">
                                 <input disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>Capitalised LMI Loan Amount<br>
-                                <i>Loan amount + LMI premium + LMI stamp Duty</i>
+                            <td><strong>Final Loan to Value ratio (LVR), including LMI</strong>
+                                <a class="modal-trigger" href="#modal27">
+                                    <i class="material-icons info-icon icon-align-middle">info_outline</i>
+                                </a>
+                                <div id="modal27" class="modal dismissable">
+                                    <div class="modal-content">
+                                        <h4>Total loan amount (with LMI capitalised)</h4>
+                                        <p>
+                                            This is the total amount you will borrow, including any Lender's Mortgage Insurance (LMI) that is capitalised (added) into the loan.<br><br>
+                                            <strong>Total loan amount (with LMI capitalised):</strong> Loan amount + LMI premium + LMI stamp duty<br><br>
+                                            For example:<br>
+                                            Total loan amount (with LMI capitalised) = $850,000 + $10,000 + $2,000<br>
+                                            Total loan amount (with LMI capitalised) = $862,000
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </td>
                             <td id="total-loan-with-cap-lmi">
                                 <input disabled>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Capitalised LMI Loan To Value (LVR) Ratio</td>
+                        <!-- <tr>
+                            <td>Final Loan to Value ratio (LVR), including LMI
+                            </td>
                             <td id="cap-lmi-lvr">
                                 <input disabled>
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>
@@ -749,14 +958,16 @@
 
         <h5 id="lmi" class="valign-wrapper">The wrap</h5>
         <p class="light">I truly hope that you've found The Path Home to be a useful tool on your adventure to home
-            ownership. <br>
+            ownership. Currently this tool is in development and your feedback is incredibly valuable. There are a number of new features and calculations to add, but I'd love to hear from you to help improve and steer the next development. <br><br>
+            Would you like to see your borrowing power? What your repayments might be? Something else? Please fill out the form (link below) to have your feedback hear and actioned.
+                <a href="https://forms.gle/iJkMiFZc2TWrwiUP7">Click here</a> and tell me all about it. <br>
             <!-- <p>Want to keep a copy of these calculations? Click below to print or save as a pdf.</p>
         <button onclick="window.print()">Print this page</button> -->
 
         </p>
         <hr>
         <address>
-            Written by Dobbo (not vibe coded).<br>
+            Hand-written by me/Adam/Dobbo (not vibe coded).<br>
             Have feedback or a new feature you'd like to see? Click <a
                 href="https://forms.gle/iJkMiFZc2TWrwiUP7">here</a> and tell me all about it. <br>
             More than happy to build out new features or make adjustments in exchange for caffeine!<br>
