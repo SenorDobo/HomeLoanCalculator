@@ -1,3 +1,38 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Prefer jQuery plugin if available (older Materialize builds)
+    if (window.jQuery && jQuery.fn && jQuery.fn.formSelect) {
+        try {
+            $('select').formSelect();
+        } catch (e) {
+            console.error('jQuery formSelect init failed', e);
+        }
+        return;
+    }
+
+    // Otherwise use the plain JS API (Materialize v1+)
+    if (window.M && M.FormSelect && document.querySelectorAll) {
+        try {
+            M.FormSelect.init(document.querySelectorAll('select'));
+        } catch (e) {
+            console.error('M.FormSelect.init failed', e);
+        }
+        return;
+    }
+
+    console.error('Select init: missing jQuery formSelect plugin and M.FormSelect API');
+});
+
+
+
+
+
+
+
+
+
+
+
+
 //  This file contains all the JavaScript for the web page
 
 // ****************************************************************************************************************
@@ -65,29 +100,29 @@ const LMI = {
 
 // JS required for the stateDropdown to work
 
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('select');
+//     var instances = M.FormSelect.init(elems);
+// });
 
-// ****************************************************************************************************************
+// // ****************************************************************************************************************
 
-// JS required for the tooltips to work
+// // JS required for the tooltips to work
 
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.tooltipped');
-    var instances = M.Tooltip.init(elems);
-    var instance = M.Tooltip.getInstance(elems[0]);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.tooltipped');
+//     var instances = M.Tooltip.init(elems);
+//     var instance = M.Tooltip.getInstance(elems[0]);
+// });
 
-// ****************************************************************************************************************
+// // ****************************************************************************************************************
 
-// JS required for the modals to work
+// // JS required for the modals to work
 
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.modal');
+//     var instances = M.Modal.init(elems);
+// });
 
 // ****************************************************************************************************************
 
