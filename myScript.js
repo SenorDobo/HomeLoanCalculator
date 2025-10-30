@@ -148,8 +148,8 @@ function updateOnChange() {
     lmiSubTotal();
     lmiStampDutyPercent();
     lmiStampDutyCost();
-    totalLoanWithCapLMI();
-    totalLoanWithCapLMILVR();
+    // totalLoanWithCapLMI();
+    // totalLoanWithCapLMILVR();
 }
 
 // Attach event listener to the stateDropdown element
@@ -1049,38 +1049,38 @@ function lmiStampDutyCost() {
 
 //  Function to calculate the total loan amount including LMI cost and LMI stamp duty
 
-function totalLoanWithCapLMI() {
-    const totalLoanAmount = loanSummary.totalLoanAmount
-    const lmiSubTotal = LMI.lmiSubTotal
-    const lmiStampDutyCost = LMI.lmiStampDutyCost
+// function totalLoanWithCapLMI() {
+//     const totalLoanAmount = loanSummary.totalLoanAmount
+//     const lmiSubTotal = LMI.lmiSubTotal
+//     const lmiStampDutyCost = LMI.lmiStampDutyCost
 
-    const totalLoanWithCapLMI = totalLoanAmount + lmiSubTotal + lmiStampDutyCost
+//     const totalLoanWithCapLMI = totalLoanAmount + lmiSubTotal + lmiStampDutyCost
 
-    loanSummary.totalLoanWithCapLMI = totalLoanWithCapLMI
+//     loanSummary.totalLoanWithCapLMI = totalLoanWithCapLMI
 
-    const totalLoanWithCapLMIResultElement = document.getElementById("total-loan-with-cap-lmi")
-    totalLoanWithCapLMIResultElement.innerHTML = `$${totalLoanWithCapLMI.toFixed(2)}`;
+//     const totalLoanWithCapLMIResultElement = document.getElementById("total-loan-with-cap-lmi")
+//     totalLoanWithCapLMIResultElement.innerHTML = `$${totalLoanWithCapLMI.toFixed(2)}`;
 
-}
+// }
 
 // ****************************************************************************************************************
 
 //  Function to calculate the LVR for total loan amount including LMI
 
-function totalLoanWithCapLMILVR() {
-    const propertyPrice = propertyDetails.propertyPrice
-    const totalLoanWithCapLMI = loanSummary.totalLoanWithCapLMI
-    const capLMILVRPercent = totalLoanWithCapLMI / propertyPrice
+// function totalLoanWithCapLMILVR() {
+//     const propertyPrice = propertyDetails.propertyPrice
+//     const totalLoanWithCapLMI = loanSummary.totalLoanWithCapLMI
+//     const capLMILVRPercent = totalLoanWithCapLMI / propertyPrice
 
-    const formattedSum = new Intl.NumberFormat('en-AU', {
-        style: 'percent',
-        minimumFractionDigits: 2
-    }).format(capLMILVRPercent);
+//     const formattedSum = new Intl.NumberFormat('en-AU', {
+//         style: 'percent',
+//         minimumFractionDigits: 2
+//     }).format(capLMILVRPercent);
 
-    // Output the sum as a percentage value
-    const CapLMILVR = document.querySelector('#cap-lmi-lvr');
-    CapLMILVR.textContent = formattedSum;
-}
+//     // Output the sum as a percentage value
+//     const CapLMILVR = document.querySelector('#cap-lmi-lvr');
+//     CapLMILVR.textContent = formattedSum;
+// }
 
 // ****************************************************************************************************************
 
