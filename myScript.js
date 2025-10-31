@@ -117,12 +117,12 @@ const LMI = {
 
 // // ****************************************************************************************************************
 
-// // JS required for the modals to work
+// JS required for the modals to work
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     var elems = document.querySelectorAll('.modal');
-//     var instances = M.Modal.init(elems);
-// });
+document.addEventListener('DOMContentLoaded', function () {
+     var elems = document.querySelectorAll('.modal');
+     var instances = M.Modal.init(elems);
+ });
 
 // ****************************************************************************************************************
 
